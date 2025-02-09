@@ -268,14 +268,14 @@ const Value = () => {
                     <div className='w-20 h-20 absolute bg-[#f99938] rounded-full circle-29'></div>
                 </div>
 
-                <div className='value-para flex flex-col leading-none'>
-                    <p className='para value-para-1 text-[1.7vw] text-[#002A77]'>"Welcome to OX-LINE ELECTRONICS LLP, a</p>
-                    <p className='para value-para-2 text-[1.7vw] text-[#002A77]'>premier manufacturer specializing in a</p>
-                    <p className='para value-para-3 text-[1.7vw] text-[#002A77]'>diverse range of cable catering to various</p>
-                    <p className='para value-para-4 text-[1.7vw] text-[#002A77]'>industries. Established in 2023, our</p>
-                    <p className='para value-para-5 text-[1.7vw] text-[#002A77]'>commitment to excellence and innovation</p>
-                    <p className='para value-para-6 text-[1.7vw] text-[#002A77]'>will ensure great product with supreme</p>
-                    <p className='para value-para-7 text-[1.7vw] text-[#002A77]'>performance."</p>
+                <div className='value-para flex flex-col gap-3 leading-none'>
+                    <p className='para value-para-1 w-[35vw] text-[1.7vw] text-[#002A77]'><span className='font-bold'>Safety: </span>Ensuring safety through a committed attitude towards people, property, and the workplace.</p>
+                    <p className='para value-para-2 w-[35vw] text-[1.7vw] text-[#002A77]'><span className='font-bold'>Respect: </span>Valuing people, society, and the environment in all our actions and decisions.</p>
+                    <p className='para value-para-3 w-[35vw] text-[1.7vw] text-[#002A77]'><span className='font-bold'>Transparency: </span>Maintaining openness and honesty in all our dealings and behaviour.</p>
+                    <p className='para value-para-4 w-[35vw] text-[1.7vw] text-[#002A77]'><span className='font-bold'>Commitment: </span>Dedicating ourselves to personal and organizational development.</p>
+                    <p className='para value-para-5 w-[35vw] text-[1.7vw] text-[#002A77]'><span className='font-bold'>Sustainability: </span>Mindful and judicious use of resources with respect to the elimination of toxic waste to foster a greener future.</p>
+                    <p className='para value-para-6 w-[35vw] text-[1.7vw] text-[#002A77]'><span className='font-bold'>Customer Focus: </span>Prioritizing the needs and satisfaction of our customers.</p>
+                    {/* <p className='para value-para-7 text-[1.5vw] text-[#002A77]'>performance."</p> */}
                 </div>
 
             </div>
