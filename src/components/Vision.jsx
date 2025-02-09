@@ -23,7 +23,7 @@ const Vision = () => {
                 scrollTrigger: {
                     trigger: '.page11',
                     start: 'top',
-                    end: 'bottom+=800%',
+                    end: 'bottom+=100%',
                     pin: true,
                     scrub: 2,
                     onEnter: () => gsap.to(containerRef.current, { opacity: 1 }),
@@ -159,7 +159,7 @@ const Vision = () => {
             // );
 
             tl.to(".vision-para",
-                { x: 300, opacity: 0, delay: 0.12, duration: 0.1, ease: 'linear' },
+                { x: 300, opacity: 0, delay: 0.2, duration: 0.1, ease: 'linear' },
                 "<"
             );
 

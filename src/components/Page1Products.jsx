@@ -28,7 +28,7 @@ const Page1Products = () => {
 
         ScrollTrigger.create({
             trigger: element,
-            start: "+=-50",
+            start: "top",
             end: "+=3100",
             pin: true,
             scrub: true,
@@ -66,7 +66,7 @@ const Page1Products = () => {
     return (
         <>
             {/* Desktop */}
-            <div ref={productsContainerRef} className='hidden sm:flex relative w-full min-h-screen mt-[450vw] overflow-hidden'>
+            <div ref={productsContainerRef} className='hidden sm:flex relative w-full min-h-screen mt-[85vw] overflow-hidden'>
                 <motion.h1
                     ref={productText}
                     initial={{ translate: "-100%", opacity: 0 }}

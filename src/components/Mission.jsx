@@ -23,7 +23,7 @@ const Mission = () => {
                 scrollTrigger: {
                     trigger: '.page12',
                     start: 'top',
-                    end: 'bottom+=800%',
+                    end: 'bottom+=100%',
                     pin: true,
                     scrub: 2,
                     onEnter: () => gsap.to(missionContainerRef.current, { opacity: 1 }),
@@ -167,7 +167,7 @@ const Mission = () => {
             // );
 
             tl.to(".mission-para",
-                { x: 300, opacity: 0, delay: 0.12, duration: 0.1, ease: 'linear' },
+                { x: 300, opacity: 0, delay: 0.2, duration: 0.1, ease: 'linear' },
                 "<"
             );
 
@@ -242,7 +242,7 @@ const Mission = () => {
     return (
         <>
             {/* Desktop */}
-            <div ref={missionContainerRef} className='hidden sm:flex page12 w-full min-h-screen justify-start items-center gap-5 pl-28 mt-[400vw]'>
+            <div ref={missionContainerRef} className='hidden sm:flex page12 w-full min-h-screen justify-start items-center gap-5 pl-28 mt-[50vw]'>
 
                 <div className=''>
                     <h1 className='mission-text text-stroke text-[#002A77] text-[6vw] tracking-wider'>MISSION</h1>

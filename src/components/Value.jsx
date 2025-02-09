@@ -24,7 +24,7 @@ const Value = () => {
                 scrollTrigger: {
                     trigger: '.page13',
                     start: 'top',
-                    end: 'bottom+=800%',
+                    end: 'bottom+=100%',
                     pin: true,
                     scrub: 2,
                     onEnter: () => gsap.to(valueContainerRef.current, { opacity: 1 }),
@@ -172,7 +172,7 @@ const Value = () => {
             // );
 
             tl.to(".value-para",
-                { x: 300, opacity: 0, delay: 0.12, duration: 0.1, ease: 'linear' },
+                { x: 300, opacity: 0, delay: 0.2, duration: 0.1, ease: 'linear' },
                 "<"
             );
 
@@ -247,7 +247,7 @@ const Value = () => {
     return (
         <>
             {/* Desktop */}
-            <div ref={valueContainerRef} className='page13 hidden sm:flex w-full min-h-screen justify-start items-center pl-28 gap-5 mt-[400vw]'>
+            <div ref={valueContainerRef} className='page13 hidden sm:flex w-full min-h-screen justify-start items-center pl-28 gap-5 mt-[50vw]'>
 
                 <div className=''>
                     <h1 className='value-text text-stroke text-[#002A77] text-[7vw] tracking-wider'>VALUE</h1>
