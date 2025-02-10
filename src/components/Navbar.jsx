@@ -3,9 +3,6 @@ import { RiArrowDownSLine } from "react-icons/ri";
 import { motion } from 'framer-motion';
 import { NavLink, useNavigate, useLocation } from 'react-router-dom';
 
-import { RiMenu2Line } from "react-icons/ri";
-import { RxCross1 } from "react-icons/rx";
-
 const Navbar = () => {
   const [isDropdownOpen, setIsDropdownOpen] = useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
@@ -20,6 +17,7 @@ const Navbar = () => {
       .then(res => res.json())
       .then((data) => {
         setProductContent(data.data);
+        console.log("Prod content", productDropdownContent)
       })
   }, []);
   // const productDropdownContent = [
@@ -105,10 +103,6 @@ const Navbar = () => {
                     </ul>
                   );
                 })}
-
-
-
-
               </motion.div>
             )}
           </div>
@@ -208,7 +202,7 @@ const Navbar = () => {
                   >
                     {productDropdownContent.map((product) => (
                       <NavLink
-                        to={product.Link}
+                        to={product.slug}
                         key={product.id}
                         className="w-full py-5 border-b border-b-zinc-200"
                         onClick={handleNavLinkClick}

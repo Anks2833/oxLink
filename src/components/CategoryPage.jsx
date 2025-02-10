@@ -73,7 +73,7 @@ export default function CategoryPage() {
 
             {/* For mobile */}
             <div className='flex sm:hidden'>
-                <div className='absolute z-[9] w-full h-screen flex flex-col justify-start gap-6 pt-40'>
+                <div className='absolute z-[9] w-full h-screen flex flex-col justify-start gap-6 pt-24'>
 
                     <div className='w-full px-8'>
                         <h1 className='product-text text-3xl'>{slug ? slug.toUpperCase() : 'CATEGORY'}</h1>
@@ -89,7 +89,7 @@ export default function CategoryPage() {
                                     <NavLink className="w-fit" to={`${cable.slug}`} key={cable.id || index}>
                                         <div className='w-fit text-2xl flex items-center gap-2 cursor-pointer'>
                                             <div className='w-2 h-2 bg-black rounded-full'></div>
-                                            <h1 className='product-text text-xl'>{cable.name}</h1>
+                                            <h1 className='product-text text-xl'>{cable.title}</h1>
                                         </div>
                                     </NavLink>
                                 );
@@ -100,8 +100,8 @@ export default function CategoryPage() {
                 </div>
 
                 {/* Line animation */}
-                <CableLineAnimation />
-                <div className="-mt-[50vw] sm:mt-[210vw]">
+                {/* <CableLineAnimation /> */}
+                <div className="mt-[133vw] sm:mt-[210vw]">
                     <Footer />
                 </div>
             </div>
