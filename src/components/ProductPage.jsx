@@ -20,6 +20,7 @@ const ProductPage = () => {
     const [wireImage, setWireImage] = useState(null);
     const [wireImageWithFunctions, setWireImageWithFunctions] = useState(null);
     const [approvalImage, setApprovalImage] = useState(null);
+    const [cableName, setCableName] = useState("");
 
 
     useEffect(() => {
@@ -27,6 +28,8 @@ const ProductPage = () => {
             .then(res => res.json())
             .then((data) => {
                 setData(data.data)
+                setCableName(data.data.title)
+                console.log("data", data)
                 setApplications(data.data.applications);
 
                 setDescription(data.data.description);
@@ -42,6 +45,7 @@ const ProductPage = () => {
     }, [categorySlug, productSlug])
     // const location = useLocation();
     const pageRef = useRef(null);
+    const titleRef = useRef(null)
 
     const svgRef = useRef();
     const headingRef = useRef();
@@ -108,6 +112,16 @@ const ProductPage = () => {
             },
             {
                 x: "0%"
+            },
+            "a"
+        )
+
+        tl.fromTo(titleRef.current,
+            {
+                opacity: 0
+            },
+            {
+                opacity: 1
             },
             "a"
         )
@@ -247,6 +261,10 @@ const ProductPage = () => {
                 {/* The outer cable image */}
                 <div ref={controlOuterSvgRef} className=''>
                     <img src={`https://ox-admin.wtmmedia.com/${wireImage}`} alt="outer-cable-img" />
+                </div>
+
+                <div className='w-full flex justify-center'>
+                    <h1 ref={titleRef} className='text-2xl font-bold text-[#272880]'>{cableName}</h1>
                 </div>
 
                 {/* Application and Product Feature */}
