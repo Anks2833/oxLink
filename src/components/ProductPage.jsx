@@ -268,20 +268,20 @@ const ProductPage = () => {
                 </div>
 
                 {/* Application and Product Feature */}
-                <div className='w-full flex justify-between px-20'>
+                <div className='w-full grid grid-cols-2 px-16 mt-8'>
 
-                    <div className='flex flex-col gap-1 overflow-hidden w-1/2'>
+                    <div className='flex flex-col overflow-hidden w-1/2'>
                         <h1 ref={headingRef} className='text-[#272880] font-bold text-2xl'>APPLICATION</h1>
 
-                        <div ref={contentRef} className='flex flex-col gap-1'>
+                        <div ref={contentRef} className='flex flex-col'>
                             <div className='flex flex-col' dangerouslySetInnerHTML={{ __html: applications }} />
                         </div>
                     </div>
 
-                    <div className='flex flex-col gap-1 overflow-hidden'>
+                    <div className='flex flex-col overflow-hidden'>
                         <h1 ref={heading1Ref} className='text-[#272880] font-bold text-2xl'>PRODUCT FEATURES</h1>
 
-                        <div ref={content1Ref} className='flex flex-col gap-1'>
+                        <div ref={content1Ref} className='flex flex-col flex-wrap'>
                             <div className='flex flex-col' dangerouslySetInnerHTML={{ __html: characteristics }} />
                         </div>
                     </div>
@@ -290,7 +290,7 @@ const ProductPage = () => {
 
 
                 {/* Product BuildUp and Approvals */}
-                <div className='w-full flex justify-between pl-20 overflow-hidden'>
+                <div className='w-full grid grid-cols-2 px-16 mt-8'>
 
                     <div className='flex flex-col gap-1'>
                         <h1 ref={heading2Ref} className='text-[#272880] font-bold text-2xl'>PRODUCT BUILD UP</h1>
@@ -336,7 +336,7 @@ const ProductPage = () => {
                 </div>
 
                 {/* Technical Data */}
-                <div className="w-full flex justify-between px-20 overflow-hidden">
+                <div className="w-full grid grid-cols-1 px-16 mt-8 overflow-hidden">
                     <div className="w-full flex flex-col">
                         <h1
                             ref={heading4Ref}
