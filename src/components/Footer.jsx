@@ -51,13 +51,13 @@ const Footer = () => {
                 setProductLinks(data.data);
             })
     }, []);
-    const qucikLinks = [
+    const quickLinks = [
         { id: 1, name: "About Us", link: "/about" },
         { id: 2, name: "Careers", link: "/career" },
         // { id: 3, name: "Support", link: "/support" },
         { id: 4, name: "Blog", link: "/blog" },
         { id: 5, name: "Terms & Conditions", link: "/terms" },
-        { id: 6, name: "E-Catalog Menu", link: "/src/assets/files/Ox-LinkBrochure.pdf" },
+        { id: 6, name: "E-Catalog Menu", link: "/files/Ox-LinkBrochure.pdf" },
     ];
 
 
@@ -222,12 +222,13 @@ const Footer = () => {
                             <div className='flex flex-col gap-2'>
                                 <h1 className='text-2xl font-bold'>Quick Links</h1>
 
-                                {qucikLinks.map((item) => {
+                                {quickLinks.map((item) => {
                                     if (item.id === 6) { // E-Catalog Menu
                                         return (
                                             <a
                                                 key={item.id}
                                                 href={item.link}
+                                                download
                                                 target="_blank"
                                                 rel="noopener noreferrer"
                                                 className="w-fit text-lg"
@@ -235,7 +236,6 @@ const Footer = () => {
                                                     e.preventDefault();
                                                     window.open(item.link, '_blank');
                                                 }}
-                                                download="ox-link-e-catalog.pdf"
                                             >
                                                 {item.name}
                                             </a>
@@ -403,9 +403,27 @@ const Footer = () => {
                             <div className='flex flex-col gap-2'>
                                 <h1 className='text-2xl font-bold underline'>Quick Links</h1>
 
-                                {qucikLinks.map((item) => (
-                                    <NavLink className="w-fit text-lg" key={item.id} to={item.link}>{item.name}</NavLink>
-                                ))}
+                                {quickLinks.map((item) => {
+                                    if (item.id === 6) {
+                                        return (
+                                            <a
+                                                key={item.id}
+                                                href={item.link}
+                                                target="_blank"
+                                                rel="noopener noreferrer"
+                                                className="w-fit text-lg"
+                                                download
+                                            >
+                                                {item.name}
+                                            </a>
+                                        );
+                                    }
+                                    return (
+                                        <NavLink className="w-fit text-lg" key={item.id} to={item.link}>
+                                            {item.name}
+                                        </NavLink>
+                                    );
+                                })}
                             </div>
 
                             <div className='flex flex-col gap-2'>
