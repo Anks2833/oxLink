@@ -57,7 +57,7 @@ const Footer = () => {
         // { id: 3, name: "Support", link: "/support" },
         { id: 4, name: "Blog", link: "/blog" },
         { id: 5, name: "Terms & Conditions", link: "/terms" },
-        // { id: 6, name: "Sitemap", link: "/sitemap" },
+        { id: 6, name: "E-Catalog Menu", link: "/src/assets/files/Ox-LinkBrochure.pdf" },
     ];
 
 
@@ -201,10 +201,10 @@ const Footer = () => {
                                     <FaFacebookSquare className='text-2xl text-black cursor-pointer' />
                                 </a>
                                 <a href={linkedinLink} target="_blank" rel="noopener noreferrer">
-                                <FaLinkedin className='text-2xl text-black cursor-pointer' />
+                                    <FaLinkedin className='text-2xl text-black cursor-pointer' />
                                 </a>
                                 <a href={instagramLink} target="_blank" rel="noopener noreferrer">
-                                <FaSquareInstagram className='text-2xl text-black cursor-pointer' />
+                                    <FaSquareInstagram className='text-2xl text-black cursor-pointer' />
                                 </a>
                                 <a href={youtubeLink} target="_blank" rel="noopener noreferrer">
                                     <FaSquareYoutube className='text-2xl text-black cursor-pointer' />
@@ -222,9 +222,31 @@ const Footer = () => {
                             <div className='flex flex-col gap-2'>
                                 <h1 className='text-2xl font-bold'>Quick Links</h1>
 
-                                {qucikLinks.map((item) => (
-                                    <NavLink className="w-fit text-lg" key={item.id} to={item.link}>{item.name}</NavLink>
-                                ))}
+                                {qucikLinks.map((item) => {
+                                    if (item.id === 6) { // E-Catalog Menu
+                                        return (
+                                            <a
+                                                key={item.id}
+                                                href={item.link}
+                                                target="_blank"
+                                                rel="noopener noreferrer"
+                                                className="w-fit text-lg"
+                                                onClick={(e) => {
+                                                    e.preventDefault();
+                                                    window.open(item.link, '_blank');
+                                                }}
+                                                download="ox-link-e-catalog.pdf"
+                                            >
+                                                {item.name}
+                                            </a>
+                                        );
+                                    }
+                                    return (
+                                        <NavLink className="w-fit text-lg" key={item.id} to={item.link}>
+                                            {item.name}
+                                        </NavLink>
+                                    );
+                                })}
                             </div>
 
                             <div className='flex flex-col gap-2'>

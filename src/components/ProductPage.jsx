@@ -29,7 +29,7 @@ const ProductPage = () => {
             .then((data) => {
                 setData(data.data)
                 setCableName(data.data.title)
-                console.log("data", data)
+                // console.log("data", data)
                 setApplications(data.data.applications);
 
                 setDescription(data.data.description);
@@ -258,17 +258,17 @@ const ProductPage = () => {
                     </div>
                 </div>
 
+                <div className='w-full flex justify-start items-end pl-6'>
+                    <h1 ref={titleRef}  style={{ WebkitTextStroke: "0.4px black" }} className='text-4xl font-bold text-[#FFA500]'>{cableName}</h1>
+                </div>
+
                 {/* The outer cable image */}
                 <div ref={controlOuterSvgRef} className=''>
                     <img src={`https://ox-admin.wtmmedia.com/${wireImage}`} alt="outer-cable-img" />
                 </div>
 
-                <div className='w-full flex justify-center'>
-                    <h1 ref={titleRef} className='text-2xl font-bold text-[#272880]'>{cableName}</h1>
-                </div>
-
                 {/* Application and Product Feature */}
-                <div className='w-full min-h-20 flex justify-between px-28'>
+                <div className='w-full flex justify-between px-20'>
 
                     <div className='flex flex-col gap-1 overflow-hidden w-1/2'>
                         <h1 ref={headingRef} className='text-[#272880] font-bold text-2xl'>APPLICATION</h1>
@@ -290,7 +290,7 @@ const ProductPage = () => {
 
 
                 {/* Product BuildUp and Approvals */}
-                <div className='w-full min-h-20 flex justify-between px-28 overflow-hidden'>
+                <div className='w-full flex justify-between pl-20 overflow-hidden'>
 
                     <div className='flex flex-col gap-1'>
                         <h1 ref={heading2Ref} className='text-[#272880] font-bold text-2xl'>PRODUCT BUILD UP</h1>
@@ -336,7 +336,7 @@ const ProductPage = () => {
                 </div>
 
                 {/* Technical Data */}
-                <div className="w-full min-h-20 flex justify-between px-28 overflow-hidden">
+                <div className="w-full flex justify-between px-20 overflow-hidden">
                     <div className="w-full flex flex-col">
                         <h1
                             ref={heading4Ref}
@@ -351,7 +351,7 @@ const ProductPage = () => {
                     </div>
                 </div>
 
-                <div className="-mt-[50vw] sm:mt-[10vw]">
+                <div className="-mt-[50vw] sm:mt-[2vw]">
                     <Footer />
                 </div>
             </div>
