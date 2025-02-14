@@ -267,7 +267,7 @@ const Mission = () => {
                     <p className='para mission-para-1 text-[1.7vw] text-[#002A77]'>Delivering superior cable solutions with</p>
                     <p className='para mission-para-2 text-[1.7vw] text-[#002A77]'>cutting-edge technology, exceptional quality,</p>
                     <p className='para mission-para-3 text-[1.7vw] text-[#002A77]'>and unwavering dedication to cutomer</p>
-                    <p className='para mission-para-4 text-[1.7vw] text-[#002A77]'>satisfaction.We drive sustainable growth,</p>
+                    <p className='para mission-para-4 text-[1.7vw] text-[#002A77]'>satisfaction.&nbsp;We drive sustainable growth,</p>
                     <p className='para mission-para-5 text-[1.7vw] text-[#002A77]'>optimize efficiency, and make a meaningful</p>
                     <p className='para mission-para-6 text-[1.7vw] text-[#002A77]'>impact on global infrastructure Landscape.</p>
                 </div>
@@ -346,7 +346,7 @@ const Mission = () => {
                         viewport={{ once: true }}
                         className='text-[4.5vw] text-[#002A77]'
                     >
-                        satisfaction.We drive sustainable growth,</motion.p>
+                        satisfaction.&nbsp;We drive sustainable growth,</motion.p>
 
                     <motion.p
                         initial={{ translateX: "-100%" }}

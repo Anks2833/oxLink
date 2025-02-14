@@ -112,19 +112,19 @@ const Page1Products = () => {
                 </motion.h1>
                 {/* The blue div */}
                 <div
-                    className='absolute z-[1] top-[50vw] -left-32 w-[200vw] h-[60vw] bg-[#c8e3ef]/70 px-40 flex items-center overflow-x-scroll overflow-y-hidden'
+                    className='absolute z-[1] top-[50vw] -left-32 w-[200vw] h-[60vw] bg-[#c8e3ef]/70 px-40 -rotate-12 flex items-center overflow-x-scroll overflow-y-hidden'
                 >
-                    {/* <CircleGrp1 /> */}
+                    <CircleGrp1 />
                     <ProductsContent />
-                    {/* <CircleGrp2 /> */}
+                    <CircleGrp2 />
                     <ProductsContent1 />
-                    {/* <CircleGrp3 /> */}
+                    <CircleGrp3 />
                     <ProductsContent2 />
-                    {/* <CircleGrp4 /> */}
+                    <CircleGrp4 />
                     <ProductsContent3 />
-                    {/* <CircleGrp5 /> */}
+                    <CircleGrp5 />
                     <ProductsContent4 />
-                    {/* <CircleGrp6 /> */}
+                    <CircleGrp6 />
                     <ProductsContent5 />
                 </div>
 

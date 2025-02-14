@@ -57,7 +57,7 @@ const Footer = () => {
         // { id: 3, name: "Support", link: "/support" },
         { id: 4, name: "Blog", link: "/blog" },
         { id: 5, name: "Terms & Conditions", link: "/terms" },
-        { id: 6, name: "E-Catalog Menu", link: "/files/Ox-LinkBrochure.pdf" },
+        { id: 6, name: "E-Catalog", link: "/files/Ox-LinkBrochure.pdf" },
     ];
 
 
@@ -223,7 +223,7 @@ const Footer = () => {
                                 <h1 className='text-2xl font-bold'>Quick Links</h1>
 
                                 {quickLinks.map((item) => {
-                                    if (item.id === 6) { // E-Catalog Menu
+                                    if (item.id === 6) {
                                         return (
                                             <a
                                                 key={item.id}
@@ -300,13 +300,13 @@ const Footer = () => {
                                     <MdOutlineKeyboardDoubleArrowRight className='text-white text-4xl' />
                                 </div>
 
-                                <div>
-                                    <BsQrCodeScan className='bg-white text-7xl p-3 rounded-xl' />
+                                <div className='w-fit'>
+                                    <img className='w-20' src="/qr-code.png" alt="qr-code" />
                                 </div>
 
                             </div>
 
-                            <h1 className='text-lg text-right font-semibold'>© <span className='text-[#0FBBEB]'>2024</span> <span className='text-[#002A77]'>OX-LINK ELECTRONICS LLP</span></h1>
+                            <h1 className='text-lg text-right font-semibold'>© <span className='text-[#0FBBEB]'>2025</span> <span className='text-[#002A77]'>OX-LINK ELECTRONICS LLP</span></h1>
                         </div>
 
                     </div>
@@ -430,7 +430,9 @@ const Footer = () => {
                                 <h1 className='text-2xl font-bold underline'>Product</h1>
 
                                 {productLinks.map((item) => (
-                                    <NavLink className="w-fit text-lg" key={item.id} to={item.link}>{item.name}</NavLink>
+                                    <NavLink className="w-fit text-lg" key={item.id} to={`/${item.slug}`}>
+                                        {item.title}
+                                    </NavLink>
                                 ))}
                             </div>
 
@@ -459,13 +461,13 @@ const Footer = () => {
                                     <MdOutlineKeyboardDoubleArrowRight className='text-white text-4xl' />
                                 </div>
 
-                                <div>
-                                    <BsQrCodeScan className='bg-white text-7xl p-3 rounded-xl' />
+                                <div className='w-fit'>
+                                    <img className='w-20' src="/qr-code.png" alt="qr-code" />
                                 </div>
 
                             </div>
 
-                            <h1 className='text-lg text-right font-semibold'>© <span className='text-[#0FBBEB]'>2024</span> <span className='text-[#002A77]'>OX-LINK ELECTRONICS LLP</span></h1>
+                            <h1 className='text-lg text-right font-semibold'>© <span className='text-[#0FBBEB]'>2025</span> <span className='text-[#002A77]'>OX-LINK ELECTRONICS LLP</span></h1>
                         </div>
 
                     </div>

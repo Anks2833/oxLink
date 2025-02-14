@@ -231,7 +231,7 @@ const Vision = () => {
                     <p className='para vision-para-1 text-[1.7vw] text-[#002A77]'>"Creating futuristic solutions for the next</p>
                     <p className='para vision-para-2 text-[1.7vw] text-[#002A77]'>generation  of global infrastructure through</p>
                     <p className='para vision-para-3 text-[1.7vw] text-[#002A77]'>innovative, sustainable, and revolutionary</p>
-                    <p className='para vision-para-4 text-[1.7vw] text-[#002A77]'>electronic cable that set a new benchmark</p>
+                    <p className='para vision-para-4 text-[1.7vw] text-[#002A77]'>electronic that set a new benchmark</p>
                     <p className='para vision-para-5 text-[1.7vw] text-[#002A77]'>for the industry."</p>
                 </div>
 
@@ -309,7 +309,7 @@ const Vision = () => {
                         viewport={{ once: true }}
                         className='text-[4.5vw] text-[#002A77]'
                     >
-                        electronic cable that set a new benchmark
+                        electronic that set a new benchmark
                     </motion.p>
 
                     <motion.p

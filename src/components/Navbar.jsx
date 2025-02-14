@@ -34,7 +34,7 @@ const Navbar = () => {
     { id: 2, title: "ABOUT US", link: "/about" },
     { id: 3, title: "PRODUCTS", link: "#" },
     { id: 4, title: "BLOG", link: "/blog" },
-    { id: 5, title: "Contact Us", link: "/contact-us" },
+    { id: 5, title: "Career", link: "/career" },
     { id: 6, title: "GET IN TOUCH", link: "/get-in-touch" },
   ]
 
@@ -117,12 +117,12 @@ const Navbar = () => {
           </NavLink>
 
           <NavLink
-            to="/contact-us"
+            to="/career"
             className={({ isActive }) =>
               `w-fit flex items-center font-semibold text-[1.2vw] cursor-pointer hover:text-[#f99938] transition-all ${isActive ? 'text-[#f99938]' : 'text-blue-800'}`
             }
           >
-            <h1>Contact Us</h1>
+            <h1>Career</h1>
           </NavLink>
 
           <NavLink

@@ -11,6 +11,7 @@ import Privacy from '../pages/Privacy'
 import GetInTouch from '../pages/GetInTouch'
 import CategoryPage from '../components/CategoryPage'
 import ProductPage from '../components/ProductPage'
+import Careers from '../pages/Careers'
 
 const Routing = () => {
 
@@ -46,6 +47,9 @@ const Routing = () => {
 
                 {/* Get in touch page */}
                 <Route path='/get-in-touch' element={<GetInTouch />} />
+
+                {/* Careers */}
+                <Route path='/career' element={<Careers />} />
 
             </Routes>
 

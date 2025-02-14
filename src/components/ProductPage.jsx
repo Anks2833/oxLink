@@ -268,17 +268,17 @@ const ProductPage = () => {
                 </div>
 
                 {/* Application and Product Feature */}
-                <div className='w-full grid grid-cols-2 px-16 mt-8'>
+                <div className='w-full flex justify-between px-16 mt-8'>
 
                     <div className='flex flex-col overflow-hidden w-1/2'>
                         <h1 ref={headingRef} className='text-[#272880] font-bold text-2xl'>APPLICATION</h1>
 
-                        <div ref={contentRef} className='flex flex-col'>
+                        <div ref={contentRef} className='flex flex-col w-[30vw]'>
                             <div className='flex flex-col' dangerouslySetInnerHTML={{ __html: applications }} />
                         </div>
                     </div>
 
-                    <div className='flex flex-col overflow-hidden'>
+                    <div className='w-1/2 flex flex-col overflow-hidden'>
                         <h1 ref={heading1Ref} className='text-[#272880] font-bold text-2xl'>PRODUCT FEATURES</h1>
 
                         <div ref={content1Ref} className='flex flex-col flex-wrap'>
@@ -290,9 +290,9 @@ const ProductPage = () => {
 
 
                 {/* Product BuildUp and Approvals */}
-                <div className='w-full grid grid-cols-2 px-16 mt-8'>
+                <div className='w-full flex justify-between px-16 mt-8'>
 
-                    <div className='flex flex-col gap-1'>
+                    <div className='w-1/2 flex flex-col gap-1'>
                         <h1 ref={heading2Ref} className='text-[#272880] font-bold text-2xl'>PRODUCT BUILD UP</h1>
 
                         <div ref={content2Ref} className='flex flex-col gap-1'>
@@ -300,7 +300,7 @@ const ProductPage = () => {
                         </div>
                     </div>
 
-                    <div className='flex flex-col gap-1 pr-10 overflow-hidden'>
+                    <div className='w-1/2 flex flex-col gap-1 pr-10 overflow-hidden'>
                         <h1 ref={heading3Ref} className='text-[#272880] font-bold text-2xl'>APPROVALS</h1>
 
                         <div ref={content3Ref} className='flex items-center gap-1'>
