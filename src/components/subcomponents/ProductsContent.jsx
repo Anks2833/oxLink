@@ -6,7 +6,7 @@ const ProductsContent = () => {
     return (
         <>
             {/* Desktop */}
-            <NavLink to="/product/control-cable" className='hidden sm:flex w-fit flex-col gap-2 border-r border-l border-l-black border-r-black rotate-12 px-10 mr-20 mt-10 overflow-hidden cursor-pointer'>
+            <NavLink to="/control-cable" className='hidden sm:flex w-fit flex-col gap-2 border-r border-l border-l-black border-r-black rotate-12 px-10 mr-20 mt-10 overflow-hidden cursor-pointer'>
 
                 <motion.div
                     className='flex justify-center items-center gap-2'
@@ -73,7 +73,7 @@ const ProductsContent = () => {
             </NavLink>
 
             {/* Mobile */}
-            <NavLink to="/product/control-cable" className='flex sm:hidden w-fit flex-col gap-2 border-r border-l border-l-black border-r-black px-5 mr-20 mt-10'>
+            <NavLink to="/control-cable" className='flex sm:hidden w-fit flex-col gap-2 border-r border-l border-l-black border-r-black px-5 mr-20 mt-10'>
 
                 <motion.div
                     className='flex justify-center items-center gap-1'

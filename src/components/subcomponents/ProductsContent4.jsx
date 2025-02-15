@@ -6,7 +6,7 @@ const ProductsContent4 = () => {
     return (
         <>
             {/* Desktop */}
-            <NavLink to="/product/solar-cable" className='hidden sm:flex w-fit flex-col gap-2 border-r border-l border-l-black border-r-black rotate-12 px-10 mr-20 mt-10 overflow-hidden cursor-pointer'>
+            <NavLink to="/solar-cable" className='hidden sm:flex w-fit flex-col gap-2 border-r border-l border-l-black border-r-black rotate-12 px-10 mr-20 mt-10 overflow-hidden cursor-pointer'>
 
                 <motion.div
                     className='solar-cables flex justify-center items-center gap-2'

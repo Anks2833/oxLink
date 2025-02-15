@@ -6,7 +6,7 @@ const ProductsContent5 = () => {
     return (
         <>
 
-            <NavLink to="/product/drag-energy-chain-cable" className='hidden sm:flex w-fit flex-col gap-2 border-l border-l-black rotate-12 px-10 mr-20 mt-10 overflow-hidden cursor-pointer'>
+            <NavLink to="/drag-energy-chain-cable" className='hidden sm:flex w-fit flex-col gap-2 border-l border-l-black rotate-12 px-10 mr-20 mt-10 overflow-hidden cursor-pointer'>
 
                 <motion.div
                     className='flex justify-center items-center gap-2'
