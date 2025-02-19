@@ -81,7 +81,7 @@ const ProductsContent1 = () => {
             </NavLink>
 
             {/* Mobile */}
-            <NavLink to="/product/data-cable" className='flex sm:hidden w-fit flex-col gap-2 border-r border-l border-l-black border-r-black px-5 mr-20 mt-10'>
+            <NavLink to="/product/data-cable" className='flex sm:hidden w-fit flex-col gap-2 border-r border-l border-l-black border-r-black px-5 mt-20 mb-52'>
 
                 <motion.div
                     className='flex justify-center items-center gap-2'
@@ -90,11 +90,11 @@ const ProductsContent1 = () => {
                     transition={{ duration: 0.5, delay: 0.1 }}
                     viewport={{ once: true }}
                 >
-                    <h1 className='product-text font-semibold text-xs'>02.</h1>
-                    <h1 className='product-text font-semibold text-xs'>Data Cable</h1>
+                    <h1 className='product-text font-semibold text-2xl'>02.</h1>
+                    <h1 className='product-text font-semibold text-2xl'>Data Cable</h1>
                 </motion.div>
 
-                <div className='w-[60vw] text-xs text-center'>
+                <div className='w-[100vw] text-lg text-center'>
                     <motion.p
                         initial={{ x: -100, opacity: 0 }}
                         whileInView={{ x: 0, opacity: 1 }}

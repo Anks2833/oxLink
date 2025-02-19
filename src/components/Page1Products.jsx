@@ -101,18 +101,18 @@ const Page1Products = () => {
             </div>
 
             {/* Mobile */}
-            <div className='flex sm:hidden relative w-full min-h-screen -mt-[30vw] overflow-hidden'>
+            <div className='flex flex-col sm:hidden relative w-full min-h-screen pt-20'>
                 <motion.h1
                     initial={{ translate: '-100%', opacity: 0 }}
-                    whileInView={{ translate: '-30%', opacity: 1, }}
+                    whileInView={{ translate: '5%', opacity: 1, }}
                     transition={{ duration: 1 }}
-                    className='product-text text-black absolute z-[1] top-32 left-20 text-[10vw]'
+                    className='product-text text-black text-[10vw]'
                 >
                     Products
                 </motion.h1>
                 {/* The blue div */}
                 <div
-                    className='absolute z-[1] top-[50vw] -left-32 w-[200vw] h-[60vw] bg-[#c8e3ef]/70 px-40 -rotate-12 flex items-center overflow-x-scroll overflow-y-hidden'
+                    className='flex flex-col items-center'
                 >
                     <CircleGrp1 />
                     <ProductsContent />
@@ -129,9 +129,9 @@ const Page1Products = () => {
                 </div>
 
                 {/* The canvas */}
-                <div className='absolute top-0 left-0 w-full h-full'>
+                {/* <div className='absolute top-60 left-0 z-0 w-full h-full'>
                     <LineAnimation />
-                </div>
+                </div> */}
             </div>
 
         </>

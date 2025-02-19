@@ -213,26 +213,26 @@ const CircleGrp5 = () => {
             </div>
 
             {/* Mobile */}
-            <div className='flex sm:hidden w-fit mr-20 gap-14 origin-center purple-circle-group-mobile'>
+            <div className='flex sm:hidden w-fit gap-14 origin-center purple-circle-group-mobile'>
 
                 <div className='relative flex flex-col gap-5'>
-                    <div className='first-purple-circle-mobile w-5 h-5 bg-[#002976] rounded-full'></div>
-                    <div className='second-purple-circle-mobile w-5 h-5 bg-[#002976] rounded-full'></div>
-                    <div className='third-purple-circle-mobile w-5 h-5 bg-[#002976] rounded-full'></div>
+                    <div className='first-purple-circle w-14 h-14 bg-[#002976] rounded-full'></div>
+                    <div className='second-purple-circle w-14 h-14 bg-[#002976] rounded-full'></div>
+                    <div className='third-purple-circle w-14 h-14 bg-[#002976] rounded-full'></div>
                 </div>
 
-                <div className='relative'>
-                    <div className='fourth-purple-circle-mobile absolute top-8 -left-4 w-5 h-5 bg-[#002976] rounded-full'></div>
+                <div className='relative flex flex-col gap-3'>
+                    <div className='fourth-purple-circle absolute top-12 -left-9 w-14 h-14 bg-[#002976] rounded-full'></div>
                 </div>
 
-                <div className='relative'>
-                    <div className='fifth-purple-circle-mobile absolute top-16 -left-4 w-5 h-5 bg-[#002976] rounded-full'></div>
+                <div className='relative flex flex-col gap-3'>
+                    <div className='fifth-purple-circle absolute top-24 -left-4 w-14 h-14 bg-[#002976] rounded-full'></div>
                 </div>
 
                 <div className='flex flex-col gap-5'>
-                    <div className='sixth-purple-circle-mobile w-5 h-5 bg-[#002976] rounded-full'></div>
-                    <div className='seventh-purple-circle-mobile w-5 h-5 bg-[#002976] rounded-full'></div>
-                    <div className='eighth-purple-circle-mobile w-5 h-5 bg-[#002976] rounded-full'></div>
+                    <div className='sixth-purple-circle w-14 h-14 bg-[#002976] rounded-full'></div>
+                    <div className='seventh-purple-circle w-14 h-14 bg-[#002976] rounded-full'></div>
+                    <div className='eighth-purple-circle w-14 h-14 bg-[#002976] rounded-full'></div>
                 </div>
 
             </div>

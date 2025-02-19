@@ -313,85 +313,73 @@ const Value = () => {
                 </motion.div>
 
                 <motion.div
-                    className='flex flex-col leading-none overflow-hidden'
+                    className='flex flex-col gap-3 leading-none overflow-hidden'
                 >
                     <motion.p
                         initial={{ translateX: "-100%" }}
-                        whileInView={{ translateX: "0%" }}
+                        whileInView={{ translateX: "1%" }}
                         transition={{ duration: 1, delay: 0.1 }}
                         viewport={{ once: true }}
                         className='text-[4.5vw] text-[#002A77]'
                     >
-                        "Welcome to OX-LINE ELECTRONICS LLP, a
+                        <span className='font-bold'>Safety: </span><br />Ensuring safety through a committed attitude towards people, property, and the workplace.
 
                     </motion.p>
 
                     <motion.p
                         initial={{ translateX: "-100%" }}
-                        whileInView={{ translateX: "0%" }}
+                        whileInView={{ translateX: "1%" }}
                         transition={{ duration: 1, delay: 0.2 }}
                         viewport={{ once: true }}
                         className='text-[4.5vw] text-[#002A77]'
                     >
-                        premier manufacturer specializing in a
+                        <span className='font-bold'>Respect: </span><br />Valuing people, society, and the environment in our actions and decisions.
 
                     </motion.p>
 
                     <motion.p
                         initial={{ translateX: "-100%" }}
-                        whileInView={{ translateX: "0%" }}
+                        whileInView={{ translateX: "1%" }}
                         transition={{ duration: 1, delay: 0.3 }}
                         viewport={{ once: true }}
                         className='text-[4.5vw] text-[#002A77]'
                     >
-                        diverse range of cable catering to various
+                        <span className='font-bold'>Transparency: </span><br />Maintaining openness and honesty in all our dealings and behaviour.
 
                     </motion.p>
 
                     <motion.p
                         initial={{ translateX: "-100%" }}
-                        whileInView={{ translateX: "0%" }}
+                        whileInView={{ translateX: "1%" }}
                         transition={{ duration: 1, delay: 0.4 }}
                         viewport={{ once: true }}
                         className='text-[4.5vw] text-[#002A77]'
                     >
-                        industries. Established in 2023, our
+                        <span className='font-bold'>Commitment: </span><br />Dedicating ourselves to personal and organizational development.
 
                     </motion.p>
 
                     <motion.p
                         initial={{ translateX: "-100%" }}
-                        whileInView={{ translateX: "0%" }}
+                        whileInView={{ translateX: "1%" }}
                         transition={{ duration: 1, delay: 0.5 }}
                         viewport={{ once: true }}
                         className='text-[4.5vw] text-[#002A77]'
                     >
-                        commitment to excellence and innovation
+                        <span className='font-bold'>Sustainability: </span><br />Mindful and judicious use of resources with respect to the elimination of toxic waste to foster a greener future.
 
                     </motion.p>
 
                     <motion.p
                         initial={{ translateX: "-100%" }}
-                        whileInView={{ translateX: "0%" }}
+                        whileInView={{ translateX: "1%" }}
                         transition={{ duration: 1, delay: 0.6 }}
                         viewport={{ once: true }}
                         className='text-[4.5vw] text-[#002A77]'
                     >
-                        will ensure great product with supreme
+                        <span className='font-bold'>Customer Focus: </span><br/>Prioritizing the needs and satisfaction of our customers.
 
                     </motion.p>
-
-                    <motion.p
-                        initial={{ translateX: "-100%" }}
-                        whileInView={{ translateX: "0%" }}
-                        transition={{ duration: 1, delay: 0.7 }}
-                        viewport={{ once: true }}
-                        className='text-[4.5vw] text-[#002A77]'
-                    >
-                        performance."
-
-                    </motion.p>
-
                 </motion.div>
 
             </div>

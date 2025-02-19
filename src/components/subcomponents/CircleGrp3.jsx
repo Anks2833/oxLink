@@ -154,38 +154,38 @@ const CircleGrp3 = () => {
 
                 <div className='flex gap-3'>
                     <div
-                        className='first-circle-mob absolute w-5 h-5 bg-[#fab03f] rounded-full'
+                        className='first-circle absolute w-14 h-14 bg-[#fab03f] rounded-full'
                     >
                     </div>
                 </div>
 
                 <div className='flex gap-3'>
                     <div
-                        className='second-circle-mob absolute w-5 h-5 bg-[#fab03f] rounded-full'
+                        className='second-circle absolute w-14 h-14 bg-[#fab03f] rounded-full'
                     >
                     </div>
                 </div>
 
                 <div className='flex gap-3'>
                     <div
-                        className='third-circle-mob absolute w-5 h-5 bg-[#fab03f] rounded-full'
+                        className='third-circle absolute w-14 h-14 bg-[#fab03f] rounded-full'
                     >
                     </div>
                 </div>
 
-                <div className='flex gap-3'>
+                <div className='flex gap-8'>
                     <div
-                        className='fourth-circle-mob absolute w-5 h-5 bg-[#fab03f] rounded-full'
+                        className='fourth-circle absolute w-14 h-14 bg-[#fab03f] rounded-full'
                     >
                     </div>
 
                     <div
-                        className='fifth-circle-mob absolute w-5 h-5 bg-[#fab03f] rounded-full'
+                        className='fifth-circle absolute w-14 h-14 bg-[#fab03f] rounded-full'
                     >
                     </div>
 
                     <div
-                        className='sixth-circle-mob absolute w-5 h-5 bg-[#fab03f] rounded-full'
+                        className='sixth-circle absolute w-14 h-14 bg-[#fab03f] rounded-full'
                     >
                     </div>
                 </div>

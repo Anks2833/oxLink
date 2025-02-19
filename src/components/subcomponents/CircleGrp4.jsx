@@ -94,22 +94,22 @@ const CircleGrp4 = () => {
             </div>
 
             {/* Mobile */}
-            <div className='flex sm:hidden w-fit mr-20 flex-col gap-3 origin-center px-10 circle-group-green pt-10'>
+            <div className='flex sm:hidden w-fit flex-col gap-3 origin-center px-10 circle-group-green pt-10'>
 
                 <div className='flex gap-3'>
-                    <div className='first-green-circle w-5 h-5 bg-[#2bb573] rounded-full'></div>
+                    <div className='first-green-circle w-14 h-14 bg-[#2bb573] rounded-full'></div>
                 </div>
 
                 <div className='flex gap-3'>
-                    <div className='second-green-circle w-5 h-5 bg-[#2bb573] rounded-full'></div>
+                    <div className='second-green-circle w-14 h-14 bg-[#2bb573] rounded-full'></div>
                 </div>
 
                 <div className='flex gap-3'>
-                    <div className='third-green-circle w-5 h-5 bg-[#2bb573] rounded-full'></div>
+                    <div className='third-green-circle w-14 h-14 bg-[#2bb573] rounded-full'></div>
                 </div>
 
                 <div className='flex gap-3'>
-                    <div className='fourth-green-circle w-5 h-5 bg-[#2bb573] rounded-full'></div>
+                    <div className='fourth-green-circle w-14 h-14 bg-[#2bb573] rounded-full'></div>
                 </div>
 
             </div>

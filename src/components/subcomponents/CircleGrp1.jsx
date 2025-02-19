@@ -83,75 +83,75 @@ const CircleGrp1 = () => {
             </div>
 
             {/* Mobile */}
-            <div className='flex sm:hidden w-fit mr-20 flex-col gap-3 origin-center'>
+            <div className='flex sm:hidden w-fit mt-6 flex-col gap-3 origin-center'>
 
-                <div className='flex gap-3'>
+                <div className='flex gap-8'>
                     <motion.div
-                        className='w-5 h-5 bg-[#fab03f] rounded-full'
+                        className='w-14 h-14 bg-[#fab03f] rounded-full'
                         animate={{ opacity: [1, 0, 1] }}
                         transition={{ duration: 1, repeat: Infinity, delay: 0 }}
                     ></motion.div>
                     <motion.div
-                        className='w-5 h-5 bg-[#fab03f] rounded-full'
+                        className='w-14 h-14 bg-[#fab03f] rounded-full'
                         animate={{ opacity: [1, 0, 1] }}
                         transition={{ duration: 1, repeat: Infinity, delay: 0.5 }}
                     ></motion.div>
                     <motion.div
-                        className='w-5 h-5 bg-[#fab03f] rounded-full'
+                        className='w-14 h-14 bg-[#fab03f] rounded-full'
                         animate={{ opacity: [1, 0, 1] }}
                         transition={{ duration: 1, repeat: Infinity, delay: 1 }}
                     ></motion.div>
                 </div>
 
-                <div className='flex gap-3'>
+                <div className='flex gap-8'>
                     <motion.div
-                        className='w-5 h-5 bg-[#fab03f] rounded-full'
+                        className='w-14 h-14 bg-[#fab03f] rounded-full'
                         animate={{ opacity: [1, 0, 1] }}
                         transition={{ duration: 1, repeat: Infinity, delay: 1.5 }}
                     ></motion.div>
                     <motion.div
-                        className='w-5 h-5 bg-transparent rounded-full'
+                        className='w-14 h-14 bg-transparent rounded-full'
                         animate={{ opacity: [1, 0, 1] }}
                         transition={{ duration: 1, repeat: Infinity, delay: 2 }}
                     ></motion.div>
                     <motion.div
-                        className='w-5 h-5 bg-[#fab03f] rounded-full'
+                        className='w-14 h-14 bg-[#fab03f] rounded-full'
                         animate={{ opacity: [1, 0, 1] }}
                         transition={{ duration: 1, repeat: Infinity, delay: 2.5 }}
                     ></motion.div>
                 </div>
 
-                <div className='flex gap-3'>
+                <div className='flex gap-8'>
                     <motion.div
-                        className='w-5 h-5 bg-[#fab03f] rounded-full'
+                        className='w-14 h-14 bg-[#fab03f] rounded-full'
                         animate={{ opacity: [1, 0, 1] }}
                         transition={{ duration: 1, repeat: Infinity, delay: 3 }}
                     ></motion.div>
                     <motion.div
-                        className='w-5 h-5 bg-transparent rounded-full'
+                        className='w-14 h-14 bg-transparent rounded-full'
                         animate={{ opacity: [1, 0, 1] }}
                         transition={{ duration: 1, repeat: Infinity, delay: 3.5 }}
                     ></motion.div>
                     <motion.div
-                        className='w-5 h-5 bg-[#fab03f] rounded-full'
+                        className='w-14 h-14 bg-[#fab03f] rounded-full'
                         animate={{ opacity: [1, 0, 1] }}
                         transition={{ duration: 1, repeat: Infinity, delay: 4 }}
                     ></motion.div>
                 </div>
 
-                <div className='flex gap-3'>
+                <div className='flex gap-8'>
                     <motion.div
-                        className='w-5 h-5 bg-[#fab03f] rounded-full'
+                        className='w-14 h-14 bg-[#fab03f] rounded-full'
                         animate={{ opacity: [1, 0, 1] }}
                         transition={{ duration: 1, repeat: Infinity, delay: 4.5 }}
                     ></motion.div>
                     <motion.div
-                        className='w-5 h-5 bg-[#fab03f] rounded-full'
+                        className='w-14 h-14 bg-[#fab03f] rounded-full'
                         animate={{ opacity: [1, 0, 1] }}
                         transition={{ duration: 1, repeat: Infinity, delay: 5 }}
                     ></motion.div>
                     <motion.div
-                        className='w-5 h-5 bg-[#fab03f] rounded-full'
+                        className='w-14 h-14 bg-[#fab03f] rounded-full'
                         animate={{ opacity: [1, 0, 1] }}
                         transition={{ duration: 1, repeat: Infinity, delay: 5.5 }}
                     ></motion.div>

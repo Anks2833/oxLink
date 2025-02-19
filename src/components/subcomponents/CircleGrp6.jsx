@@ -211,21 +211,21 @@ const CircleGrp6 = () => {
             </div>
 
             {/* Mobile */}
-            <div className='flex sm:hidden w-fit -ml-20 mr-60 origin-center orange-circle-group'>
+            <div className='flex sm:hidden w-fit mr-40 origin-center orange-circle-group'>
 
-                <div className='orange-circle-group-1-mobile w-32 h-fit relative top-10 left-20 flex flex-col gap-3'>
-                    <div className='first-orange-circle-mobile absolute left-10 top-10 w-5 h-5 bg-[#FF914D] rounded-full'></div>
-                    <div className='second-orange-circle-mobile w-5 h-5 bg-[#FF914D] rounded-full'></div>
-                    <div className='third-orange-circle-mobile w-5 h-5 bg-[#FF914D] rounded-full'></div>
+                <div className='orange-circle-group-1 w-32 h-fit relative top-10 left-20 flex flex-col gap-3'>
+                    <div className='first-orange-circle absolute left-16 top-10 w-14 h-14 bg-[#FF914D] rounded-full'></div>
+                    <div className='second-orange-circle w-14 h-14 bg-[#FF914D] rounded-full'></div>
+                    <div className='third-orange-circle w-14 h-14 bg-[#FF914D] rounded-full'></div>
                 </div>
 
                 <div className='relative'>
-                    <div className='absolute fourth-orange-circle-mobile w-5 h-5 bg-[#FF914D] rounded-full'></div>
-                    <div className='absolute fifth-orange-circle-mobile w-5 h-5 bg-[#FF914D] rounded-full'></div>
-                    <div className='absolute sixth-orange-circle-mobile w-5 h-5 bg-[#FF914D] rounded-full'></div>
-                    <div className='absolute seventh-orange-circle-mobile w-5 h-5 bg-[#FF914D] rounded-full'></div>
-                    <div className='absolute eighth-orange-circle-mobile w-5 h-5 bg-[#FF914D] rounded-full'></div>
-                    <div className='absolute ninth-orange-circle-mobile w-5 h-5 bg-[#FF914D] rounded-full'></div>
+                    <div className='absolute fourth-orange-circle w-14 h-14 bg-[#FF914D] rounded-full'></div>
+                    <div className='absolute fifth-orange-circle w-14 h-14 bg-[#FF914D] rounded-full'></div>
+                    <div className='absolute sixth-orange-circle w-14 h-14 bg-[#FF914D] rounded-full'></div>
+                    <div className='absolute seventh-orange-circle w-14 h-14 bg-[#FF914D] rounded-full'></div>
+                    <div className='absolute eighth-orange-circle w-14 h-14 bg-[#FF914D] rounded-full'></div>
+                    <div className='absolute ninth-orange-circle w-14 h-14 bg-[#FF914D] rounded-full'></div>
                 </div>
 
             </div>
