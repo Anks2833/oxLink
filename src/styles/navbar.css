@@ -1,0 +1,58 @@
+/* Laptop Small (up to 1024px) */
+@media (min-width: 768px) and (max-width: 1024px) {
+    body {
+      font-size: 16px;
+    }
+
+    .arrow {
+        width: 2vw;
+    }
+
+    .logo-container {
+        width: 13vw;
+    }
+
+    .logo {
+        width: 13vw;
+    }
+
+    .main-container {
+        display: flex;
+        justify-content: space-between;
+        padding: 0px 2rem;
+    }
+    
+    .nav-links {
+        gap: 3rem;
+    }
+  }
+  
+  /* Tablet (up to 768px) */
+  @media (min-width: 426px) and (max-width: 768px) {
+    body {
+      font-size: 10px;
+    }
+
+    .arrow {
+        width: 2vw;
+    }
+
+    .logo-container {
+        width: 18vw;
+    }
+
+    .logo {
+        width: 18vw;
+    }
+
+    .main-container {
+        display: flex;
+        justify-content: space-between;
+        padding: 0px 1rem;
+    }
+
+    .nav-links {
+        gap: 2rem;
+    }
+  }
+  

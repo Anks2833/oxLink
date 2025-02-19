@@ -1,0 +1,38 @@
+/* Laptop Small (up to 1024px) */
+@media only screen and (max-width: 1024px) {
+    body {
+      font-size: 16px;
+    }
+
+    .expert-assistance {
+        font-size: 20px;
+    }
+
+    .write-to-us{
+        font-size: 20px;
+    }
+  }
+  
+  /* Tablet (up to 768px) */
+  @media only screen and (max-width: 768px) {
+    body {
+      font-size: 15px;
+    }
+
+    .expert-assistance {
+        font-size: 12px;
+    }
+
+    .write-to-us{
+        font-size: 12px;
+    }
+
+    .phone {
+        font-size: 12px;
+    }
+
+    .email {
+        font-size: 12px;
+    }
+  }
+  

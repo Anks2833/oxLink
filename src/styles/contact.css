@@ -1,0 +1,32 @@
+/* Laptop Small (up to 1024px) */
+@media only screen and (max-width: 1024px) {
+    body {
+      font-size: 16px;
+    }
+
+    .address-container {
+        padding: 0;
+    }
+
+    .form-container {
+        width: 100vw;
+        display: flex;
+        flex-direction: column;
+    }
+
+    .google-map {
+        width: 100%;
+    }
+
+    .form {
+        width: 100%;
+    }
+  }
+  
+  /* Tablet (up to 768px) */
+  @media only screen and (max-width: 768px) {
+    body {
+      font-size: 15px;
+    }
+  }
+  

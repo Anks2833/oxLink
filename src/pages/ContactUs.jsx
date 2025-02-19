@@ -3,6 +3,7 @@ import { FaPhoneAlt } from "react-icons/fa";
 import { IoMail } from "react-icons/io5";
 import { FaLocationDot } from "react-icons/fa6";
 import Footer from '../components/Footer';
+import "../styles/contact.css"
 
 const ContactUs = () => {
 
@@ -30,15 +31,17 @@ const ContactUs = () => {
             {/* For desktop */}
             <div className='hidden sm:flex w-full min-h-screen bg-[#DBD9DC] pt-40 flex-col gap-8'>
                 <div className='w-full'>
-                    <div className='flex justify-evenly px-20'>
+                    <div className='address-container flex justify-evenly px-20'>
                         <div className='flex flex-col gap-2 items-center border border-zinc-400 px-8 py-5 rounded-md shadow-md'>
                             <div className='text-xl text-[#00266c]'><FaPhoneAlt size={24} /></div>
                             <h1 className='text-center text-lg font-semibold'>{`+91 ${phoneNumber}`}</h1>
                         </div>
+
                         <div className='flex flex-col gap-2 items-center border border-zinc-400 px-8 py-5 rounded-md shadow-md'>
                             <div className='text-xl text-[#00266c]'><IoMail size={24} /></div>
                             <h1 className='text-center text-lg font-semibold'>{email}</h1>
                         </div>
+
                         <div className='flex flex-col gap-2 items-center border border-zinc-400 px-8 py-5 rounded-md shadow-md'>
                             <div className='text-xl text-[#00266c]'><FaLocationDot size={24} /></div>
                             <h1 className='text-center text-lg font-semibold'>{address}</h1>
@@ -46,8 +49,8 @@ const ContactUs = () => {
                     </div>
                 </div>
 
-                <div className='flex justify-center gap-8 px-44'>
-                    <div className='relative w-1/2 min-h-[300px] bg-zinc-300 justify-center items-center rounded-md'>
+                <div className='form-container flex justify-center gap-8 px-44'>
+                    <div className='google-map relative w-1/2 min-h-[300px] bg-zinc-300 justify-center items-center rounded-md'>
                         {loading && (
                             <div className="spinner absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2"></div>
                         )}
@@ -62,7 +65,7 @@ const ContactUs = () => {
                         ></iframe>
                     </div>
 
-                    <div className='w-1/2 min-h-[300px] bg-zinc-300 p-5 rounded-md shadow-md'>
+                    <div className='form w-1/2 min-h-[300px] bg-zinc-300 p-5 rounded-md shadow-md'>
                         <div className='px-12 mb-5'>
                             <h1 className='text-3xl font-semibold'>Contact Us</h1>
                         </div>

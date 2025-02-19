@@ -17,6 +17,8 @@ import { FaPhoneAlt } from "react-icons/fa";
 import { IoMail } from "react-icons/io5";
 import { FaLocationDot } from "react-icons/fa6";
 
+import '../styles/footer.css'
+
 // import BottomLeftAnimation from './footeranimations/BottomLeftAnimation';
 
 const Footer = () => {
@@ -134,7 +136,7 @@ const Footer = () => {
                                 initial={{ translateX: "-100%" }}
                                 whileInView={{ translateX: "0%" }}
                                 transition={{ duration: 0.5 }}
-                                className='text-3xl font-semibold text-black leading-none mb-2'
+                                className='expert-assistance text-3xl font-semibold text-black leading-none mb-2'
                             >
                                 EXPERT ASSISTANCE
                             </motion.p>
@@ -143,7 +145,7 @@ const Footer = () => {
                                 initial={{ translateX: "-100%" }}
                                 whileInView={{ translateX: "0%" }}
                                 transition={{ duration: 0.5 }}
-                                className='text-lg text-black leading-none'
+                                className='phone text-lg text-black leading-none'
                             >
                                 DIAL: {`+91 ${phoneNumber}`}
                             </motion.p>
@@ -166,7 +168,7 @@ const Footer = () => {
                                 initial={{ translateX: "-100%" }}
                                 whileInView={{ translateX: "0%" }}
                                 transition={{ duration: 0.5 }}
-                                className='text-3xl font-semibold text-black leading-none mb-2'
+                                className='write-to-us text-3xl font-semibold text-black leading-none mb-2'
                             >
                                 WRITE TO US
                             </motion.p>
@@ -175,7 +177,7 @@ const Footer = () => {
                                 initial={{ translateX: "-100%" }}
                                 whileInView={{ translateX: "0%" }}
                                 transition={{ duration: 0.5 }}
-                                className='text-lg text-black leading-none'
+                                className='email text-lg text-black leading-none'
                             >
                                 EMAIL: {email}
                             </motion.p>

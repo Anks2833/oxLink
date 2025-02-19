@@ -1,13 +1,14 @@
 import React from 'react'
 import Footer from '../components/Footer'
+import '../styles/career.css'
 
 const Career = () => {
     return (
         <>
             {/* For desktop */}
-            <div className='hidden sm:flex w-full min-h-screen flex-col pt-32'>
+            <div className='main-container hidden sm:flex w-full min-h-screen flex-col pt-32'>
 
-                <div className='w-full flex justify-center items-start gap-32'>
+                <div className='container w-full flex justify-center items-start gap-32'>
                     <div className='flex flex-col justify-center gap-14'>
                         <div className='flex flex-col gap-3'>
                             <h1 className='text-3xl font-semibold'>Join Our Team</h1>
@@ -28,10 +29,10 @@ const Career = () => {
                         </div>
                     </div>
 
-                    <div className='flex flex-col gap-5'>
+                    <div className='form-container flex flex-col gap-5'>
                         <h1 className='text-4xl font-semibold'>Apply Now</h1>
 
-                        <form className='flex flex-col items-start gap-5 bg-zinc-200 px-8 py-5 rounded-xl shadow-lg border border-zinc-400' action="">
+                        <form className='form flex flex-col items-start gap-5 bg-zinc-200 px-8 py-5 rounded-xl shadow-lg border border-zinc-400' action="">
                             <div className='w-full flex flex-col gap-2'>
                                 <h1>Full Name:</h1>
                                 <input className='outline-blue-800 px-3 py-2 rounded border border-zinc-300' type="text" name="" id="" />

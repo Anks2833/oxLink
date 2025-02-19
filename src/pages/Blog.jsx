@@ -2,6 +2,7 @@ import React from 'react'
 import { SlCalender } from "react-icons/sl";
 import Footer from '../components/Footer';
 import { motion } from 'framer-motion';
+import '../styles/blogs.css'
 
 const Blog = () => {
 
@@ -32,9 +33,9 @@ const Blog = () => {
             <div className='hidden sm:flex w-full min-h-screen bg-[#DBD9DC] flex-col gap-6 overflow-hidden pb-10'>
 
                 <div className='relative w-full h-screen'>
-                    <img className='w-full h-full brightness-50' src="../../blog.jpg" alt="" />
+                    <img className='w-full h-full brightness-50 object-cover object-center' src="../../blog.jpg" alt="" />
                     <div className='absolute z-[9] top-0 w-full h-screen bg-black/45'></div>
-                    <h1 className='absolute bottom-[20vw] left-1/2 -translate-x-1/2 z-10 text-white text-[6vw] font-bold'>OUR BLOGS</h1>
+                    <h1 className='our-blogs absolute bottom-[20vw] left-1/2 -translate-x-1/2 z-10 text-white text-[6vw] font-bold'>OUR BLOGS</h1>
                 </div>
 
                 <div className='px-40 flex flex-col gap-3'>

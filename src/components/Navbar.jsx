@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react';
 import { RiArrowDownSLine } from "react-icons/ri";
 import { motion } from 'framer-motion';
 import { NavLink, useNavigate, useLocation } from 'react-router-dom';
+import '../styles/navbar.css'
 
 const Navbar = () => {
   const [isDropdownOpen, setIsDropdownOpen] = useState(false);
@@ -61,22 +62,22 @@ const Navbar = () => {
   return (
     <>
       {/* For desktop */}
-      <div className='hidden sm:flex fixed top-0 z-[60] bg-[#DBD9DC] w-full h-[12vh] justify-between items-center px-20 border-b-2 border-b-[#FFA500]'>
-        <NavLink to="/" className='w-60 flex items-center'>
-          <img src="/logo.png" alt="logo" />
+      <div className='main-container hidden sm:flex fixed top-0 z-[60] bg-[#DBD9DC] w-full h-[12vh] justify-between items-center px-20 border-b-2 border-b-[#FFA500]'>
+        <NavLink to="/" className='logo-container w-60 flex items-center'>
+          <img className='logo' src="/logo.png" alt="logo" />
         </NavLink>
 
-        <div className='flex items-center gap-12'>
+        <div className='nav-links flex items-center gap-12'>
           <div className='flex items-center'
             onMouseEnter={() => setIsDropdownOpen(true)}
             onMouseLeave={() => setIsDropdownOpen(false)}>
             <h1 className='text-blue-800 font-semibold text-[1.2vw] cursor-pointer'>Products</h1>
             <motion.div
-              className='text-2xl text-blue-800'
+              className='arrow text-2xl text-blue-800'
               animate={{ rotate: isDropdownOpen ? 180 : 0 }}
               transition={{ duration: 0.3 }}
             >
-              <RiArrowDownSLine />
+              <RiArrowDownSLine className='arrow' />
             </motion.div>
             {isDropdownOpen && (
               <motion.div

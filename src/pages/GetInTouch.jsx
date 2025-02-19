@@ -119,7 +119,7 @@ const GetInTouch = () => {
     return (
         <>
             {/* For desktop */}
-            <div className='hidden sm:flex w-full min-h-screen bg-[#DBD9DC] pt-40 flex-col gap-8'>
+            <div className='main-container hidden sm:flex w-full min-h-screen bg-[#DBD9DC] pt-40 flex-col gap-8'>
                 <div className='w-full'>
                     <div className='flex justify-evenly px-20'>
                         <div className='flex flex-col gap-2 items-center border border-zinc-400 px-8 py-5 rounded-md shadow-md'>
