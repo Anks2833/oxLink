@@ -255,12 +255,12 @@ const Terms = () => {
       </div>
 
       {/* Floating back to top button */}
-      <button 
+      {/* <button 
         className="back-to-top"
         onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}
       >
         ↑
-      </button>
+      </button> */}
 
       <Footer />
     </div>

@@ -365,7 +365,7 @@
   }
   
   .toc-list a:hover {
-    color: #3498db;
+    color: #1e40af;
     transform: translateX(5px);
   }
   
@@ -426,7 +426,6 @@
     color: #777;
   }
   
-  /* Scroll to top button */
   .scroll-to-top {
     position: fixed;
     bottom: 30px;
@@ -434,7 +433,7 @@
     width: 50px;
     height: 50px;
     border-radius: 50%;
-    background-color: #3498db;
+    background-color: #FFA500;
     color: white;
     border: none;
     display: flex;

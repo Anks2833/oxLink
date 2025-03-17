@@ -283,11 +283,11 @@ const Career = () => {
                                         placeholder="Software Engineer"
                                         list="positions"
                                     />
-                                    <datalist id="positions">
+                                    {/* <datalist id="positions">
                                         {availablePositions.map((position, index) => (
                                             <option key={index} value={position} />
                                         ))}
-                                    </datalist>
+                                    </datalist> */}
                                     {errors.position && <span className="error-message"><FaInfoCircle /> {errors.position}</span>}
                                 </div>
                                 

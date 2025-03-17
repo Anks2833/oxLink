@@ -189,14 +189,14 @@ const Blog = () => {
             </div>
             
             {/* Scroll to top button */}
-            <motion.button 
+            {/* <motion.button 
                 className={`scroll-to-top ${showScrollTop ? 'visible' : ''}`}
                 onClick={scrollToTop}
                 whileHover={{ scale: 1.1 }}
                 whileTap={{ scale: 0.9 }}
             >
                 <BsArrowUp />
-            </motion.button>
+            </motion.button> */}
             
             <Footer />
         </div>
