@@ -34,13 +34,13 @@
   }
   
   .navbar-logo img {
-    height: 50px;
+    height: 40px;
     object-fit: contain;
     transition: height 0.3s ease;
   }
   
   .navbar-scrolled .navbar-logo img {
-    height: 45px;
+    height: 30px;
   }
   
   .navbar-links {
@@ -180,7 +180,7 @@
     right: 0;
     width: 100%;
     height: calc(100vh - 70px);
-    background-color: white;
+    background-color: #DCD9DC;
     z-index: 999;
     display: none;
     overflow-y: auto;
@@ -330,7 +330,7 @@
     }
     
     .navbar-logo img {
-      height: 35px;
+      height: 20px;
     }
     
     .mobile-menu {

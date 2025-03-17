@@ -267,7 +267,7 @@ const Navbar = () => {
                           animate={{ rotate: isMobileProductsOpen ? 180 : 0 }}
                           transition={{ duration: 0.3 }}
                         >
-                          <RiArrowDownSLine />
+                          <RiArrowDownSLine className='' />
                         </motion.div>
                       </button>
                       
