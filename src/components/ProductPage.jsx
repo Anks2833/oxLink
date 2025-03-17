@@ -264,7 +264,7 @@ const ProductPage = () => {
 
                 {/* The outer cable image */}
                 <div ref={controlOuterSvgRef} className=''>
-                    <img src={`https://ox-admin.wtmmedia.com/${wireImage}`} alt="outer-cable-img" />
+                    <img className="mix-blend-overlay contrast-125 brightness-110"  src={`https://ox-admin.wtmmedia.com/${wireImage}`} alt="outer-cable-img" />
                 </div>
 
                 {/* Application and Product Feature */}

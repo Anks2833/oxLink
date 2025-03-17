@@ -35,7 +35,7 @@ const Page1 = () => {
 
       <Page1Products />
 
-      <div className="-mt-[50vw] sm:mt-[200vw]">
+      <div className="-mt-[180px] sm:mt-[3000px]">
         <Footer />
       </div>
     </div>

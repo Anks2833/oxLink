@@ -66,7 +66,7 @@ export default function CategoryPage() {
 
                 {/* Line animation */}
                 <CableLineAnimation />
-                <div className="-mt-[50vw] sm:mt-[50vw]">
+                <div className="mt-[800px]">
                     <Footer />
                 </div>
             </div>
@@ -101,7 +101,7 @@ export default function CategoryPage() {
 
                 {/* Line animation */}
                 {/* <CableLineAnimation /> */}
-                <div className="mt-[133vw] sm:mt-[210vw]">
+                <div className="mt-[500px]">
                     <Footer />
                 </div>
             </div>

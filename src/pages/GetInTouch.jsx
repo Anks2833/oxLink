@@ -1,109 +1,81 @@
-// import React from 'react'
-
-// import { FaPhoneAlt } from "react-icons/fa";
-// import { IoMail } from "react-icons/io5";
-// import { FaLocationDot } from "react-icons/fa6";
-// import Footer from '../components/Footer';
-
-// const GetInTouch = () => {
-
-//   const contactContent = [
-//     { id: 1, icon: <FaLocationDot />, content: "205, 12, Zamrudpur Community Centre, Kailash Colony, New Delhi-110048" },
-//     { id: 2, icon: <FaPhoneAlt />, content: "+91-9821118868" },
-//     { id: 3, icon: <IoMail />, content: "info@ox-link.in" },
-//   ]
-
-//   return (
-//     <>
-//       {/* For desktop */}
-//       <div className='hidden sm:flex w-full min-h-screen pt-40 flex-col'>
-
-//         <div className='flex justify-center'>
-//           <div className='w-1/2 flex flex-col'>
-//             {contactContent.map((con, index) => {
-//               return (
-//                 <div key={con.id || index} className='flex flex-col items-start pl-[15vw] mt-8'>
-//                   <div className='w-fit bg-blue-800 text-white p-4 rounded-full'>{con.icon}</div>
-//                   <h1 className='w-[20vw] text-lg'>{con.content}</h1>
-//                 </div>
-//               )
-//             })}
-//           </div>
-
-//           <div className='w-1/2 flex flex-col gap-4'>
-
-//             <h1 className='text-4xl font-semibold'>Get In Touch</h1>
-
-//             <form className='w-fit flex flex-col items-start gap-6 px-8 py-5 border border-zinc-400 rounded' action="">
-//               <input className='w-[25vw] outline-zinc-500 px-4 py-2 border border-zinc-400' placeholder='Enter Name' type="text" />
-//               <input className='w-[25vw] outline-zinc-500 px-4 py-2 border border-zinc-400' placeholder='Enter Email' type="email" />
-//               <textarea rows={5} cols={50} placeholder='Enter Message' className='outline-zinc-500 resize-none border border-zinc-400 px-4 py-2'></textarea>
-//               <input className='bg-blue-800 hover:bg-blue-900 text-white px-6 py-2 rounded-md cursor-pointer' type="submit" value="SUBMIT" />
-//             </form>
-//           </div>
-//         </div>
-
-//         <div className='mt-36'>
-//           <Footer />
-//         </div>
-
-//       </div>
-      
-//       {/* For mobile */}
-//       <div className='flex sm:hidden w-full min-h-screen pt-20 flex-col'>
-
-//         <div className='flex flex-col items-start'>
-//           <div className='flex flex-col'>
-//             {contactContent.map((con, index) => {
-//               return (
-//                 <div key={con.id || index} className='w-full flex flex-col items-start pl-8 mt-8'>
-//                   <div className='w-fit bg-blue-800 text-white p-4 rounded-full'>{con.icon}</div>
-//                   <h1 className='text-lg'>{con.content}</h1>
-//                 </div>
-//               )
-//             })}
-//           </div>
-
-//           <div className='flex flex-col gap-4 mt-12 px-8'>
-
-//             <h1 className='text-4xl font-semibold'>Get In Touch</h1>
-
-//             <form className='w-fit flex flex-col items-start gap-6 px-4 py-5 border border-zinc-400 rounded' action="">
-//               <input className='outline-zinc-500 px-4 py-2 border border-zinc-400' placeholder='Enter Name' type="text" />
-//               <input className='outline-zinc-500 px-4 py-2 border border-zinc-400' placeholder='Enter Email' type="email" />
-//               <textarea rows={4} cols={30} placeholder='Enter Message' className='outline-zinc-500 resize-none border border-zinc-400 px-4 py-2'></textarea>
-//               <input className='bg-blue-800 text-white px-6 py-2 rounded-md' type="submit" value="SUBMIT" />
-//             </form>
-//           </div>
-//         </div>
-
-//         <div className='mt-12'>
-//           <Footer />
-//         </div>
-
-//       </div>
-
-//     </>
-//   )
-// }
-
-// export default GetInTouch
-
 import React, { useEffect, useState } from 'react';
 import { FaPhoneAlt } from "react-icons/fa";
 import { IoMail } from "react-icons/io5";
 import { FaLocationDot } from "react-icons/fa6";
 import Footer from '../components/Footer';
+import "../styles/contact.css";
 
 const GetInTouch = () => {
-
     const [loading, setLoading] = useState(true);
-    const [phoneNumber, setPhoneNumber] = useState(null);
-    const [email, setEmail] = useState(null);
-    const [address, setAddress] = useState(null);
+    const [formLoading, setFormLoading] = useState(false);
+    const [phoneNumber, setPhoneNumber] = useState('Loading...');
+    const [email, setEmail] = useState('Loading...');
+    const [address, setAddress] = useState('Loading...');
+    const [formData, setFormData] = useState({
+        name: '',
+        email: '',
+        phone: '',
+        address: '',
+        message: ''
+    });
+    const [formErrors, setFormErrors] = useState({});
 
     const handleLoad = () => {
         setLoading(false);
+    };
+
+    const handleInputChange = (e) => {
+        setFormData({
+            ...formData,
+            [e.target.name]: e.target.value
+        });
+        
+        // Clear error when typing
+        if (formErrors[e.target.name]) {
+            setFormErrors({
+                ...formErrors,
+                [e.target.name]: ''
+            });
+        }
+    };
+
+    const validateForm = () => {
+        const errors = {};
+        if (!formData.name.trim()) errors.name = "Name is required";
+        if (!formData.email.trim()) {
+            errors.email = "Email is required";
+        } else if (!/\S+@\S+\.\S+/.test(formData.email)) {
+            errors.email = "Email is invalid";
+        }
+        if (!formData.phone.trim()) {
+            errors.phone = "Phone number is required";
+        } else if (!/^\d{10}$/.test(formData.phone.replace(/\D/g, ''))) {
+            errors.phone = "Phone number should be 10 digits";
+        }
+        if (!formData.message.trim()) errors.message = "Message is required";
+        
+        setFormErrors(errors);
+        return Object.keys(errors).length === 0;
+    };
+
+    const handleSubmit = (e) => {
+        e.preventDefault();
+        if (validateForm()) {
+            setFormLoading(true);
+            
+            // Simulate form submission
+            setTimeout(() => {
+                setFormLoading(false);
+                setFormData({
+                    name: '',
+                    email: '',
+                    phone: '',
+                    address: '',
+                    message: ''
+                });
+                alert("Thank you for your message! We'll get back to you soon.");
+            }, 1500);
+        }
     };
 
     useEffect(() => {
@@ -113,132 +85,188 @@ const GetInTouch = () => {
                 setPhoneNumber(data.data[0]?.phoneNumber1 || 'No information available');
                 setEmail(data.data[0]?.infoEmail || 'No information available');
                 setAddress(data.data[0]?.address || 'No information available');
+            })
+            .catch(err => {
+                console.error("Error fetching data:", err);
+                setPhoneNumber('No information available');
+                setEmail('No information available');
+                setAddress('No information available');
             });
     }, []);
 
     return (
-        <>
-            {/* For desktop */}
-            <div className='main-container hidden sm:flex w-full min-h-screen bg-[#DBD9DC] pt-40 flex-col gap-8'>
-                <div className='w-full'>
-                    <div className='flex justify-evenly px-20'>
-                        <div className='flex flex-col gap-2 items-center border border-zinc-400 px-8 py-5 rounded-md shadow-md'>
-                            <div className='text-xl text-[#00266c]'><FaPhoneAlt size={24} /></div>
-                            <h1 className='text-center text-lg font-semibold'>{`+91 ${phoneNumber}`}</h1>
+        <div className='w-full min-h-screen bg-[#DCD9DC] pt-20 md:pt-32 lg:pt-40 pb-10'>
+            {/* Contact Info Cards */}
+            <div className='w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 mb-10'>
+                <h1 className='text-3xl md:text-4xl font-bold text-center mb-10 text-gray-800'>Get In Touch</h1>
+                
+                <div className='grid grid-cols-1 md:grid-cols-3 gap-6 md:gap-8'>
+                    <div className='contact-card bg-white rounded-xl border border-zinc-400 p-6 shadow-lg transform transition-all duration-300 hover:shadow-xl hover:-translate-y-1'>
+                        <div className='flex items-center mb-4'>
+                            <div className='bg-indigo-100 p-3 rounded-full text-indigo-600 mr-4'>
+                                <FaPhoneAlt size={20} />
+                            </div>
+                            <h2 className='text-xl font-semibold text-gray-800'>Phone</h2>
                         </div>
-                        <div className='flex flex-col gap-2 items-center border border-zinc-400 px-8 py-5 rounded-md shadow-md'>
-                            <div className='text-xl text-[#00266c]'><IoMail size={24} /></div>
-                            <h1 className='text-center text-lg font-semibold'>{email}</h1>
+                        <p className='text-gray-700 font-medium'>{phoneNumber.startsWith('+91') ? phoneNumber : `+91 ${phoneNumber}`}</p>
+                        <a href={`tel:+91${phoneNumber}`} className='inline-block mt-3 text-indigo-600 hover:text-indigo-800 transition-colors duration-200 text-sm font-medium'>Call us now</a>
+                    </div>
+                    
+                    <div className='contact-card bg-white rounded-xl border border-zinc-400 p-6 shadow-lg transform transition-all duration-300 hover:shadow-xl hover:-translate-y-1'>
+                        <div className='flex items-center mb-4'>
+                            <div className='bg-indigo-100 p-3 rounded-full text-indigo-600 mr-4'>
+                                <IoMail size={20} />
+                            </div>
+                            <h2 className='text-xl font-semibold text-gray-800'>Email</h2>
                         </div>
-                        <div className='flex flex-col gap-2 items-center border border-zinc-400 px-8 py-5 rounded-md shadow-md'>
-                            <div className='text-xl text-[#00266c]'><FaLocationDot size={24} /></div>
-                            <h1 className='text-center text-lg font-semibold'>{address}</h1>
+                        <p className='text-gray-700 font-medium'>{email}</p>
+                        <a href={`mailto:${email}`} className='inline-block mt-3 text-indigo-600 hover:text-indigo-800 transition-colors duration-200 text-sm font-medium'>Send an email</a>
+                    </div>
+                    
+                    <div className='contact-card bg-white rounded-xl border border-zinc-400 p-6 shadow-lg transform transition-all duration-300 hover:shadow-xl hover:-translate-y-1'>
+                        <div className='flex items-center mb-4'>
+                            <div className='bg-indigo-100 p-3 rounded-full text-indigo-600 mr-4'>
+                                <FaLocationDot size={20} />
+                            </div>
+                            <h2 className='text-xl font-semibold text-gray-800'>Address</h2>
                         </div>
+                        <p className='text-gray-700 font-medium'>{address}</p>
+                        <a href="https://maps.google.com" target="_blank" rel="noopener noreferrer" className='inline-block mt-3 text-indigo-600 hover:text-indigo-800 transition-colors duration-200 text-sm font-medium'>Get directions</a>
                     </div>
                 </div>
-
-                <div className='flex justify-center gap-8 px-44'>
-                    <div className='relative w-1/2 min-h-[300px] bg-zinc-300 justify-center items-center rounded-md'>
-                        {loading && (
-                            <div className="spinner absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2"></div>
-                        )}
-                        <iframe
-                            onLoad={handleLoad}
-                            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d7079.4372681711775!2d75.58299520947003!3d27.121788661935604!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x396c57f8bcf15d1d%3A0xc2439aca627b8f89!2sOx-link%20electronics%20LLP!5e0!3m2!1sen!2sin!4v1733823855204!5m2!1sen!2sin"
-                            width="100%"
-                            height="100%"
-                            allowFullScreen=""
-                            loading="lazy"
-                            referrerPolicy="no-referrer-when-downgrade"
-                        ></iframe>
-                    </div>
-
-                    <div className='w-1/2 min-h-[300px] bg-zinc-300 p-5 rounded-md shadow-md'>
-                        <div className='px-12 mb-5'>
-                            <h1 className='text-3xl font-semibold'>Contact Us</h1>
-                        </div>
-
-                        <form action="" className='flex flex-col gap-5'>
-                            <div className='flex justify-between px-12'>
-                                <input className='px-4 py-3 outline-none border border-gray-300 rounded-md w-[48%]' type="text" placeholder='Enter your name' />
-                                <input className='px-4 py-3 outline-none border border-gray-300 rounded-md w-[48%]' type="email" placeholder='Enter email address' />
-                            </div>
-
-                            <div className='flex justify-between px-12'>
-                                <input className='px-4 py-3 outline-none border border-gray-300 rounded-md w-[48%]' type="number" placeholder='Enter mobile no.' />
-                                <input className='px-4 py-3 outline-none border border-gray-300 rounded-md w-[48%]' type="text" placeholder='Enter your address' />
-                            </div>
-
-                            <textarea className='px-4 py-3 mx-12 resize-none outline-none border border-gray-300 rounded-md' rows={5} placeholder='Enter message'></textarea>
-
-                            <div className='w-full px-12'>
-                                <input className='bg-black text-white px-8 py-3 rounded-full cursor-pointer' type="submit" value="GET A QUOTE" />
-                            </div>
-                        </form>
-                    </div>
-                </div>
-
-                <Footer />
             </div>
 
-            {/* For mobile */}
-            <div className='flex sm:hidden w-full min-h-screen bg-[#DBD9DC] pt-20 flex-col gap-6'>
-                <div className='w-full'>
-                    <div className='flex flex-col gap-6 px-6'>
-                        <div className='flex flex-col gap-2 items-center border border-zinc-400 px-8 py-5 rounded-md shadow-md'>
-                            <div className='text-xl text-[#00266c]'><FaPhoneAlt size={24} /></div>
-                            <h1 className='text-center'>`{`+91 ${phoneNumber}`}</h1>
+            {/* Map and Form Section */}
+            <div className='w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8'>
+                <div className='flex flex-col lg:flex-row gap-8'>
+                    {/* Map */}
+                    <div className='w-full lg:w-1/2 '>
+                        <div className='relative w-full h-96 md:h-[450px] bg-white rounded-xl shadow-lg overflow-hidden'>
+                            {loading && (
+                                <div className="absolute inset-0 flex items-center justify-center bg-gray-100 bg-opacity-75 z-10">
+                                    <div className="map-spinner"></div>
+                                </div>
+                            )}
+                            <iframe
+                                onLoad={handleLoad}
+                                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d7079.4372681711775!2d75.58299520947003!3d27.121788661935604!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x396c57f8bcf15d1d%3A0xc2439aca627b8f89!2sOx-link%20electronics%20LLP!5e0!3m2!1sen!2sin!4v1733823855204!5m2!1sen!2sin"
+                                width="100%"
+                                height="100%"
+                                style={{ border: 0 }}
+                                allowFullScreen=""
+                                loading="lazy"
+                                referrerPolicy="no-referrer-when-downgrade"
+                                className="rounded-xl"
+                            ></iframe>
                         </div>
-                        <div className='flex flex-col gap-2 items-center border border-zinc-400 px-8 py-5 rounded-md shadow-md'>
-                            <div className='text-xl text-[#00266c]'><IoMail size={24} /></div>
-                            <h1 className='text-center'>{email}</h1>
-                        </div>
-                        <div className='flex flex-col gap-2 items-center border border-zinc-400 px-8 py-5 rounded-md shadow-md'>
-                            <div className='text-xl text-[#00266c]'><FaLocationDot size={24} /></div>
-                            <h1 className='text-center'>{address}</h1>
+                    </div>
+
+                    {/* Form */}
+                    <div className='w-full lg:w-1/2 border border-zinc-400 rounded-xl'>
+                        <div className='bg-white p-6 md:p-8 rounded-xl shadow-lg'>
+                            <h2 className='text-2xl md:text-3xl font-bold mb-6 text-gray-800'>Send Us a Message</h2>
+                            
+                            <form onSubmit={handleSubmit} className='space-y-5'>
+                                <div className='grid grid-cols-1 md:grid-cols-2 gap-5'>
+                                    <div>
+                                        <label htmlFor="name" className='block text-sm font-medium text-gray-700 mb-1'>Your Name</label>
+                                        <input 
+                                            id="name"
+                                            name="name"
+                                            value={formData.name}
+                                            onChange={handleInputChange}
+                                            className={`w-full px-4 py-3 rounded-lg border ${formErrors.name ? 'border-red-500' : 'border-gray-300'} focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:border-transparent transition-colors`}
+                                            type="text" 
+                                            placeholder='John Doe' 
+                                        />
+                                        {formErrors.name && <p className='text-red-500 text-xs mt-1'>{formErrors.name}</p>}
+                                    </div>
+                                    
+                                    <div>
+                                        <label htmlFor="email" className='block text-sm font-medium text-gray-700 mb-1'>Email Address</label>
+                                        <input 
+                                            id="email"
+                                            name="email"
+                                            value={formData.email}
+                                            onChange={handleInputChange}
+                                            className={`w-full px-4 py-3 rounded-lg border ${formErrors.email ? 'border-red-500' : 'border-gray-300'} focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:border-transparent transition-colors`}
+                                            type="email" 
+                                            placeholder='your@email.com' 
+                                        />
+                                        {formErrors.email && <p className='text-red-500 text-xs mt-1'>{formErrors.email}</p>}
+                                    </div>
+                                </div>
+
+                                <div className='grid grid-cols-1 md:grid-cols-2 gap-5'>
+                                    <div>
+                                        <label htmlFor="phone" className='block text-sm font-medium text-gray-700 mb-1'>Phone Number</label>
+                                        <input 
+                                            id="phone"
+                                            name="phone"
+                                            value={formData.phone}
+                                            onChange={handleInputChange}
+                                            className={`w-full px-4 py-3 rounded-lg border ${formErrors.phone ? 'border-red-500' : 'border-gray-300'} focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:border-transparent transition-colors`}
+                                            type="tel" 
+                                            placeholder='9876543210' 
+                                        />
+                                        {formErrors.phone && <p className='text-red-500 text-xs mt-1'>{formErrors.phone}</p>}
+                                    </div>
+                                    
+                                    <div>
+                                        <label htmlFor="address" className='block text-sm font-medium text-gray-700 mb-1'>Your Address <span className='text-gray-500 text-xs'>(Optional)</span></label>
+                                        <input 
+                                            id="address"
+                                            name="address"
+                                            value={formData.address}
+                                            onChange={handleInputChange}
+                                            className='w-full px-4 py-3 rounded-lg border border-gray-300 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:border-transparent transition-colors'
+                                            type="text" 
+                                            placeholder='Your address' 
+                                        />
+                                    </div>
+                                </div>
+
+                                <div>
+                                    <label htmlFor="message" className='block text-sm font-medium text-gray-700 mb-1'>Your Message</label>
+                                    <textarea 
+                                        id="message"
+                                        name="message"
+                                        value={formData.message}
+                                        onChange={handleInputChange}
+                                        className={`w-full px-4 py-3 rounded-lg border ${formErrors.message ? 'border-red-500' : 'border-gray-300'} focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:border-transparent transition-colors resize-none`}
+                                        rows={5} 
+                                        placeholder='How can we help you?'
+                                    ></textarea>
+                                    {formErrors.message && <p className='text-red-500 text-xs mt-1'>{formErrors.message}</p>}
+                                </div>
+
+                                <div>
+                                    <button 
+                                        type="submit"
+                                        disabled={formLoading}
+                                        className='px-8 py-3 bg-indigo-600 text-white font-medium rounded-full shadow-md hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2 transition-colors duration-200 flex items-center justify-center'
+                                    >
+                                        {formLoading ? (
+                                            <>
+                                                <svg className="animate-spin -ml-1 mr-3 h-5 w-5 text-white" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
+                                                    <circle className="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="4"></circle>
+                                                    <path className="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path>
+                                                </svg>
+                                                Processing...
+                                            </>
+                                        ) : 'GET A QUOTE'}
+                                    </button>
+                                </div>
+                            </form>
                         </div>
                     </div>
                 </div>
-
-                <div className='w-full flex flex-col gap-8 px-6'>
-                    <div className='relative w-full min-h-[300px] bg-zinc-300'>
-                        {loading && (
-                            <div className="spinner absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2"></div>
-                        )}
-                        <iframe
-                            onLoad={handleLoad}
-                            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d7079.4372681711775!2d75.58299520947003!3d27.121788661935604!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x396c57f8bcf15d1d%3A0xc2439aca627b8f89!2sOx-link%20electronics%20LLP!5e0!3m2!1sen!2sin!4v1733823855204!5m2!1sen!2sin"
-                            width="100%"
-                            height="100%"
-                            allowFullScreen=""
-                            loading="lazy"
-                            referrerPolicy="no-referrer-when-downgrade"
-                        ></iframe>
-                    </div>
-
-                    <div className='min-h-[300px] bg-zinc-300 p-5 rounded-md shadow-md'>
-                        <div className='mb-5'>
-                            <h1 className='text-3xl font-semibold'>Contact Us</h1>
-                        </div>
-
-                        <form action="" className='flex flex-col gap-5'>
-                            <input className='px-4 py-3 outline-none border border-gray-300 rounded-md' type="text" placeholder='Enter your name' />
-                            <input className='px-4 py-3 outline-none border border-gray-300 rounded-md' type="email" placeholder='Enter email address' />
-                            <input className='px-4 py-3 outline-none border border-gray-300 rounded-md' type="number" placeholder='Enter mobile no.' />
-                            <input className='px-4 py-3 outline-none border border-gray-300 rounded-md' type="text" placeholder='Enter your address' />
-
-                            <textarea className='px-4 py-3 resize-none outline-none border border-gray-300 rounded-md' rows={5} placeholder='Enter message'></textarea>
-
-                            <div className='w-full'>
-                                <input className='bg-black text-white px-8 py-3 rounded-full cursor-pointer' type="submit" value="GET A QUOTE" />
-                            </div>
-                        </form>
-                    </div>
-                </div>
-
+            </div>
+            
+            <div className='mt-16'>
                 <Footer />
             </div>
-        </>
+        </div>
     );
 };
 

@@ -1,11 +1,42 @@
-import React from 'react'
+import React, { useState, useEffect } from 'react';
 import { SlCalender } from "react-icons/sl";
+import { BsArrowUp } from "react-icons/bs";
+import { FaUser, FaShareAlt, FaFacebookF, FaTwitter, FaLinkedinIn } from "react-icons/fa";
 import Footer from '../components/Footer';
 import { motion } from 'framer-motion';
-import '../styles/blogs.css'
+import '../styles/blogs.css';
 
 const Blog = () => {
+    const [scrollProgress, setScrollProgress] = useState(0);
+    const [showScrollTop, setShowScrollTop] = useState(false);
+    
+    // Handle scroll for progress bar and scroll-to-top button
+    useEffect(() => {
+        const handleScroll = () => {
+            const totalHeight = document.documentElement.scrollHeight - document.documentElement.clientHeight;
+            const progress = (window.scrollY / totalHeight) * 100;
+            setScrollProgress(progress);
+            
+            if (window.scrollY > 500) {
+                setShowScrollTop(true);
+            } else {
+                setShowScrollTop(false);
+            }
+        };
+        
+        window.addEventListener('scroll', handleScroll);
+        return () => window.removeEventListener('scroll', handleScroll);
+    }, []);
+    
+    // Scroll to top function
+    const scrollToTop = () => {
+        window.scrollTo({
+            top: 0,
+            behavior: 'smooth'
+        });
+    };
 
+    // Blog content array
     const blogContent = [
         { id: 1, title: "What are Ethernet Cables?", content: "Ethernet cables are the unsung heroes of our digital world, connecting our devices to the internet and local networks. They come in various categories, each with different capabilities and performance levels. Let's dive into the world of Cat5e, Cat6, Cat6a, Cat7, and Cat8 cables to unravel their differences and understand which one suits your needs best." },
         { id: 2, title: "Understanding Cat5e Cables", content: "" },
@@ -25,104 +56,151 @@ const Blog = () => {
         { id: 16, title: "A Comparison of Cat5e, Cat6, Cat6a, Cat7, and Cat8 Cables", content: "In the jungle of Ethernet cables, navigating the differences among Cat5e, Cat6, Cat6a, Cat7, and Cat8 can feel like a wild adventure. Each cable category has its strengths and weaknesses, so understanding their nuances is crucial in choosing the right cable for your networking needs." },
         { id: 17, title: "Overview of Different Cable Categories", content: "From the reliable workhorse Cat5e to the speed demons Cat7 and Cat8, each cable category brings something unique to the table. Whether you prioritize affordability, speed, or future-proofing, there's a cable type that fits your requirements." },
         { id: 18, title: "Key Differences and Considerations for Choosing the Right Cable Type", content: "When it comes to choosing between Cat5e, Cat6, Cat6a, Cat7, and Cat8 cables, it all boils down to your specific needs and budget. Consider factors like data speed requirements, cable length, and future scalability to make an informed decision. Remember, the right cable can make all the difference in your network's performance.In conclusion, the world of Ethernet cables is diverse, with each category offering distinct advantages and performance enhancements. Whether you opt for the reliability of Cat5e, the speed of Cat6, the superior performance of Cat6a, the advanced features of Cat7, or the cutting-edge technology of Cat8, understanding the differences among these cables is crucial for optimizing your network infrastructure. By choosing the right Ethernet cable that aligns with your specific requirements, you can ensure seamless data transmission and reliable connectivity in your digital environment." },
-    ]
+    ];
+
+    // Create table of contents from blog sections
+    const tableOfContents = blogContent
+        .filter(item => item.content !== "") // Filter out empty sections
+        .map(item => ({
+            id: item.id,
+            title: item.title
+        }));
+
+    // Group blog content into sections
+    const mainSections = [
+        { title: "Introduction", items: blogContent.slice(0, 2) },
+        { title: "Cat5e Cables", items: blogContent.slice(2, 5) },
+        { title: "Cat6 Cables", items: blogContent.slice(5, 8) },
+        { title: "Cat6a Cables", items: blogContent.slice(8, 10) },
+        { title: "Cat7 Cables", items: blogContent.slice(10, 13) },
+        { title: "Cat8 Cables", items: blogContent.slice(13, 16) },
+        { title: "Comparison", items: blogContent.slice(16, 19) }
+    ];
 
     return (
-        <>
-            {/* For desktop */}
-            <div className='hidden sm:flex w-full min-h-screen bg-[#DBD9DC] flex-col gap-6 overflow-hidden pb-10'>
-
-                <div className='relative w-full h-screen'>
-                    <img className='w-full h-full brightness-50 object-cover object-center' src="../../blog.jpg" alt="" />
-                    <div className='absolute z-[9] top-0 w-full h-screen bg-black/45'></div>
-                    <h1 className='our-blogs absolute bottom-[20vw] left-1/2 -translate-x-1/2 z-10 text-white text-[6vw] font-bold'>OUR BLOGS</h1>
-                </div>
-
-                <div className='px-40 flex flex-col gap-3'>
-
-                    <div className='text-black text-xl flex items-center gap-2'>
-                        <SlCalender />
-                        <h1>13 Nov 2024</h1>
-                    </div>
-
-                    <h1 className='text-3xl font-bold'>The Differences Among Cat5e, Cat6, Cat6a, Cat7, and Cat8 Cables</h1>
-
-                    <p className='text-[#7a7a82]'>Ethernet cables are the backbone of modern networking, facilitating the transmission of data between devices in homes, offices, and data centers. Understanding the differences among Cat5e, Cat6, Cat6a, Cat7, and Cat8 cables is essential for making informed decisions when setting up a network infrastructure. Each category offers unique features and capabilities that cater to specific requirements in terms of speed, bandwidth, and performance. In this article, we will delve into the characteristics of these Ethernet cable types, explore their advantages, and provide insights into selecting the most suitable option for your networking needs.</p>
-                </div>
-
-                <div className='px-40'>
-                    <h1 className='text-lg text-[#7a7a82] font-bold'>Introduction to Ethernet Cables</h1>
-                </div>
-
-                <div className='px-40 flex flex-col gap-3'>
-                    {blogContent.map((blog, index) => {
-                        return (
-                            <div key={blog.id || index} className='flex flex-col'>
-                                <h1 className='text-lg font-bold text-[#7a7a82]'>{blog.title}</h1>
-
-                                <p className='text-[#7a7a82]'>{blog.content}</p>
-
-                                <p className='text-[#7a7a82] mt-6'>{blog.content1}</p>
+        <div className="blog-container">
+            {/* Reading progress bar */}
+            {/* <div className="reading-progress-bar" style={{ width: `${scrollProgress}%` }}></div> */}
+            
+            {/* Hero section */}
+            <motion.div 
+                className="blog-hero"
+                initial={{ opacity: 0 }}
+                animate={{ opacity: 1 }}
+                transition={{ duration: 1 }}
+            >
+                <div className="blog-hero-overlay"></div>
+                <motion.h1 
+                    className="blog-hero-title"
+                    initial={{ y: 50, opacity: 0 }}
+                    animate={{ y: 0, opacity: 1 }}
+                    transition={{ delay: 0.5, duration: 0.8 }}
+                >
+                    OUR BLOGS
+                </motion.h1>
+            </motion.div>
+            
+            <div className="blog-content-container">
+                <div className="blog-main">
+                    {/* Blog header */}
+                    <motion.div 
+                        className="blog-header"
+                        initial={{ y: 20, opacity: 0 }}
+                        animate={{ y: 0, opacity: 1 }}
+                        transition={{ delay: 0.8, duration: 0.5 }}
+                    >
+                        <div className="blog-meta">
+                            <div className="blog-date">
+                                <SlCalender />
+                                <span>13 Nov 2024</span>
                             </div>
-                        )
-                    })}
-                </div>
-
-                <div>
-                    <Footer />
-                </div>
-
-            </div>
-
-            {/* For mobile */}
-            <div className='flex sm:hidden w-full min-h-screen bg-[#DBD9DC] flex-col gap-6 overflow-hidden pb-10'>
-
-                <div className='relative w-full h-[50vh]'>
-                    <img className='w-full h-full brightness-50 object-cover' src="../../blog.jpg" alt="" />
-                    <div className='absolute z-[9] top-0 w-full h-[50vh] bg-black/45'></div>
-                    <h1 className='absolute bottom-1/3 left-1/2 -translate-x-1/2 z-[9] text-white text-[8vw] font-bold'>OUR BLOGS</h1>
-                </div>
-
-                <div className='px-3 flex flex-col gap-3'>
-
-                    <div className='text-black text-xl flex items-center gap-2'>
-                        <SlCalender />
-                        <h1>13 Nov 2024</h1>
+                        </div>
+                        
+                        <h1 className="blog-title">The Differences Among Cat5e, Cat6, Cat6a, Cat7, and Cat8 Cables</h1>
+                        
+                        <div className="blog-intro">
+                            <p>Ethernet cables are the backbone of modern networking, facilitating the transmission of data between devices in homes, offices, and data centers. Understanding the differences among Cat5e, Cat6, Cat6a, Cat7, and Cat8 cables is essential for making informed decisions when setting up a network infrastructure. Each category offers unique features and capabilities that cater to specific requirements in terms of speed, bandwidth, and performance. In this article, we will delve into the characteristics of these Ethernet cable types, explore their advantages, and provide insights into selecting the most suitable option for your networking needs.</p>
+                        </div>
+                    </motion.div>
+                    
+                    {/* Table of contents - mobile only */}
+                    <div className="blog-toc-mobile">
+                        <details>
+                            <summary>Table of Contents</summary>
+                            <ul>
+                                {tableOfContents.map((item) => (
+                                    <li key={`toc-${item.id}`}>
+                                        <a href={`#section-${item.id}`}>{item.title}</a>
+                                    </li>
+                                ))}
+                            </ul>
+                        </details>
                     </div>
-
-                    <h1 className='text-3xl font-bold'>The Differences Among Cat5e, Cat6, Cat6a, Cat7, and Cat8 Cables</h1>
-
-                    <p className='text-[#7a7a82]'>Ethernet cables are the backbone of modern networking, facilitating the transmission of data between devices in homes, offices, and data centers. Understanding the differences among Cat5e, Cat6, Cat6a, Cat7, and Cat8 cables is essential for making informed decisions when setting up a network infrastructure. Each category offers unique features and capabilities that cater to specific requirements in terms of speed, bandwidth, and performance. In this article, we will delve into the characteristics of these Ethernet cable types, explore their advantages, and provide insights into selecting the most suitable option for your networking needs.</p>
-                </div>
-
-                <div className='px-3'>
-                    <h1 className='text-lg text-[#7a7a82] font-bold'>Introduction to Ethernet Cables</h1>
-                </div>
-
-                <div className='px-3 flex flex-col gap-3'>
-                    {blogContent.map((blog, index) => {
-                        return (
-                            <div key={blog.id || index} className='flex flex-col'>
-                                <h1 className='text-lg font-bold text-[#7a7a82]'>{blog.title}</h1>
-
-                                <p className='text-[#7a7a82]'>{blog.content}</p>
-
-                                <p className='text-[#7a7a82] mt-6'>{blog.content1}</p>
+                    
+                    {/* Blog content */}
+                    <div className="blog-sections">
+                        <h2 className="section-title">Introduction to Ethernet Cables</h2>
+                        
+                        {mainSections.map((section, sectionIndex) => (
+                            <div key={`section-${sectionIndex}`} className="blog-section">
+                                {section.title !== "Introduction" && (
+                                    <h2 className="section-title">{section.title}</h2>
+                                )}
+                                
+                                {section.items.map((blog) => (
+                                    <motion.div 
+                                        key={blog.id} 
+                                        id={`section-${blog.id}`}
+                                        className={`blog-item ${!blog.content ? 'blog-item-empty' : ''}`}
+                                        initial={{ opacity: 0, y: 20 }}
+                                        whileInView={{ opacity: 1, y: 0 }}
+                                        viewport={{ once: true, margin: "-100px" }}
+                                        transition={{ duration: 0.5 }}
+                                    >
+                                        {blog.content && (
+                                            <>
+                                                <h3 className="blog-item-title">{blog.title}</h3>
+                                                <div className="blog-item-content">
+                                                    <p>{blog.content}</p>
+                                                    {blog.content1 && <p>{blog.content1}</p>}
+                                                </div>
+                                            </>
+                                        )}
+                                    </motion.div>
+                                ))}
                             </div>
-                        )
-                    })}
+                        ))}
+                    </div>
                 </div>
-
-                <div>
-                    <Footer />
+                
+                {/* Sidebar - desktop only */}
+                <div className="blog-sidebar">
+                    <div className="sidebar-section toc-section">
+                        <h3>Table of Contents</h3>
+                        <ul className="toc-list">
+                            {tableOfContents.map((item) => (
+                                <li key={`sidebar-${item.id}`}>
+                                    <a href={`#section-${item.id}`}>{item.title}</a>
+                                </li>
+                            ))}
+                        </ul>
+                    </div>
                 </div>
-
             </div>
+            
+            {/* Scroll to top button */}
+            <motion.button 
+                className={`scroll-to-top ${showScrollTop ? 'visible' : ''}`}
+                onClick={scrollToTop}
+                whileHover={{ scale: 1.1 }}
+                whileTap={{ scale: 0.9 }}
+            >
+                <BsArrowUp />
+            </motion.button>
+            
+            <Footer />
+        </div>
+    );
+};
 
-        </>
-    )
-}
-
-export default Blog
-
-// pt-40 flex flex-col gap-4
+export default Blog;

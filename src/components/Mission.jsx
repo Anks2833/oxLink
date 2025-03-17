@@ -275,7 +275,7 @@ const Mission = () => {
             </div>
 
             {/* Mobile */}
-            <div className='flex sm:hidden w-full min-h-screen flex-col justify-start items-center gap-6 -mt-[15vw]'>
+            <div className='flex sm:hidden w-full min-h-screen flex-col justify-start items-center gap-6 -mt-[45vw]'>
 
                 <div className='w-full flex justify-center'>
                     <motion.h1

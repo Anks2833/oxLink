@@ -286,7 +286,7 @@ const Footer = () => {
                         <div>
                             <h1 className='text-2xl font-bold'>Get in touch</h1>
 
-                            <h1 className='text-lg font-semibold text-[#002A77]'>OX-LINK ELECTRONICS LLP</h1>
+                            <h1 className='text-lg font-semibold text-[#002A77]'>OX-LINK ELECTRONICS PVT. LTD.</h1>
                         </div>
 
                         <div className='flex flex-col items-end gap-3 pr-20'>
@@ -308,7 +308,7 @@ const Footer = () => {
 
                             </div>
 
-                            <h1 className='text-lg text-right font-semibold'>© <span className='text-[#0FBBEB]'>2025</span> <span className='text-[#002A77]'>OX-LINK ELECTRONICS LLP</span></h1>
+                            <h1 className='text-sm text-right font-semibold'>© <span className='text-[#0FBBEB]'>2025</span> <span className='text-[#002A77]'>OX-LINK ELECTRONICS PVT. LTD.</span></h1>
                         </div>
 
                     </div>
@@ -373,7 +373,8 @@ const Footer = () => {
                     {/* Logo and socials */}
                     <div className='w-full h-full flex flex-col items-start pl-6'>
                         <div className='flex flex-col gap-8 items-start leading-none'>
-                            <img className='w-24 leading-3' src="/footer-img.png" alt="logo" />
+                            {/* <img className='w-24 leading-3' src="/footer-img.png" alt="logo" /> */}
+                            <img className='w-40' src="/logo.png" alt="OX-Link Electronics" />
 
                             {/* Contact */}
                             <div className='flex flex-col justify-center gap-5 text-black'>
@@ -389,10 +390,10 @@ const Footer = () => {
 
                             {/* Socials */}
                             <div className='flex items-center gap-3 mt-4'>
-                                <FaFacebookSquare className='text-2xl text-[#0c4cd7] cursor-pointer' />
-                                <FaLinkedin className='text-2xl text-[#0077B5] cursor-pointer' />
-                                <FaSquareInstagram className='text-2xl text-[#d62976] cursor-pointer' />
-                                <FaSquareYoutube className='text-2xl text-[#CD201F] cursor-pointer' />
+                                <a href={facebookLink}><FaFacebookSquare className='text-2xl text-[#0c4cd7] cursor-pointer' /></a>
+                                <a href={linkedinLink}><FaLinkedin className='text-2xl text-[#0077B5] cursor-pointer' /></a>
+                                <a href={instagramLink}><FaSquareInstagram className='text-2xl text-[#d62976] cursor-pointer' /></a>
+                                <a href={youtubeLink}><FaSquareYoutube className='text-2xl text-[#CD201F] cursor-pointer' /></a>
                             </div>
                         </div>
                     </div>
@@ -447,7 +448,7 @@ const Footer = () => {
                         <div>
                             <h1 className='text-2xl font-bold underline'>Get in touch</h1>
 
-                            <h1 className='text-lg font-semibold text-[#002A77]'>OX-LINK ELECTRONICS LLP</h1>
+                            <h1 className='text-lg font-semibold text-[#002A77]'>OX-LINK ELECTRONICS PVT. LTD.</h1>
                         </div>
 
                         <div className='flex flex-col items-start gap-3'>
@@ -469,20 +470,20 @@ const Footer = () => {
 
                             </div>
 
-                            <h1 className='text-lg text-right font-semibold'>© <span className='text-[#0FBBEB]'>2025</span> <span className='text-[#002A77]'>OX-LINK ELECTRONICS LLP</span></h1>
+                            <h1 className='text-sm text-right font-semibold'>© <span className='text-[#0FBBEB]'>2025</span> <span className='text-[#002A77]'>OX-LINK ELECTRONICS PVT. LTD.</span></h1>
                         </div>
 
                     </div>
 
                     {/* Privacy, terms and site map */}
                     <div className='w-full flex justify-center gap-6 mt-20'>
-                        <h1 className='text-xs text-blue-800 font-semibold'>
+                        <NavLink to="/privacy" className='text-xs text-blue-800 font-semibold'>
                             Privacy
-                        </h1>
+                        </NavLink>
 
-                        <h1 className='text-xs border-l-2 border-l-black px-10 text-blue-800 font-semibold'>
+                        <NavLink to="/terms" className='text-xs border-l-2 border-l-black px-10 text-blue-800 font-semibold'>
                             Terms of us
-                        </h1>
+                        </NavLink>
 
                         {/* <h1 className='text-xs text-blue-800 font-semibold'>
                             Sitemap

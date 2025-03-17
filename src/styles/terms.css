@@ -1,0 +1,365 @@
+.terms-page {
+    width: 100%;
+    min-height: 100vh;
+    background-color: #f9fafb;
+    font-family: system-ui, -apple-system, sans-serif;
+    color: #333;
+    line-height: 1.6;
+    background-color: #DCD9DC;
+  }
+  
+  .terms-hero {
+    position: relative;
+    height: 250px;
+    background: linear-gradient(135deg, #0f2557, #1e40af);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+  }
+  
+  .terms-hero::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    /* background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 20 20"><rect width="10" height="10" fill="rgba(255,255,255,0.03)"/><rect x="10" y="10" width="10" height="10" fill="rgba(255,255,255,0.03)"/></svg>'); */
+    background-size: 20px 20px;
+    opacity: 0.3;
+  }
+  
+  .terms-hero-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.2);
+  }
+  
+  .terms-hero-content {
+    position: relative;
+    z-index: 10;
+    text-align: center;
+    padding: 0 20px;
+  }
+  
+  .terms-hero-content h1 {
+    font-size: 3rem;
+    font-weight: 700;
+    margin-bottom: 15px;
+    text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+  }
+  
+  .terms-hero-content p {
+    font-size: 1.1rem;
+    color: rgba(255, 255, 255, 0.9);
+  }
+  
+  .terms-content {
+    padding: 50px 0;
+  }
+  
+  .terms-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
+  }
+  
+  .terms-intro {
+    font-size: 1.1rem;
+    line-height: 1.8;
+    color: #4b5563;
+    margin-bottom: 40px;
+    max-width: 800px;
+    margin-left: auto;
+    margin-right: auto;
+    text-align: center;
+    border-bottom: 1px solid #e5e7eb;
+    padding-bottom: 30px;
+  }
+  
+  .terms-main {
+    display: flex;
+    gap: 40px;
+  }
+  
+  .terms-toc {
+    width: 280px;
+    flex-shrink: 0;
+    position: sticky;
+    top: 30px;
+    align-self: flex-start;
+    display: none;
+  }
+  
+  .toc-container {
+    background-color: white;
+    border-radius: 10px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
+    padding: 25px;
+  }
+  
+  .toc-container h2 {
+    font-size: 1.3rem;
+    font-weight: 600;
+    color: #1e3a8a;
+    margin-bottom: 15px;
+    padding-bottom: 10px;
+    border-bottom: 1px solid #e5e7eb;
+  }
+  
+  .toc-container ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+  }
+  
+  .toc-container li {
+    margin-bottom: 10px;
+    border-left: 2px solid transparent;
+    padding-left: 10px;
+    transition: all 0.3s ease;
+  }
+  
+  .toc-container li.active {
+    border-left-color: #1e40af;
+  }
+  
+  .toc-container a {
+    text-decoration: none;
+    color: #4b5563;
+    display: block;
+    font-size: 0.95rem;
+    line-height: 1.4;
+    transition: color 0.3s ease;
+  }
+  
+  .toc-container li.active a {
+    color: #1e40af;
+    font-weight: 500;
+  }
+  
+  .toc-container a:hover {
+    color: #1e40af;
+  }
+  
+  .terms-sections {
+    flex: 1;
+  }
+  
+  .terms-section {
+    margin-bottom: 30px;
+    background-color: white;
+    border-radius: 10px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
+    padding: 30px;
+    overflow: hidden;
+  }
+  
+  .section-title {
+    font-size: 1.6rem;
+    font-weight: 700;
+    color: #1e3a8a;
+    margin-bottom: 20px;
+    position: relative;
+    padding-bottom: 15px;
+    display: flex;
+    align-items: center;
+  }
+  
+  .section-title::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 60px;
+    height: 3px;
+    background-color: #1e40af;
+    border-radius: 3px;
+  }
+  
+  .section-number {
+    font-size: 1.8rem;
+    color: #1e40af;
+    margin-right: 10px;
+    opacity: 0.8;
+  }
+  
+  .section-content {
+    color: #4b5563;
+  }
+  
+  .main-para {
+    font-size: 1.05rem;
+    line-height: 1.7;
+  }
+  
+  .bullet-list {
+    margin: 15px 0;
+    padding-left: 20px;
+  }
+  
+  .bullet-list li {
+    list-style-type: disc;
+    margin-bottom: 10px;
+    position: relative;
+    padding-left: 5px;
+  }
+  
+  .contact-info {
+    border-left: 3px solid #1e40af;
+    padding-left: 15px;
+  }
+  
+  .contact-info h3 {
+    font-size: 1.2rem;
+    font-weight: 600;
+    color: #1e3a8a;
+    margin-bottom: 10px;
+  }
+  
+  .contact-info p {
+    margin-bottom: 8px;
+  }
+  
+  .terms-agreement {
+    font-size: 1.1rem;
+    font-weight: 500;
+    text-align: center;
+    margin-top: 30px;
+    margin-bottom: 30px;
+    padding: 20px;
+    background-color: #f1f5f9;
+    border-radius: 10px;
+    border-left: 4px solid #1e40af;
+  }
+  
+  .back-to-top {
+    position: fixed;
+    bottom: 30px;
+    right: 30px;
+    width: 50px;
+    height: 50px;
+    background-color: #1e40af;
+    color: white;
+    border: none;
+    border-radius: 50%;
+    font-size: 1.5rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+    transition: all 0.3s ease;
+    z-index: 100;
+    opacity: 0.8;
+  }
+  
+  .back-to-top:hover {
+    opacity: 1;
+    transform: translateY(-5px);
+  }
+  
+  @media (min-width: 992px) {
+    .terms-hero {
+      height: 300px;
+    }
+    
+    .terms-hero-content h1 {
+      font-size: 3.5rem;
+    }
+    
+    .terms-toc {
+      display: block;
+    }
+  }
+  
+  @media (max-width: 991px) {
+    .terms-container {
+      padding: 0 15px;
+    }
+    
+    .terms-main {
+      flex-direction: column;
+    }
+    
+    .terms-section {
+      padding: 25px;
+    }
+    
+    .section-title {
+      font-size: 1.4rem;
+    }
+  }
+  
+  @media (max-width: 768px) {
+    .terms-hero {
+      height: 200px;
+    }
+    
+    .terms-hero-content h1 {
+      font-size: 2.5rem;
+    }
+    
+    .terms-hero-content p {
+      font-size: 1rem;
+    }
+    
+    .terms-content {
+      padding: 30px 0;
+    }
+    
+    .terms-intro {
+      font-size: 1rem;
+      margin-bottom: 30px;
+      padding-bottom: 20px;
+    }
+    
+    .terms-section {
+      padding: 20px;
+      margin-bottom: 20px;
+    }
+    
+    .main-para,
+    .bullet-list li {
+      font-size: 1rem;
+    }
+    
+    .back-to-top {
+      width: 40px;
+      height: 40px;
+      font-size: 1.2rem;
+      bottom: 20px;
+      right: 20px;
+    }
+    
+    .terms-agreement {
+      font-size: 1rem;
+      padding: 15px;
+    }
+  }
+  
+  @media (max-width: 576px) {
+    .terms-hero-content h1 {
+      font-size: 2rem;
+    }
+    
+    .section-title {
+      font-size: 1.2rem;
+    }
+    
+    .section-number {
+      font-size: 1.4rem;
+    }
+    
+    .terms-section {
+      padding: 15px;
+    }
+    
+    .contact-info h3 {
+      font-size: 1.1rem;
+    }
+  }

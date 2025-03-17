@@ -281,7 +281,7 @@ const Value = () => {
             </div>
 
             {/* Mobile */}
-            <div className='flex sm:hidden w-full min-h-screen flex-col justify-start items-center gap-6 -mt-[15vw]'>
+            <div className='flex sm:hidden w-full min-h-screen flex-col justify-start items-center gap-6 -mt-[45vw]'>
 
                 <div className='w-full flex justify-center'>
                     <motion.h1
@@ -317,7 +317,7 @@ const Value = () => {
                 >
                     <motion.p
                         initial={{ translateX: "-100%" }}
-                        whileInView={{ translateX: "1%" }}
+                        whileInView={{ translateX: "3%" }}
                         transition={{ duration: 1, delay: 0.1 }}
                         viewport={{ once: true }}
                         className='text-[4.5vw] text-[#002A77]'
@@ -328,7 +328,7 @@ const Value = () => {
 
                     <motion.p
                         initial={{ translateX: "-100%" }}
-                        whileInView={{ translateX: "1%" }}
+                        whileInView={{ translateX: "3%" }}
                         transition={{ duration: 1, delay: 0.2 }}
                         viewport={{ once: true }}
                         className='text-[4.5vw] text-[#002A77]'
@@ -339,7 +339,7 @@ const Value = () => {
 
                     <motion.p
                         initial={{ translateX: "-100%" }}
-                        whileInView={{ translateX: "1%" }}
+                        whileInView={{ translateX: "3%" }}
                         transition={{ duration: 1, delay: 0.3 }}
                         viewport={{ once: true }}
                         className='text-[4.5vw] text-[#002A77]'
@@ -350,7 +350,7 @@ const Value = () => {
 
                     <motion.p
                         initial={{ translateX: "-100%" }}
-                        whileInView={{ translateX: "1%" }}
+                        whileInView={{ translateX: "3%" }}
                         transition={{ duration: 1, delay: 0.4 }}
                         viewport={{ once: true }}
                         className='text-[4.5vw] text-[#002A77]'
@@ -361,7 +361,7 @@ const Value = () => {
 
                     <motion.p
                         initial={{ translateX: "-100%" }}
-                        whileInView={{ translateX: "1%" }}
+                        whileInView={{ translateX: "3%" }}
                         transition={{ duration: 1, delay: 0.5 }}
                         viewport={{ once: true }}
                         className='text-[4.5vw] text-[#002A77]'
@@ -372,7 +372,7 @@ const Value = () => {
 
                     <motion.p
                         initial={{ translateX: "-100%" }}
-                        whileInView={{ translateX: "1%" }}
+                        whileInView={{ translateX: "3%" }}
                         transition={{ duration: 1, delay: 0.6 }}
                         viewport={{ once: true }}
                         className='text-[4.5vw] text-[#002A77]'

@@ -238,7 +238,7 @@ const Vision = () => {
             </div>
 
             {/* Mobile */}
-            <div className='flex sm:hidden w-full min-h-screen flex-col justify-start items-center gap-6 mt-[30vw]'>
+            <div className='flex sm:hidden w-full min-h-screen flex-col justify-start items-center gap-6 mt-[15vw]'>
 
                 <div className=''>
                     <motion.h1

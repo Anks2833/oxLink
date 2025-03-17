@@ -7,7 +7,7 @@
 @tailwind utilities;
 
 *::selection {
-  background-color: #ee674e;
+  background-color: #FFA500;
   color: white;
 }
 

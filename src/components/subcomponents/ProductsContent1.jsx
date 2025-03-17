@@ -81,7 +81,7 @@ const ProductsContent1 = () => {
             </NavLink>
 
             {/* Mobile */}
-            <NavLink to="/product/data-cable" className='flex sm:hidden w-fit flex-col gap-2 border-r border-l border-l-black border-r-black px-5 mt-20 mb-52'>
+            <div className='flex sm:hidden w-fit flex-col gap-2 border-r border-l border-l-black border-r-black px-5 mt-20 mb-52'>
 
                 <motion.div
                     className='flex justify-center items-center gap-2'
@@ -153,7 +153,11 @@ const ProductsContent1 = () => {
                     </motion.p>
                 </div>
 
-            </NavLink>
+                <NavLink to="/data-cable" className='w-full flex justify-center'>
+                    <p className='text-[#f99938] underline text-lg'>View More</p>
+                </NavLink>
+
+            </div>
 
         </>
     )

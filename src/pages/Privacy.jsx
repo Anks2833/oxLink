@@ -1,8 +1,12 @@
-import React from 'react'
-import Footer from '../components/Footer'
+import React, { useState, useEffect } from 'react';
+import { motion } from 'framer-motion';
+import Footer from '../components/Footer';
+import '../styles/privacy.css';
 
 const Privacy = () => {
+  const [activeSection, setActiveSection] = useState(null);
 
+  // Privacy data
   const privacyData = [
     {
       id: "01",
@@ -68,7 +72,7 @@ const Privacy = () => {
     },
     {
       id: "08",
-      title: "Children’s Privacy",
+      title: "Children's Privacy",
       para: "Our website is not intended for use by children under the age of 13. We do not knowingly collect personal information from children. If you believe we have inadvertently collected information from a child, please contact us so we can delete it.",
     },
     {
@@ -80,160 +84,207 @@ const Privacy = () => {
       id: "10",
       title: "Contact Us",
       para: "If you have any questions or concerns about this Privacy Policy or the handling of your personal information, please contact us at:",
-      para1: "Ox-Link Electronics LLP",
+      para1: "Ox-Link Electronics PVT. LTD.",
       para2: "205, 12, Zamrudpur Community Centre, Kailash Colony, New Delhi -110048 (INDIA)",
       para3: "Email: info@ox-link.in",
       para4: "Phone: +91-982 111 8868",
       footerpara: "By using this Website, you acknowledge that you have read and understood this Privacy Policy and agree to its terms."
     },
-  ]
+  ];
+
+  // Track scroll position to highlight active section in table of contents
+  useEffect(() => {
+    const handleScroll = () => {
+      const scrollPosition = window.scrollY;
+      
+      // Get all section elements
+      const sections = document.querySelectorAll('.privacy-section');
+      
+      // Find the current section
+      for (let i = 0; i < sections.length; i++) {
+        const section = sections[i];
+        const sectionTop = section.offsetTop - 100;
+        const sectionBottom = sectionTop + section.offsetHeight;
+        
+        if (scrollPosition >= sectionTop && scrollPosition < sectionBottom) {
+          setActiveSection(section.id);
+          break;
+        }
+      }
+    };
+    
+    window.addEventListener('scroll', handleScroll);
+    return () => window.removeEventListener('scroll', handleScroll);
+  }, []);
+
+  // Animation variants
+  const fadeIn = {
+    hidden: { opacity: 0, y: 20 },
+    visible: { 
+      opacity: 1, 
+      y: 0,
+      transition: { duration: 0.6 }
+    }
+  };
+
+  const staggerContainer = {
+    hidden: { opacity: 0 },
+    visible: {
+      opacity: 1,
+      transition: {
+        staggerChildren: 0.1
+      }
+    }
+  };
 
   return (
-    <>
-
-      {/* Desktop */}
-      <div className='hidden sm:flex w-full min-h-screen flex-col pt-40'>
-        {/* The heading */}
-        <div className='w-full flex justify-center'>
-          <h1 className='text-4xl font-bold'>PRIVACY <span className='text-blue-800'>POLICY</span></h1>
+    <div className="privacy-policy-page py-14">
+      {/* Hero section */}
+      <motion.div 
+        className="privacy-hero"
+        initial={{ opacity: 0 }}
+        animate={{ opacity: 1 }}
+        transition={{ duration: 0.8 }}
+      >
+        <div className="privacy-hero-overlay"></div>
+        <div className="privacy-hero-content">
+          <motion.h1 
+            initial={{ y: 30, opacity: 0 }}
+            animate={{ y: 0, opacity: 1 }}
+            transition={{ duration: 0.8 }}
+          >
+            <span className="text-white">PRIVACY</span> <span className="text-blue-300">POLICY</span>
+          </motion.h1>
+          <motion.p
+            initial={{ y: 30, opacity: 0 }}
+            animate={{ y: 0, opacity: 1 }}
+            transition={{ duration: 0.8, delay: 0.2 }}
+          >
+            Last Updated: December 2024
+          </motion.p>
         </div>
-        {/* Last updated */}
-        <div className='w-full flex flex-col items-start gap-3 px-[15vw] mt-20 mb-10'>
-          <h1 className='text-2xl font-bold'>Last Updated: December 2024</h1>
-          <div className='w-full flex flex-col'>
-            <p>At Ox-Link (the “Website”), your privacy is important to us. This Privacy Policy outlines how we collect, use, and protect your personal</p>
-            <p>information when you interact with our website. By using the Website, you agree to the practices described in this policy. If you do</p>
-            <p>not agree with these terms, please discontinue use of the Website.</p>
+      </motion.div>
+
+      {/* Main content */}
+      <div className="privacy-content">
+        <div className="privacy-container">
+          {/* Introduction */}
+          <motion.div 
+            className="privacy-intro"
+            variants={fadeIn}
+            initial="hidden"
+            animate="visible"
+          >
+            <p>
+              At Ox-Link (the "Website"), your privacy is important to us. This Privacy Policy outlines how we collect, use, and protect your personal
+              information when you interact with our website. By using the Website, you agree to the practices described in this policy. If you do
+              not agree with these terms, please discontinue use of the Website.
+            </p>
+          </motion.div>
+
+          <div className="privacy-main">
+            {/* Table of contents - visible on larger screens */}
+            <div className="privacy-toc">
+              <div className="toc-container">
+                <h2>Table of Contents</h2>
+                <ul>
+                  {privacyData.map((section) => (
+                    <li key={section.id} className={activeSection === `section-${section.id}` ? 'active' : ''}>
+                      <a href={`#section-${section.id}`}>
+                        {section.id}. {section.title}
+                      </a>
+                    </li>
+                  ))}
+                </ul>
+              </div>
+            </div>
+
+            {/* Privacy content */}
+            <motion.div 
+              className="privacy-sections"
+              variants={staggerContainer}
+              initial="hidden"
+              animate="visible"
+            >
+              {privacyData.map((section) => (
+                <motion.section 
+                  key={section.id}
+                  id={`section-${section.id}`}
+                  className="privacy-section"
+                  variants={fadeIn}
+                >
+                  <h2 className="section-title">
+                    <span className="section-number">{section.id}.</span> {section.title}
+                  </h2>
+                  
+                  <div className="section-content">
+                    <p className="main-para">{section.para}</p>
+                    
+                    {section.subtitle && (
+                      <div className="subsection">
+                        <h3>{section.subtitle}</h3>
+                        {section.subpara && <p>{section.subpara}</p>}
+                        
+                        {section.subpara1 && (
+                          <ul className="bullet-list">
+                            {section.subpara1 && <li>{section.subpara1}</li>}
+                            {section.subpara2 && <li>{section.subpara2}</li>}
+                            {section.subpara3 && <li>{section.subpara3}</li>}
+                            {section.subpara4 && <li>{section.subpara4}</li>}
+                          </ul>
+                        )}
+                        
+                        {section.footerpara && <p className="footer-para">{section.footerpara}</p>}
+                      </div>
+                    )}
+                    
+                    {section.subtitle1 && (
+                      <div className="subsection">
+                        <h3>{section.subtitle1}</h3>
+                        {section.subpara5 && <p>{section.subpara5}</p>}
+                        
+                        {section.subpara6 && (
+                          <ul className="bullet-list">
+                            {section.subpara6 && <li>{section.subpara6}</li>}
+                            {section.subpara7 && <li>{section.subpara7}</li>}
+                            {section.subpara8 && <li>{section.subpara8}</li>}
+                            {section.subpara9 && <li>{section.subpara9}</li>}
+                            {section.subpara10 && <li>{section.subpara10}</li>}
+                          </ul>
+                        )}
+                        
+                        {section.footerpara1 && <p className="footer-para">{section.footerpara1}</p>}
+                      </div>
+                    )}
+                    
+                    {/* Regular paragraphs */}
+                    {(section.para1 || section.para2 || section.para3 || section.para4) && (
+                      <ul className="number-list">
+                        {section.para1 && <li>{section.para1}</li>}
+                        {section.para2 && <li>{section.para2}</li>}
+                        {section.para3 && <li>{section.para3}</li>}
+                        {section.para4 && <li>{section.para4}</li>}
+                      </ul>
+                    )}
+                  </div>
+                </motion.section>
+              ))}
+            </motion.div>
           </div>
         </div>
-
-
-        <div className='flex flex-col gap-6 px-[12vw]'>
-          {privacyData.map((pri, index) => {
-            return (
-              <div key={pri.id || index} className='px-10'>
-                <h1 className='text-xl font-semibold'>{pri.id}. {pri.title}</h1>
-                <p>{pri.para}</p>
-                <div className='flex flex-col'>
-                  <div className='flex flex-col gap-1'>
-                    <h1 className='text-blue-800 text-xl'>{pri.subtitle}</h1>
-                    {/* <p>{pri.para}</p> */}
-
-                    <div className='ml-4 flex flex-col'>
-                      <p>{pri.subpara1}</p>
-                      <p>{pri.subpara2}</p>
-                      <p>{pri.subpara3}</p>
-                      <p>{pri.subpara4}</p>
-                  </div>
-
-                  <div className='flex flex-col ml-3'>
-                      <p>{pri.para1}</p>
-                      <p>{pri.para2}</p>
-                      <p>{pri.para3}</p>
-                      <p>{pri.para4}</p>
-                  </div>
-
-                    <p>{pri.footerpara}</p>
-                  </div>
-
-                  <div className='flex flex-col'>
-                    <h1 className='text-blue-800 text-xl'>{pri.subtitle1}</h1>
-                    <p>{pri.subpara5}</p>
-
-                    <div className='ml-4 flex flex-col'>
-                      <p>{pri.subpara6}</p>
-                      <p>{pri.subpara7}</p>
-                      <p>{pri.subpara8}</p>
-                      <p>{pri.subpara9}</p>
-                      <p>{pri.subpara10}</p>
-                    </div>
-
-                    <p>{pri.footerpara1}</p>
-                  </div>
-                </div>
-              </div>
-            )
-          })}
-        </div>
-        
-        {/* Footer */}
-        <Footer />
-
       </div>
 
-      {/* Mobile */}
-      <div className='flex sm:hidden w-full min-h-screen flex-col pt-40'>
-        {/* The heading */}
-        <div className='w-full flex flex-col items-center'>
-          <h1 className='text-4xl tracking-widest font-bold'>PRIVACY</h1>
-          <h1 className='text-3xl tracking-widest font-bold text-blue-800'>POLICY</h1>
-        </div>
-        {/* Last updated */}
-        <div className='w-full flex flex-col items-start gap-3 px-[8vw] mt-20 mb-10'>
-          <h1 className='text-[6vw] font-bold'>Last Updated: December 2024</h1>
-          <div className='w-full flex flex-col'>
-            <p>At Ox-Link (the “Website”), your privacy is important to us. This Privacy Policy outlines how we collect, use, and protect your personal</p>
-            <p>information when you interact with our website. By using the Website, you agree to the practices described in this policy. If you do</p>
-            <p>not agree with these terms, please discontinue use of the Website.</p>
-          </div>
-        </div>
+      {/* Floating back to top button */}
+      <button 
+        className="back-to-top"
+        onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}
+      >
+        ↑
+      </button>
 
+      <Footer />
+    </div>
+  );
+};
 
-        <div className='flex flex-col gap-6 px-[0vw]'>
-          {privacyData.map((pri, index) => {
-            return (
-              <div key={pri.id || index} className='px-10'>
-                <h1 className='text-xl font-semibold'>{pri.id}. {pri.title}</h1>
-                <p>{pri.para}</p>
-                <div className='flex flex-col'>
-                  <div className='flex flex-col gap-1'>
-                    <h1 className='text-blue-800 text-xl'>{pri.subtitle}</h1>
-                    {/* <p>{pri.para}</p> */}
-
-                    <div className='ml-4 flex flex-col'>
-                      <p>{pri.subpara1}</p>
-                      <p>{pri.subpara2}</p>
-                      <p>{pri.subpara3}</p>
-                      <p>{pri.subpara4}</p>
-                  </div>
-
-                  <div className='flex flex-col ml-3'>
-                      <p>{pri.para1}</p>
-                      <p>{pri.para2}</p>
-                      <p>{pri.para3}</p>
-                      <p>{pri.para4}</p>
-                  </div>
-
-                    <p>{pri.footerpara}</p>
-                  </div>
-
-                  <div className='flex flex-col'>
-                    <h1 className='text-blue-800 text-xl'>{pri.subtitle1}</h1>
-                    <p>{pri.subpara5}</p>
-
-                    <div className='ml-4 flex flex-col'>
-                      <p>{pri.subpara6}</p>
-                      <p>{pri.subpara7}</p>
-                      <p>{pri.subpara8}</p>
-                      <p>{pri.subpara9}</p>
-                      <p>{pri.subpara10}</p>
-                    </div>
-
-                    <p>{pri.footerpara1}</p>
-                  </div>
-                </div>
-              </div>
-            )
-          })}
-        </div>
-        
-        {/* Footer */}
-        <Footer />
-
-      </div>
-
-    </>
-  )
-}
-
-export default Privacy
+export default Privacy;

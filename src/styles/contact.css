@@ -1,32 +1,95 @@
-/* Laptop Small (up to 1024px) */
+.contact-card {
+  transition: all 0.3s ease;
+}
+
+.contact-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 15px 30px rgba(0, 0, 0, 0.1);
+}
+
+.map-spinner {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  border: 3px solid rgba(79, 70, 229, 0.2);
+  border-top-color: #4f46e5;
+  animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+input:focus, textarea:focus {
+  box-shadow: 0 0 0 3px rgba(79, 70, 229, 0.3);
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
 @media only screen and (max-width: 1024px) {
-    body {
-      font-size: 16px;
-    }
+  .contact-card {
+    padding: 1.25rem;
+  }
+}
 
-    .address-container {
-        padding: 0;
-    }
-
-    .form-container {
-        width: 100vw;
-        display: flex;
-        flex-direction: column;
-    }
-
-    .google-map {
-        width: 100%;
-    }
-
-    .form {
-        width: 100%;
-    }
+@media only screen and (max-width: 768px) {
+  .contact-card {
+    padding: 1rem;
   }
   
-  /* Tablet (up to 768px) */
-  @media only screen and (max-width: 768px) {
-    body {
-      font-size: 15px;
-    }
+  .map-spinner {
+    width: 30px;
+    height: 30px;
+  }
+}
+
+@media only screen and (max-width: 640px) {
+  .contact-card a {
+    font-size: 0.75rem;
   }
   
+  button[type="submit"] {
+    width: 100%;
+  }
+}
+
+input, textarea {
+  transition: border-color 0.2s, box-shadow 0.2s;
+}
+
+::placeholder {
+  color: #9ca3af;
+  opacity: 0.7;
+}
+
+.bg-gradient-contact {
+  background: linear-gradient(135deg, #f9fafb 0%, #f3f4f6 100%);
+}
+
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.animate-fadeInUp {
+  animation: fadeInUp 0.5s ease-out;
+}
+
+iframe {
+  filter: grayscale(0.2);
+  transition: filter 0.3s ease;
+}
+
+iframe:hover {
+  filter: grayscale(0);
+}
