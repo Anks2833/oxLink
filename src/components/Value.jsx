@@ -317,29 +317,29 @@ const Value = () => {
                 >
                     <motion.p
                         initial={{ translateX: "-100%" }}
-                        whileInView={{ translateX: "3%" }}
+                        whileInView={{ translateX: "5%" }}
                         transition={{ duration: 1, delay: 0.1 }}
                         viewport={{ once: true }}
                         className='text-[4.5vw] text-[#002A77]'
                     >
-                        <span className='font-bold'>Safety: </span><br />Ensuring safety through a committed attitude towards people, property, and the workplace.
+                        <span className='font-bold'>Safety: </span><br />Ensuring safety through a committed<br /> attitude towards people, property, and the workplace.
 
                     </motion.p>
 
                     <motion.p
                         initial={{ translateX: "-100%" }}
-                        whileInView={{ translateX: "3%" }}
+                        whileInView={{ translateX: "5%" }}
                         transition={{ duration: 1, delay: 0.2 }}
                         viewport={{ once: true }}
                         className='text-[4.5vw] text-[#002A77]'
                     >
-                        <span className='font-bold'>Respect: </span><br />Valuing people, society, and the environment in our actions and decisions.
+                        <span className='font-bold'>Respect: </span><br />Valuing people, society, and the environment<br /> in our actions and decisions.
 
                     </motion.p>
 
                     <motion.p
                         initial={{ translateX: "-100%" }}
-                        whileInView={{ translateX: "3%" }}
+                        whileInView={{ translateX: "5%" }}
                         transition={{ duration: 1, delay: 0.3 }}
                         viewport={{ once: true }}
                         className='text-[4.5vw] text-[#002A77]'
@@ -350,7 +350,7 @@ const Value = () => {
 
                     <motion.p
                         initial={{ translateX: "-100%" }}
-                        whileInView={{ translateX: "3%" }}
+                        whileInView={{ translateX: "5%" }}
                         transition={{ duration: 1, delay: 0.4 }}
                         viewport={{ once: true }}
                         className='text-[4.5vw] text-[#002A77]'
@@ -361,18 +361,18 @@ const Value = () => {
 
                     <motion.p
                         initial={{ translateX: "-100%" }}
-                        whileInView={{ translateX: "3%" }}
+                        whileInView={{ translateX: "5%" }}
                         transition={{ duration: 1, delay: 0.5 }}
                         viewport={{ once: true }}
                         className='text-[4.5vw] text-[#002A77]'
                     >
-                        <span className='font-bold'>Sustainability: </span><br />Mindful and judicious use of resources with respect to the elimination of toxic waste to foster a greener future.
+                        <span className='font-bold'>Sustainability: </span><br />Mindful and judicious use of resources with respect to the elimination of toxic waste<br/> to foster a greener future.
 
                     </motion.p>
 
                     <motion.p
                         initial={{ translateX: "-100%" }}
-                        whileInView={{ translateX: "3%" }}
+                        whileInView={{ translateX: "5%" }}
                         transition={{ duration: 1, delay: 0.6 }}
                         viewport={{ once: true }}
                         className='text-[4.5vw] text-[#002A77]'
