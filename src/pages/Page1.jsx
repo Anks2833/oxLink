@@ -35,12 +35,11 @@ const Page1 = () => {
 
       <Page1Products />
 
-      <div className="-mt-[180px] sm:mt-[3000px]">
+      <div className="-mt-[180px] md:[0px] lg:mt-[3000px]">
         <Footer />
       </div>
     </div>
   )
 }
 
-export default Page1
-// bg-[#cdcace]
+export default Page1;

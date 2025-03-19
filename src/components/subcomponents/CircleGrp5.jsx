@@ -188,7 +188,7 @@ const CircleGrp5 = () => {
     return (
         <>
             {/* Desktop */}
-            <div className='hidden sm:flex w-fit mr-20 mt-20 rotate-12 gap-14 origin-center purple-circle-group'>
+            <div className='hidden lg:flex w-fit mr-20 mt-20 rotate-12 gap-14 origin-center purple-circle-group'>
 
                 <div className='relative flex flex-col gap-5'>
                     <div className='first-purple-circle w-14 h-14 bg-[#002976] rounded-full'></div>
@@ -213,7 +213,7 @@ const CircleGrp5 = () => {
             </div>
 
             {/* Mobile */}
-            <div className='flex sm:hidden w-fit gap-14 origin-center purple-circle-group-mobile'>
+            <div className='flex lg:hidden w-fit gap-14 origin-center purple-circle-group-mobile'>
 
                 <div className='relative flex flex-col gap-5'>
                     <div className='first-purple-circle w-14 h-14 bg-[#002976] rounded-full'></div>

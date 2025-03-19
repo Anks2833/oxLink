@@ -104,7 +104,7 @@ const CircleGrp3 = () => {
         <>
             {/* Desktop */}
             <div
-                className='hidden sm:flex relative w-fit mr-60 rotate-12 flex-col gap-5 origin-center circle-group'
+                className='hidden lg:flex relative w-fit mr-60 rotate-12 flex-col gap-5 origin-center circle-group'
             >
 
                 <div className='flex gap-3'>
@@ -149,7 +149,7 @@ const CircleGrp3 = () => {
 
             {/* Mobile */}
             <div
-                className='flex sm:hidden relative -top-40 w-fit mr-40 flex-col gap-3 origin-center circle-group'
+                className='flex lg:hidden relative -top-40 w-fit mr-40 flex-col gap-3 origin-center circle-group'
             >
 
                 <div className='flex gap-3'>

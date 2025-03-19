@@ -191,7 +191,7 @@ const CircleGrp6 = () => {
     return (
         <>
             {/* Desktop */}
-            <div className='hidden sm:flex w-fit -ml-20 mr-60 mt-20 rotate-12 origin-center orange-circle-group'>
+            <div className='hidden lg:flex w-fit -ml-20 mr-60 mt-20 rotate-12 origin-center orange-circle-group'>
 
                 <div className='orange-circle-group-1 w-32 h-fit relative top-10 left-20 flex flex-col gap-3'>
                     <div className='first-orange-circle absolute left-16 top-10 w-14 h-14 bg-[#FF914D] rounded-full'></div>
@@ -211,7 +211,7 @@ const CircleGrp6 = () => {
             </div>
 
             {/* Mobile */}
-            <div className='flex sm:hidden w-fit mr-40 origin-center orange-circle-group'>
+            <div className='flex lg:hidden w-fit mr-40 origin-center orange-circle-group'>
 
                 <div className='orange-circle-group-1 w-32 h-fit relative top-10 left-20 flex flex-col gap-3'>
                     <div className='first-orange-circle absolute left-16 top-10 w-14 h-14 bg-[#FF914D] rounded-full'></div>

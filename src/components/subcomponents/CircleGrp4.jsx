@@ -73,7 +73,7 @@ const CircleGrp4 = () => {
     return (
         <>
             {/* Desktop */}
-            <div className='hidden sm:flex w-fit mr-20 rotate-12 flex-col gap-5 origin-center px-10 circle-group-green pt-10'>
+            <div className='hidden lg:flex w-fit mr-20 rotate-12 flex-col gap-5 origin-center px-10 circle-group-green pt-10'>
 
                 <div className='flex gap-3'>
                     <div className='first-green-circle w-14 h-14 bg-[#2bb573] rounded-full'></div>
@@ -94,7 +94,7 @@ const CircleGrp4 = () => {
             </div>
 
             {/* Mobile */}
-            <div className='flex sm:hidden w-fit flex-col gap-3 origin-center px-10 circle-group-green pt-10'>
+            <div className='flex lg:hidden w-fit flex-col gap-3 origin-center px-10 circle-group-green pt-10'>
 
                 <div className='flex gap-3'>
                     <div className='first-green-circle w-14 h-14 bg-[#2bb573] rounded-full'></div>

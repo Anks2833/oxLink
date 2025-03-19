@@ -4,8 +4,8 @@ import { motion } from 'framer-motion' // Import motion from framer-motion
 const CircleGrp2 = () => {
     return (
         <>
-
-            <div className='hidden sm:flex w-fit mr-20 rotate-12 flex-col gap-5 origin-center'>
+            {/* Desktop */}
+            <div className='hidden lg:flex w-fit mr-20 rotate-12 flex-col gap-5 origin-center'>
 
                 <div className='flex gap-5'>
                     <motion.div
@@ -81,7 +81,8 @@ const CircleGrp2 = () => {
 
             </div>
 
-            <div className='flex sm:hidden w-fit flex-col gap-3 origin-center'>
+            {/* Mobile */}
+            <div className='flex lg:hidden w-fit flex-col gap-3 origin-center'>
 
                 <div className='flex gap-5'>
                     <motion.div

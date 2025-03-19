@@ -1,0 +1,54 @@
+@media screen and (min-width: 1024px) and (max-width: 1366px) {
+    .page13 {
+      margin-top: 0px !important;
+    }
+  
+    .value-text {
+      font-size: 5rem !important;
+      line-height: 1.1 !important;
+    }
+    
+    .circle-container-3 {
+      width: 350px !important;
+      height: 500px !important;
+      margin-right: 1.5rem !important;
+    }
+    
+    .circle-20, .circle-21, .circle-22, .circle-23, 
+    .circle-24, .circle-25, .circle-26, .circle-27, 
+    .circle-28, .circle-29 {
+      width: 60px !important;
+      height: 60px !important;
+    }
+    
+    .value-para .para {
+      font-size: 1.2rem !important;
+      line-height: 1.5 !important;
+      width: 450px !important;
+    }
+    
+    .value-para {
+      gap: 0.75rem !important;
+    }
+    
+    .page13 {
+      gap: 1.5rem !important;
+      padding-left: 4rem !important;
+    }
+  }
+  
+  @media screen and (min-width: 1024px) and (max-width: 1200px) {
+    .value-text {
+      font-size: 4rem !important;
+    }
+    
+    .circle-container-3 {
+      width: 350px !important;
+      height: 450px !important;
+    }
+    
+    .value-para .para {
+      font-size: 1rem !important;
+      width: 400px !important;
+    }
+  }

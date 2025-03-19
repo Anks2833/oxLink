@@ -6,7 +6,7 @@ const CircleGrp1 = () => {
         <>
 
             {/* Desktop */}
-            <div className='hidden sm:flex w-fit mr-20 rotate-12 flex-col gap-5 origin-center'>
+            <div className='hidden md:hidden lg:flex w-fit mr-20 rotate-12 flex-col gap-5 origin-center'>
 
                 <div className='flex gap-8'>
                     <motion.div
@@ -83,7 +83,7 @@ const CircleGrp1 = () => {
             </div>
 
             {/* Mobile */}
-            <div className='flex sm:hidden w-fit mt-6 flex-col gap-3 origin-center'>
+            <div className='flex lg:hidden w-fit mt-6 flex-col gap-3 origin-center'>
 
                 <div className='flex gap-8'>
                     <motion.div

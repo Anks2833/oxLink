@@ -5,9 +5,10 @@ import { NavLink } from "react-router-dom";
 const ProductsContent5 = () => {
   return (
     <>
+      {/* Desktop */}
       <NavLink
         to="/drag-energy-chain-cable"
-        className="hidden sm:flex w-fit flex-col gap-2 border-l border-l-black rotate-12 px-10 mr-20 mt-10 overflow-hidden cursor-pointer"
+        className="hidden lg:flex w-fit flex-col gap-2 border-l border-l-black rotate-12 px-10 mr-20 mt-10 overflow-hidden cursor-pointer"
       >
         <motion.div
           className="flex justify-center items-center gap-2"
@@ -82,9 +83,47 @@ const ProductsContent5 = () => {
         </div>
       </NavLink>
 
-      <div
-        className="flex sm:hidden w-fit flex-col gap-2 px-5 mt-32 mb-52"
-      >
+      {/* Tablet */}
+      <div className="hidden md:flex lg:hidden w-full flex-col gap-4 px-8 mt-36 mb-60 max-w-2xl mx-auto">
+        <motion.div
+          className="flex justify-center items-center gap-2"
+          initial={{ x: -100, opacity: 0 }}
+          whileInView={{ x: 0, opacity: 1 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.5, delay: 0.1 }}
+        >
+          <h1 className="product-text font-semibold text-3xl">06.</h1>
+          <h1 className="product-text font-semibold text-3xl">
+            Drag/Energy Chain Cables
+          </h1>
+        </motion.div>
+
+        <div className="text-xl text-center px-6">
+          <motion.p
+            initial={{ x: -100, opacity: 0 }}
+            whileInView={{ x: 0, opacity: 1 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.5, delay: 0.2 }}
+            className="mb-2"
+          >
+            These highly flexible cables are designed for continuous flexing
+            applications in energy chains. They provide reliable performance in
+            dynamic and automated systems where constant movement is required.
+          </motion.p>
+        </div>
+
+        <NavLink
+          to="/drag-energy-chain-cable"
+          className="w-full flex justify-center mt-2"
+        >
+          <p className="text-[#f99938] underline text-xl hover:text-[#e07b13] transition-colors">
+            View More
+          </p>
+        </NavLink>
+      </div>
+
+      {/* Mobile */}
+      <div className="flex md:hidden w-fit flex-col gap-2 px-5 mt-32 mb-52">
         <motion.div
           className="flex justify-center items-center gap-2"
           initial={{ x: -100, opacity: 0 }}
@@ -157,7 +196,10 @@ const ProductsContent5 = () => {
           </motion.p>
         </div>
 
-        <NavLink to="/drag-energy-chain-cable" className="w-full flex justify-center">
+        <NavLink
+          to="/drag-energy-chain-cable"
+          className="w-full flex justify-center"
+        >
           <p className="text-[#f99938] underline text-lg">View More</p>
         </NavLink>
       </div>

@@ -1,10 +1,10 @@
-import React, { useEffect, useRef } from 'react'
-import { gsap } from 'gsap';
-import { ScrollTrigger } from 'gsap/ScrollTrigger';
-import { motion } from 'framer-motion';
+import React, { useEffect, useRef } from "react";
+import { gsap } from "gsap";
+import { ScrollTrigger } from "gsap/ScrollTrigger";
+import { motion } from "framer-motion";
 import { FcOnlineSupport } from "react-icons/fc";
 import { FaEnvelopeOpenText } from "react-icons/fa";
-import { NavLink } from 'react-router-dom';
+import { NavLink } from "react-router-dom";
 
 import { FaFacebookSquare } from "react-icons/fa";
 import { FaLinkedin } from "react-icons/fa";
@@ -17,100 +17,101 @@ import { FaPhoneAlt } from "react-icons/fa";
 import { IoMail } from "react-icons/io5";
 import { FaLocationDot } from "react-icons/fa6";
 
-import '../styles/footer.css'
+import "../styles/footer.css";
 
 // import BottomLeftAnimation from './footeranimations/BottomLeftAnimation';
 
 const Footer = () => {
+  const footerRef = useRef(null);
+  const [productLinks, setProductLinks] = React.useState([]);
+  const [phoneNumber, setPhoneNumber] = React.useState(null);
+  const [email, setEmail] = React.useState(null);
+  const [facebookLink, setFacebookLink] = React.useState(null);
+  const [instagramLink, setInstagramLink] = React.useState(null);
+  const [linkedinLink, setLinkedinLink] = React.useState(null);
+  const [youtubeLink, setYoutubeLink] = React.useState(null);
 
-    const footerRef = useRef(null);
-    const [productLinks, setProductLinks] = React.useState([]);
-    const [phoneNumber, setPhoneNumber] = React.useState(null);
-    const [email, setEmail] = React.useState(null);
-    const [facebookLink, setFacebookLink] = React.useState(null);
-    const [instagramLink, setInstagramLink] = React.useState(null);
-    const [linkedinLink, setLinkedinLink] = React.useState(null);
-    const [youtubeLink, setYoutubeLink] = React.useState(null);
+  useEffect(() => {
+    fetch("https://ox-admin.wtmmedia.com/api/company")
+      .then((res) => res.json())
+      .then((data) => {
+        setPhoneNumber(data.data[0]?.phoneNumber1 || "No Data Available");
+        setEmail(data.data[0]?.infoEmail || "No Data Available");
+        setFacebookLink(data.data[0]?.facebookLink || "No Data Available");
+        setInstagramLink(data.data[0]?.instagramLink || "No Data Available");
+        setLinkedinLink(data.data[0]?.linkedinLink || "No Data Available");
+        setYoutubeLink(data.data[0]?.youtubeLink || "No Data Available");
+      });
+  }, []);
 
-    useEffect(() => {
-        fetch("https://ox-admin.wtmmedia.com/api/company")
-            .then(res => res.json())
-            .then((data) => {
-                setPhoneNumber(data.data[0]?.phoneNumber1 || 'No Data Available');
-                setEmail(data.data[0]?.infoEmail || 'No Data Available');
-                setFacebookLink(data.data[0]?.facebookLink || 'No Data Available');
-                setInstagramLink(data.data[0]?.instagramLink || 'No Data Available');
-                setLinkedinLink(data.data[0]?.linkedinLink || 'No Data Available');
-                setYoutubeLink(data.data[0]?.youtubeLink || 'No Data Available');
-            })
-    }, []);
+  useEffect(() => {
+    fetch("https://ox-admin.wtmmedia.com/api/category")
+      .then((res) => res.json())
+      .then((data) => {
+        setProductLinks(data.data);
+      });
+  }, []);
+  const quickLinks = [
+    { id: 1, name: "About Us", link: "/about" },
+    { id: 2, name: "Careers", link: "/career" },
+    // { id: 3, name: "Support", link: "/support" },
+    { id: 4, name: "Blog", link: "/blog" },
+    { id: 5, name: "Terms & Conditions", link: "/terms" },
+    { id: 6, name: "E-Catalog", link: "/files/Ox-LinkBrochure.pdf" },
+  ];
 
+  const contact = [
+    { id: 1, icon: <FaPhoneAlt />, content: "+91-9821118868 , +91-9821117343" },
+    { id: 2, icon: <IoMail />, content: "info@ox-link.in" },
+    {
+      id: 3,
+      icon: <FaLocationDot />,
+      content:
+        "205, 12, Zamrudpur Community Centre, Kailash Colony, New Delhi-110048",
+    },
+  ];
 
-    useEffect(() => {
-        fetch("https://ox-admin.wtmmedia.com/api/category")
-            .then(res => res.json())
-            .then((data) => {
-                setProductLinks(data.data);
-            })
-    }, []);
-    const quickLinks = [
-        { id: 1, name: "About Us", link: "/about" },
-        { id: 2, name: "Careers", link: "/career" },
-        // { id: 3, name: "Support", link: "/support" },
-        { id: 4, name: "Blog", link: "/blog" },
-        { id: 5, name: "Terms & Conditions", link: "/terms" },
-        { id: 6, name: "E-Catalog", link: "/files/Ox-LinkBrochure.pdf" },
-    ];
+  useEffect(() => {
+    gsap.registerPlugin(ScrollTrigger);
 
+    const footerText = document.querySelectorAll(".footer-text");
+    const footerText1 = document.querySelectorAll(".footer-text-1");
+    const icon = document.querySelectorAll(".icon");
 
-    const contact = [
-        { id: 1, icon: <FaPhoneAlt />, content: "+91-9821118868 , +91-9821117343" },
-        { id: 2, icon: <IoMail />, content: "info@ox-link.in" },
-        { id: 3, icon: <FaLocationDot />, content: "205, 12, Zamrudpur Community Centre, Kailash Colony, New Delhi-110048" },
-    ]
+    const tl = gsap.timeline({
+      scrollTrigger: {
+        trigger: footerRef.current,
+        start: "top bottom",
+        end: "bottom top",
+        scrub: true,
+      },
+    });
 
-    useEffect(() => {
-        gsap.registerPlugin(ScrollTrigger);
+    tl.fromTo(
+      footerText,
+      { x: -100 },
+      { x: 140, duration: 1, ease: "linear" },
+      0
+    );
 
-        const footerText = document.querySelectorAll('.footer-text');
-        const footerText1 = document.querySelectorAll('.footer-text-1');
-        const icon = document.querySelectorAll('.icon');
+    tl.fromTo(
+      footerText1,
+      { x: -100 },
+      { x: 140, duration: 1, ease: "linear" },
+      0
+    );
 
-        const tl = gsap.timeline({
-            scrollTrigger: {
-                trigger: footerRef.current,
-                start: 'top bottom',
-                end: 'bottom top',
-                scrub: true,
-            }
-        });
+    tl.fromTo(icon, { opacity: 0 }, { opacity: 1, ease: "linear" }, 0);
+  }, []);
 
-        tl.fromTo(footerText,
-            { x: -100 },
-            { x: 140, duration: 1, ease: 'linear' },
-            0
-        );
-
-        tl.fromTo(footerText1,
-            { x: -100 },
-            { x: 140, duration: 1, ease: 'linear' },
-            0
-        );
-
-        tl.fromTo(icon,
-            { opacity: 0 },
-            { opacity: 1, ease: 'linear' },
-            0
-        );
-
-    }, []);
-
-    return (
-        <>
-            {/* Desktop */}
-            <div ref={footerRef} className='hidden sm:flex footer-container relative w-full flex-col pt-[10vh] pb-5'>
-
-                {/* 
+  return (
+    <>
+      {/* Desktop */}
+      <div
+        ref={footerRef}
+        className="hidden lg:flex footer-container relative w-full flex-col pt-[10vh] pb-5"
+      >
+        {/* 
                     <div className='w-fit absolute flex'>
                         <BottomLeftAnimation />
                         <BottomLeftAnimation />
@@ -118,383 +119,628 @@ const Footer = () => {
                     </div> 
                 */}
 
-                {/* Top part */}
-                <div className='w-full min-h-20 flex justify-evenly items-center pb-10 border-b border-b-zinc-400'>
+        {/* Top part */}
+        <div className="w-full min-h-20 flex justify-evenly items-center pb-10 border-b border-b-zinc-400">
+          <div className="flex items-center justify-center gap-4">
+            <motion.div
+              initial={{ opacity: 0 }}
+              whileInView={{ opacity: 1 }}
+              transition={{ duration: 1 }}
+              className="w-fit text-[4vw]"
+            >
+              <FcOnlineSupport />
+            </motion.div>
 
-                    <div className='flex items-center justify-center gap-4'>
-                        <motion.div
-                            initial={{ opacity: 0 }}
-                            whileInView={{ opacity: 1 }}
-                            transition={{ duration: 1 }}
-                            className='w-fit text-[4vw]'
-                        >
-                            <FcOnlineSupport />
-                        </motion.div>
+            <div className="w-[20vw] flex flex-col leading-none overflow-hidden">
+              <motion.p
+                initial={{ translateX: "-100%" }}
+                whileInView={{ translateX: "0%" }}
+                transition={{ duration: 0.5 }}
+                className="expert-assistance text-3xl font-semibold text-black leading-none mb-2"
+              >
+                EXPERT ASSISTANCE
+              </motion.p>
 
-                        <div className='w-[20vw] flex flex-col leading-none overflow-hidden'>
-                            <motion.p
-                                initial={{ translateX: "-100%" }}
-                                whileInView={{ translateX: "0%" }}
-                                transition={{ duration: 0.5 }}
-                                className='expert-assistance text-3xl font-semibold text-black leading-none mb-2'
-                            >
-                                EXPERT ASSISTANCE
-                            </motion.p>
+              <motion.p
+                initial={{ translateX: "-100%" }}
+                whileInView={{ translateX: "0%" }}
+                transition={{ duration: 0.5 }}
+                className="phone text-lg text-black leading-none"
+              >
+                DIAL: {`+91 ${phoneNumber}`}
+              </motion.p>
+            </div>
+          </div>
 
-                            <motion.p
-                                initial={{ translateX: "-100%" }}
-                                whileInView={{ translateX: "0%" }}
-                                transition={{ duration: 0.5 }}
-                                className='phone text-lg text-black leading-none'
-                            >
-                                DIAL: {`+91 ${phoneNumber}`}
-                            </motion.p>
-                        </div>
+          <div className="flex items-center justify-center gap-4">
+            <motion.div
+              initial={{ opacity: 0 }}
+              whileInView={{ opacity: 1 }}
+              transition={{ duration: 1 }}
+              className="w-fit text-[4vw] text-blue-800"
+            >
+              <FaEnvelopeOpenText />
+            </motion.div>
 
-                    </div>
+            <div className="w-[20vw] flex flex-col leading-none overflow-hidden">
+              <motion.p
+                initial={{ translateX: "-100%" }}
+                whileInView={{ translateX: "0%" }}
+                transition={{ duration: 0.5 }}
+                className="write-to-us text-3xl font-semibold text-black leading-none mb-2"
+              >
+                WRITE TO US
+              </motion.p>
 
-                    <div className='flex items-center justify-center gap-4'>
-                        <motion.div
-                            initial={{ opacity: 0 }}
-                            whileInView={{ opacity: 1 }}
-                            transition={{ duration: 1 }}
-                            className='w-fit text-[4vw] text-blue-800'
-                        >
-                            <FaEnvelopeOpenText />
-                        </motion.div>
+              <motion.p
+                initial={{ translateX: "-100%" }}
+                whileInView={{ translateX: "0%" }}
+                transition={{ duration: 0.5 }}
+                className="email text-lg text-black leading-none"
+              >
+                EMAIL: {email}
+              </motion.p>
+            </div>
+          </div>
+        </div>
 
-                        <div className='w-[20vw] flex flex-col leading-none overflow-hidden'>
-                            <motion.p
-                                initial={{ translateX: "-100%" }}
-                                whileInView={{ translateX: "0%" }}
-                                transition={{ duration: 0.5 }}
-                                className='write-to-us text-3xl font-semibold text-black leading-none mb-2'
-                            >
-                                WRITE TO US
-                            </motion.p>
+        {/* Bottom part */}
+        <div className="w-full pt-6 flex justify-evenly items-start">
+          {/* Logo and socials */}
+          <div className="w-1/4 h-full">
+            <div className="flex flex-col items-center justify-center gap-2 leading-none">
+              <img
+                className="ml-60 leading-3"
+                src="/logo-only.png"
+                alt="logo"
+              />
+              <h1 className="text-[3vw] text-[#002A77] font-semibold leading-7">
+                OX-LINK
+              </h1>
+              <h1 className="text-lg leading-none">Next-Gen Cable Solutions</h1>
 
-                            <motion.p
-                                initial={{ translateX: "-100%" }}
-                                whileInView={{ translateX: "0%" }}
-                                transition={{ duration: 0.5 }}
-                                className='email text-lg text-black leading-none'
-                            >
-                                EMAIL: {email}
-                            </motion.p>
-                        </div>
-                    </div>
+              <div className="flex items-center gap-3">
+                <a
+                  href={facebookLink}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  <FaFacebookSquare className="text-2xl text-black cursor-pointer" />
+                </a>
+                <a
+                  href={linkedinLink}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  <FaLinkedin className="text-2xl text-black cursor-pointer" />
+                </a>
+                <a
+                  href={instagramLink}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  <FaSquareInstagram className="text-2xl text-black cursor-pointer" />
+                </a>
+                <a href={youtubeLink} target="_blank" rel="noopener noreferrer">
+                  <FaSquareYoutube className="text-2xl text-black cursor-pointer" />
+                </a>
+              </div>
+            </div>
+          </div>
 
+          {/* Quick Links and Product Links */}
+          <div className="w-3/4 h-full">
+            {/* Links */}
+            <div className="flex justify-around">
+              <div className="flex flex-col gap-2">
+                <h1 className="text-2xl font-bold">Quick Links</h1>
 
-                </div>
+                {quickLinks.map((item) => {
+                  if (item.id === 6) {
+                    return (
+                      <a
+                        key={item.id}
+                        href={item.link}
+                        download
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="w-fit text-lg"
+                        onClick={(e) => {
+                          e.preventDefault();
+                          window.open(item.link, "_blank");
+                        }}
+                      >
+                        {item.name}
+                      </a>
+                    );
+                  }
+                  return (
+                    <NavLink
+                      className="w-fit text-lg"
+                      key={item.id}
+                      to={item.link}
+                    >
+                      {item.name}
+                    </NavLink>
+                  );
+                })}
+              </div>
 
-                {/* Bottom part */}
-                <div className='w-full pt-6 flex justify-evenly items-start'>
+              <div className="flex flex-col gap-2">
+                <h1 className="text-2xl font-bold">Product</h1>
 
-                    {/* Logo and socials */}
-                    <div className='w-1/4 h-full'>
+                {productLinks.map((item) => (
+                  <NavLink
+                    className="w-fit text-lg"
+                    key={item.id}
+                    to={`/${item.slug}`}
+                  >
+                    {item.title}
+                  </NavLink>
+                ))}
+              </div>
+            </div>
 
-                        <div className='flex flex-col items-center justify-center gap-2 leading-none'>
-                            <img className='ml-60 leading-3' src="/logo-only.png" alt="logo" />
-                            <h1 className='text-[3vw] text-[#002A77] font-semibold leading-7'>OX-LINK</h1>
-                            <h1 className='text-lg leading-none'>Next-Gen Cable Solutions</h1>
+            <div className="flex gap-6 ml-36 mt-20">
+              <NavLink
+                to="/privacy"
+                className="text-xl text-blue-800 cursor-pointer font-semibold"
+              >
+                Privacy
+              </NavLink>
 
-                            <div className='flex items-center gap-3'>
-                                <a href={facebookLink} target="_blank" rel="noopener noreferrer">
-                                    <FaFacebookSquare className='text-2xl text-black cursor-pointer' />
-                                </a>
-                                <a href={linkedinLink} target="_blank" rel="noopener noreferrer">
-                                    <FaLinkedin className='text-2xl text-black cursor-pointer' />
-                                </a>
-                                <a href={instagramLink} target="_blank" rel="noopener noreferrer">
-                                    <FaSquareInstagram className='text-2xl text-black cursor-pointer' />
-                                </a>
-                                <a href={youtubeLink} target="_blank" rel="noopener noreferrer">
-                                    <FaSquareYoutube className='text-2xl text-black cursor-pointer' />
-                                </a>
-                            </div>
-                        </div>
+              <NavLink
+                to="/terms"
+                className="text-xl border-l-2 border-l-black px-10 text-blue-800 cursor-pointer font-semibold"
+              >
+                Terms of us
+              </NavLink>
 
-                    </div>
-
-                    {/* Quick Links and Product Links */}
-                    <div className='w-3/4 h-full'>
-                        {/* Links */}
-                        <div className='flex justify-around'>
-
-                            <div className='flex flex-col gap-2'>
-                                <h1 className='text-2xl font-bold'>Quick Links</h1>
-
-                                {quickLinks.map((item) => {
-                                    if (item.id === 6) {
-                                        return (
-                                            <a
-                                                key={item.id}
-                                                href={item.link}
-                                                download
-                                                target="_blank"
-                                                rel="noopener noreferrer"
-                                                className="w-fit text-lg"
-                                                onClick={(e) => {
-                                                    e.preventDefault();
-                                                    window.open(item.link, '_blank');
-                                                }}
-                                            >
-                                                {item.name}
-                                            </a>
-                                        );
-                                    }
-                                    return (
-                                        <NavLink className="w-fit text-lg" key={item.id} to={item.link}>
-                                            {item.name}
-                                        </NavLink>
-                                    );
-                                })}
-                            </div>
-
-                            <div className='flex flex-col gap-2'>
-                                <h1 className='text-2xl font-bold'>Product</h1>
-
-                                {productLinks.map((item) => (
-                                    <NavLink className="w-fit text-lg" key={item.id} to={`/${item.slug}`}>
-                                        {item.title}
-                                    </NavLink>
-                                ))}
-
-                            </div>
-
-                        </div>
-
-                        <div className='flex gap-6 ml-36 mt-20'>
-                            <NavLink to="/privacy" className='text-xl text-blue-800 cursor-pointer font-semibold'>
-                                Privacy
-                            </NavLink>
-
-                            <NavLink to="/terms" className='text-xl border-l-2 border-l-black px-10 text-blue-800 cursor-pointer font-semibold'>
-                                Terms of us
-                            </NavLink>
-
-                            {/* <NavLink to="/sitemap" className='text-xl text-[#0FBBEB] cursor-pointer font-semibold'>
+              {/* <NavLink to="/sitemap" className='text-xl text-[#0FBBEB] cursor-pointer font-semibold'>
                                 Sitemap
                             </NavLink> */}
-                        </div>
+            </div>
+          </div>
 
-                    </div>
+          {/* Get in touch */}
+          <div className="w-1/3 h-full flex flex-col gap-32 mt-3">
+            <div>
+              <h1 className="text-2xl font-bold">Get in touch</h1>
 
-                    {/* Get in touch */}
-                    <div className='w-1/3 h-full flex flex-col gap-32 mt-3'>
-
-                        <div>
-                            <h1 className='text-2xl font-bold'>Get in touch</h1>
-
-                            <h1 className='text-lg font-semibold text-[#002A77]'>OX-LINK ELECTRONICS PVT. LTD.</h1>
-                        </div>
-
-                        <div className='flex flex-col items-end gap-3 pr-20'>
-
-                            <div className='w-56 h-28 bg-green-500 rounded-xl flex items-center justify-center gap-2'>
-
-                                <div>
-                                    <h1 className='text-white font-semibold leading-none text-2xl'>SCAN</h1>
-                                    <h1 className='font-semibold text-4xl leading-none'>ME!</h1>
-                                </div>
-
-                                <div>
-                                    <MdOutlineKeyboardDoubleArrowRight className='text-white text-4xl' />
-                                </div>
-
-                                <div className='w-fit'>
-                                    <img className='w-20' src="/qr-code.png" alt="qr-code" />
-                                </div>
-
-                            </div>
-
-                            <h1 className='text-sm text-right font-semibold'>© <span className='text-[#0FBBEB]'>2025</span> <span className='text-[#002A77]'>OX-LINK ELECTRONICS PVT. LTD.</span></h1>
-                        </div>
-
-                    </div>
-                </div>
-
+              <h1 className="text-lg font-semibold text-[#002A77]">
+                OX-LINK ELECTRONICS PVT. LTD.
+              </h1>
             </div>
 
-            {/* Mobile */}
-            <div className='flex sm:hidden relative w-full min-h-[50vh] flex-col pt-[10vh] pb-5'>
-
-                {/* Top part */}
-                <div className='w-full min-h-20 flex flex-col items-center gap-6 pb-10 border-b border-b-zinc-400'>
-
-                    <div className='relative flex items-center justify-center gap-2 overflow-hidden'>
-                        <motion.div
-                            initial={{ translateY: "100%" }}
-                            whileInView={{ translateY: "0%" }}
-                            transition={{ duration: 1 }}
-                            className='w-fit text-[10vw]'
-                        >
-                            <FcOnlineSupport />
-                        </motion.div>
-
-                        <motion.div
-
-                            initial={{ translateY: "100%" }}
-                            whileInView={{ translateY: "0%" }}
-                            transition={{ duration: 1 }}
-                            className='w-full flex flex-col leading-none overflow-hidden'
-                        >
-                            <p className='text-lg font-semibold text-black leading-none'>EXPERT ASSISTANCE</p>
-                            <p className='text-sm text-black leading-none'>DIAL: +91 982 111 8868</p>
-                        </motion.div>
-                    </div>
-
-                    <div className='relative flex items-center justify-center gap-2 overflow-hidden'>
-                        <motion.div
-                            initial={{ translateY: "100%" }}
-                            whileInView={{ translateY: "0%" }}
-                            transition={{ duration: 1 }}
-                            className='w-fit text-[8vw] text-blue-800'
-                        >
-                            <FaEnvelopeOpenText />
-                        </motion.div>
-
-                        <motion.div
-                            initial={{ translateY: "100%" }}
-                            whileInView={{ translateY: "0%" }}
-                            transition={{ duration: 1 }}
-                            className='w-full flex flex-col leading-none overflow-hidden'
-                        >
-                            <p className='text-lg font-semibold text-black leading-none'>WRITE TO US</p>
-                            <p className='text-sm text-black leading-none'>EMAIL: INFO@OX-LINK.com</p>
-                        </motion.div>
-                    </div>
-
+            <div className="flex flex-col items-end gap-3 pr-20">
+              <div className="w-56 h-28 bg-green-500 rounded-xl flex items-center justify-center gap-2">
+                <div>
+                  <h1 className="text-white font-semibold leading-none text-2xl">
+                    SCAN
+                  </h1>
+                  <h1 className="font-semibold text-4xl leading-none">ME!</h1>
                 </div>
 
-                {/* Bottom part */}
-                <div className='w-full min-h-20 pt-6 flex flex-col items-start'>
+                <div>
+                  <MdOutlineKeyboardDoubleArrowRight className="text-white text-4xl" />
+                </div>
 
-                    {/* Logo and socials */}
-                    <div className='w-full h-full flex flex-col items-start pl-6'>
-                        <div className='flex flex-col gap-8 items-start leading-none'>
-                            {/* <img className='w-24 leading-3' src="/footer-img.png" alt="logo" /> */}
-                            <img className='w-40' src="/logo.png" alt="OX-Link Electronics" />
+                <div className="w-fit">
+                  <img className="w-20" src="/qr-code.png" alt="qr-code" />
+                </div>
+              </div>
 
-                            {/* Contact */}
-                            <div className='flex flex-col justify-center gap-5 text-black'>
-                                {contact.map((con) => {
-                                    return (
-                                        <div className='flex items-center gap-2' key={con.id}>
-                                            <div className='w-fit text-blue-800'>{con.icon}</div>
-                                            <h1 className='text-sm'>{con.content}</h1>
-                                        </div>
-                                    )
-                                })}
-                            </div>
+              <h1 className="text-sm text-right font-semibold">
+                © <span className="text-[#0FBBEB]">2025</span>{" "}
+                <span className="text-[#002A77]">
+                  OX-LINK ELECTRONICS PVT. LTD.
+                </span>
+              </h1>
+            </div>
+          </div>
+        </div>
+      </div>
 
-                            {/* Socials */}
-                            <div className='flex items-center gap-3 mt-4'>
-                                <a href={facebookLink}><FaFacebookSquare className='text-2xl text-[#0c4cd7] cursor-pointer' /></a>
-                                <a href={linkedinLink}><FaLinkedin className='text-2xl text-[#0077B5] cursor-pointer' /></a>
-                                <a href={instagramLink}><FaSquareInstagram className='text-2xl text-[#d62976] cursor-pointer' /></a>
-                                <a href={youtubeLink}><FaSquareYoutube className='text-2xl text-[#CD201F] cursor-pointer' /></a>
-                            </div>
-                        </div>
+      {/* Tablet */}
+      <div className="hidden sm:flex md:flex lg:hidden relative w-full min-h-[50vh] flex-col pt-16 pb-10">
+        {/* Top part - Contact Info */}
+        <div className="w-full min-h-20 flex justify-center gap-16 pb-10 border-b border-b-zinc-400">
+          <div className="relative flex items-center justify-center gap-3 overflow-hidden">
+            <motion.div
+              initial={{ translateY: "100%" }}
+              whileInView={{ translateY: "0%" }}
+              transition={{ duration: 1 }}
+              className="w-fit text-4xl"
+            >
+              <FcOnlineSupport />
+            </motion.div>
+
+            <motion.div
+              initial={{ translateY: "100%" }}
+              whileInView={{ translateY: "0%" }}
+              transition={{ duration: 1 }}
+              className="w-full flex flex-col leading-none overflow-hidden"
+            >
+              <p className="text-xl font-semibold text-black leading-none">
+                EXPERT ASSISTANCE
+              </p>
+              <p className="text-base text-black leading-none">
+                DIAL: +91 982 111 8868
+              </p>
+            </motion.div>
+          </div>
+
+          <div className="relative flex items-center justify-center gap-3 overflow-hidden">
+            <motion.div
+              initial={{ translateY: "100%" }}
+              whileInView={{ translateY: "0%" }}
+              transition={{ duration: 1 }}
+              className="w-fit text-4xl text-blue-800"
+            >
+              <FaEnvelopeOpenText />
+            </motion.div>
+
+            <motion.div
+              initial={{ translateY: "100%" }}
+              whileInView={{ translateY: "0%" }}
+              transition={{ duration: 1 }}
+              className="w-full flex flex-col leading-none overflow-hidden"
+            >
+              <p className="text-xl font-semibold text-black leading-none">
+                WRITE TO US
+              </p>
+              <p className="text-base text-black leading-none">
+                EMAIL: INFO@OX-LINK.com
+              </p>
+            </motion.div>
+          </div>
+        </div>
+
+        {/* Bottom part - Two Column Layout */}
+        <div className="w-full pt-10 flex flex-wrap justify-between px-8">
+          {/* Column 1: Logo, Contact & Socials */}
+          <div className="w-1/2 mb-10">
+            <div className="flex flex-col gap-8 items-start leading-none">
+              <img className="w-48" src="/logo.png" alt="OX-Link Electronics" />
+
+              {/* Contact */}
+              <div className="flex flex-col justify-center gap-5 text-black">
+                {contact.map((con) => (
+                  <div className="flex items-center gap-3" key={con.id}>
+                    <div className="w-fit text-blue-800 text-xl">
+                      {con.icon}
                     </div>
+                    <h1 className="text-base">{con.content}</h1>
+                  </div>
+                ))}
+              </div>
 
-                    {/* Quick Links and Product Links */}
-                    <div className='w-full h-full mt-8 flex flex-col items-start pl-6'>
-                        {/* Links */}
-                        <div className='flex flex-col items-start gap-8'>
+              {/* Socials */}
+              <div className="flex items-center gap-4 mt-4">
+                <a href={facebookLink}>
+                  <FaFacebookSquare className="text-3xl text-[#0c4cd7] cursor-pointer" />
+                </a>
+                <a href={linkedinLink}>
+                  <FaLinkedin className="text-3xl text-[#0077B5] cursor-pointer" />
+                </a>
+                <a href={instagramLink}>
+                  <FaSquareInstagram className="text-3xl text-[#d62976] cursor-pointer" />
+                </a>
+                <a href={youtubeLink}>
+                  <FaSquareYoutube className="text-3xl text-[#CD201F] cursor-pointer" />
+                </a>
+              </div>
+            </div>
+          </div>
 
-                            <div className='flex flex-col gap-2'>
-                                <h1 className='text-2xl font-bold underline'>Quick Links</h1>
+          {/* Column 2: Quick Links and Product Links */}
+          <div className="w-1/2 flex gap-10 mb-10">
+            {/* Quick Links */}
+            <div className="flex flex-col gap-2">
+              <h1 className="text-2xl font-bold underline mb-3">Quick Links</h1>
+              {quickLinks.map((item) => {
+                if (item.id === 6) {
+                  return (
+                    <a
+                      key={item.id}
+                      href={item.link}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="w-fit text-lg hover:text-blue-800 transition-colors"
+                      download
+                    >
+                      {item.name}
+                    </a>
+                  );
+                }
+                return (
+                  <NavLink
+                    className="w-fit text-lg hover:text-blue-800 transition-colors"
+                    key={item.id}
+                    to={item.link}
+                  >
+                    {item.name}
+                  </NavLink>
+                );
+              })}
+            </div>
 
-                                {quickLinks.map((item) => {
-                                    if (item.id === 6) {
-                                        return (
-                                            <a
-                                                key={item.id}
-                                                href={item.link}
-                                                target="_blank"
-                                                rel="noopener noreferrer"
-                                                className="w-fit text-lg"
-                                                download
-                                            >
-                                                {item.name}
-                                            </a>
-                                        );
-                                    }
-                                    return (
-                                        <NavLink className="w-fit text-lg" key={item.id} to={item.link}>
-                                            {item.name}
-                                        </NavLink>
-                                    );
-                                })}
-                            </div>
+            {/* Product Links */}
+            <div className="flex flex-col gap-2">
+              <h1 className="text-2xl font-bold underline mb-3">Product</h1>
+              {productLinks.map((item) => (
+                <NavLink
+                  className="w-fit text-lg hover:text-blue-800 transition-colors"
+                  key={item.id}
+                  to={`/${item.slug}`}
+                >
+                  {item.title}
+                </NavLink>
+              ))}
+            </div>
+          </div>
 
-                            <div className='flex flex-col gap-2'>
-                                <h1 className='text-2xl font-bold underline'>Product</h1>
+          {/* Get in touch - Full Width */}
+          <div className="w-full flex flex-wrap justify-between items-center gap-6 mt-4 border-t border-t-zinc-300 pt-8">
+            <div className="flex flex-col gap-2">
+              <h1 className="text-2xl font-bold underline">Get in touch</h1>
+              <h1 className="text-xl font-semibold text-[#002A77]">
+                OX-LINK ELECTRONICS PVT. LTD.
+              </h1>
+            </div>
 
-                                {productLinks.map((item) => (
-                                    <NavLink className="w-fit text-lg" key={item.id} to={`/${item.slug}`}>
-                                        {item.title}
-                                    </NavLink>
-                                ))}
-                            </div>
+            <div className="flex flex-col items-center gap-4">
+              <div className="w-64 h-32 bg-green-500 rounded-xl flex items-center justify-center gap-3">
+                <div>
+                  <h1 className="text-white font-semibold leading-none text-2xl">
+                    SCAN
+                  </h1>
+                  <h1 className="font-semibold text-4xl leading-none">ME!</h1>
+                </div>
 
-                        </div>
+                <div>
+                  <MdOutlineKeyboardDoubleArrowRight className="text-white text-4xl" />
+                </div>
+
+                <div className="w-fit">
+                  <img className="w-24" src="/qr-code.png" alt="qr-code" />
+                </div>
+              </div>
+            </div>
+          </div>
+
+          {/* Copyright and Links */}
+          <div className="w-full flex flex-wrap justify-between items-center mt-10 border-t border-t-zinc-300 pt-8">
+            <h1 className="text-sm font-semibold">
+              © <span className="text-[#0FBBEB]">2025</span>{" "}
+              <span className="text-[#002A77]">
+                OX-LINK ELECTRONICS PVT. LTD.
+              </span>
+            </h1>
+
+            <div className="flex gap-6">
+              <NavLink
+                to="/privacy"
+                className="text-sm text-blue-800 font-semibold hover:underline"
+              >
+                Privacy
+              </NavLink>
+
+              <NavLink
+                to="/terms"
+                className="text-sm border-l-2 border-l-black pl-6 text-blue-800 font-semibold hover:underline"
+              >
+                Terms of use
+              </NavLink>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      {/* Mobile */}
+      <div className="flex md:hidden lg:hidden relative w-full min-h-[50vh] flex-col pt-[10vh] pb-5">
+        {/* Top part */}
+        <div className="w-full min-h-20 flex flex-col items-center gap-6 pb-10 border-b border-b-zinc-400">
+          <div className="relative flex items-center justify-center gap-2 overflow-hidden">
+            <motion.div
+              initial={{ translateY: "100%" }}
+              whileInView={{ translateY: "0%" }}
+              transition={{ duration: 1 }}
+              className="w-fit text-[10vw]"
+            >
+              <FcOnlineSupport />
+            </motion.div>
+
+            <motion.div
+              initial={{ translateY: "100%" }}
+              whileInView={{ translateY: "0%" }}
+              transition={{ duration: 1 }}
+              className="w-full flex flex-col leading-none overflow-hidden"
+            >
+              <p className="text-lg font-semibold text-black leading-none">
+                EXPERT ASSISTANCE
+              </p>
+              <p className="text-sm text-black leading-none">
+                DIAL: +91 982 111 8868
+              </p>
+            </motion.div>
+          </div>
+
+          <div className="relative flex items-center justify-center gap-2 overflow-hidden">
+            <motion.div
+              initial={{ translateY: "100%" }}
+              whileInView={{ translateY: "0%" }}
+              transition={{ duration: 1 }}
+              className="w-fit text-[8vw] text-blue-800"
+            >
+              <FaEnvelopeOpenText />
+            </motion.div>
+
+            <motion.div
+              initial={{ translateY: "100%" }}
+              whileInView={{ translateY: "0%" }}
+              transition={{ duration: 1 }}
+              className="w-full flex flex-col leading-none overflow-hidden"
+            >
+              <p className="text-lg font-semibold text-black leading-none">
+                WRITE TO US
+              </p>
+              <p className="text-sm text-black leading-none">
+                EMAIL: INFO@OX-LINK.com
+              </p>
+            </motion.div>
+          </div>
+        </div>
+
+        {/* Bottom part */}
+        <div className="w-full min-h-20 pt-6 flex flex-col items-start">
+          {/* Logo and socials */}
+          <div className="w-full h-full flex flex-col items-start pl-6">
+            <div className="flex flex-col gap-8 items-start leading-none">
+              {/* <img className='w-24 leading-3' src="/footer-img.png" alt="logo" /> */}
+              <img className="w-40" src="/logo.png" alt="OX-Link Electronics" />
+
+              {/* Contact */}
+              <div className="flex flex-col justify-center gap-5 text-black">
+                {contact.map((con) => {
+                  return (
+                    <div className="flex items-center gap-2" key={con.id}>
+                      <div className="w-fit text-blue-800">{con.icon}</div>
+                      <h1 className="text-sm">{con.content}</h1>
                     </div>
+                  );
+                })}
+              </div>
 
-                    {/* Get in touch */}
-                    <div className='w-full h-full flex flex-col items-start gap-6 pl-6 mt-12'>
+              {/* Socials */}
+              <div className="flex items-center gap-3 mt-4">
+                <a href={facebookLink}>
+                  <FaFacebookSquare className="text-2xl text-[#0c4cd7] cursor-pointer" />
+                </a>
+                <a href={linkedinLink}>
+                  <FaLinkedin className="text-2xl text-[#0077B5] cursor-pointer" />
+                </a>
+                <a href={instagramLink}>
+                  <FaSquareInstagram className="text-2xl text-[#d62976] cursor-pointer" />
+                </a>
+                <a href={youtubeLink}>
+                  <FaSquareYoutube className="text-2xl text-[#CD201F] cursor-pointer" />
+                </a>
+              </div>
+            </div>
+          </div>
 
-                        <div>
-                            <h1 className='text-2xl font-bold underline'>Get in touch</h1>
+          {/* Quick Links and Product Links */}
+          <div className="w-full h-full mt-8 flex flex-col items-start pl-6">
+            {/* Links */}
+            <div className="flex flex-col items-start gap-8">
+              <div className="flex flex-col gap-2">
+                <h1 className="text-2xl font-bold underline">Quick Links</h1>
 
-                            <h1 className='text-lg font-semibold text-[#002A77]'>OX-LINK ELECTRONICS PVT. LTD.</h1>
-                        </div>
+                {quickLinks.map((item) => {
+                  if (item.id === 6) {
+                    return (
+                      <a
+                        key={item.id}
+                        href={item.link}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="w-fit text-lg"
+                        download
+                      >
+                        {item.name}
+                      </a>
+                    );
+                  }
+                  return (
+                    <NavLink
+                      className="w-fit text-lg"
+                      key={item.id}
+                      to={item.link}
+                    >
+                      {item.name}
+                    </NavLink>
+                  );
+                })}
+              </div>
 
-                        <div className='flex flex-col items-start gap-3'>
+              <div className="flex flex-col gap-2">
+                <h1 className="text-2xl font-bold underline">Product</h1>
 
-                            <div className='w-56 h-28 bg-green-500 rounded-xl flex items-center justify-center gap-2'>
+                {productLinks.map((item) => (
+                  <NavLink
+                    className="w-fit text-lg"
+                    key={item.id}
+                    to={`/${item.slug}`}
+                  >
+                    {item.title}
+                  </NavLink>
+                ))}
+              </div>
+            </div>
+          </div>
 
-                                <div>
-                                    <h1 className='text-white font-semibold leading-none text-2xl'>SCAN</h1>
-                                    <h1 className='font-semibold text-4xl leading-none'>ME!</h1>
-                                </div>
+          {/* Get in touch */}
+          <div className="w-full h-full flex flex-col items-start gap-6 pl-6 mt-12">
+            <div>
+              <h1 className="text-2xl font-bold underline">Get in touch</h1>
 
-                                <div>
-                                    <MdOutlineKeyboardDoubleArrowRight className='text-white text-4xl' />
-                                </div>
+              <h1 className="text-lg font-semibold text-[#002A77]">
+                OX-LINK ELECTRONICS PVT. LTD.
+              </h1>
+            </div>
 
-                                <div className='w-fit'>
-                                    <img className='w-20' src="/qr-code.png" alt="qr-code" />
-                                </div>
+            <div className="flex flex-col items-start gap-3">
+              <div className="w-56 h-28 bg-green-500 rounded-xl flex items-center justify-center gap-2">
+                <div>
+                  <h1 className="text-white font-semibold leading-none text-2xl">
+                    SCAN
+                  </h1>
+                  <h1 className="font-semibold text-4xl leading-none">ME!</h1>
+                </div>
 
-                            </div>
+                <div>
+                  <MdOutlineKeyboardDoubleArrowRight className="text-white text-4xl" />
+                </div>
 
-                            <h1 className='text-sm text-right font-semibold'>© <span className='text-[#0FBBEB]'>2025</span> <span className='text-[#002A77]'>OX-LINK ELECTRONICS PVT. LTD.</span></h1>
-                        </div>
+                <div className="w-fit">
+                  <img className="w-20" src="/qr-code.png" alt="qr-code" />
+                </div>
+              </div>
 
-                    </div>
+              <h1 className="text-sm text-right font-semibold">
+                © <span className="text-[#0FBBEB]">2025</span>{" "}
+                <span className="text-[#002A77]">
+                  OX-LINK ELECTRONICS PVT. LTD.
+                </span>
+              </h1>
+            </div>
+          </div>
 
-                    {/* Privacy, terms and site map */}
-                    <div className='w-full flex justify-center gap-6 mt-20'>
-                        <NavLink to="/privacy" className='text-xs text-blue-800 font-semibold'>
-                            Privacy
-                        </NavLink>
+          {/* Privacy, terms and site map */}
+          <div className="w-full flex justify-center gap-6 mt-20">
+            <NavLink
+              to="/privacy"
+              className="text-xs text-blue-800 font-semibold"
+            >
+              Privacy
+            </NavLink>
 
-                        <NavLink to="/terms" className='text-xs border-l-2 border-l-black px-10 text-blue-800 font-semibold'>
-                            Terms of us
-                        </NavLink>
+            <NavLink
+              to="/terms"
+              className="text-xs border-l-2 border-l-black px-10 text-blue-800 font-semibold"
+            >
+              Terms of us
+            </NavLink>
 
-                        {/* <h1 className='text-xs text-blue-800 font-semibold'>
+            {/* <h1 className='text-xs text-blue-800 font-semibold'>
                             Sitemap
                         </h1> */}
-                    </div>
-                </div>
+          </div>
+        </div>
+      </div>
+    </>
+  );
+};
 
-            </div>
-
-        </>
-    )
-}
-
-export default Footer
+export default Footer;

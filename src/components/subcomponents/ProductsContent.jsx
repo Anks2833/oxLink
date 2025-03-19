@@ -8,7 +8,7 @@ const ProductsContent = () => {
       {/* Desktop */}
       <NavLink
         to="/control-cable"
-        className="hidden sm:flex w-fit flex-col gap-2 border-r border-l border-l-black border-r-black rotate-12 px-10 mr-20 mt-10 overflow-hidden cursor-pointer"
+        className="hidden lg:flex w-fit flex-col gap-2 border-r border-l border-l-black border-r-black rotate-12 px-10 mr-20 mt-10 overflow-hidden cursor-pointer"
       >
         <motion.div
           className="flex justify-center items-center gap-2"
@@ -73,10 +73,55 @@ const ProductsContent = () => {
         </div>
       </NavLink>
 
+      {/* Tablet */}
+      <div className="hidden md:flex lg:hidden w-full flex-col gap-4 px-8 my-24 max-w-2xl mx-auto">
+        <motion.div
+          className="flex justify-center items-center gap-2"
+          initial={{ x: -100, opacity: 0 }}
+          whileInView={{ x: 0, opacity: 1 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.5, delay: 0.2 }}
+        >
+          <h1 className="product-text font-semibold text-3xl">01.</h1>
+          <h1 className="product-text font-semibold text-3xl">Control Cable</h1>
+        </motion.div>
+
+        <div className="text-xl text-center px-6">
+          <motion.p
+            initial={{ x: -100, opacity: 0 }}
+            whileInView={{ x: 0, opacity: 1 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.5, delay: 0.4 }}
+            className="mb-2"
+          >
+            These cables are designed for transmitting control signals in
+            industrial automation and equipment.
+          </motion.p>
+
+          <motion.p
+            initial={{ x: -100, opacity: 0 }}
+            whileInView={{ x: 0, opacity: 1 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.5, delay: 0.8 }}
+            className="mb-2"
+          >
+            They are engineered for high flexibility, ensuring stable operation
+            in demanding environments.
+          </motion.p>
+        </div>
+
+        <NavLink
+          to="/control-cable"
+          className="w-full flex justify-center mt-2"
+        >
+          <p className="text-[#f99938] underline text-xl hover:text-[#e07b13] transition-colors">
+            View More
+          </p>
+        </NavLink>
+      </div>
+
       {/* Mobile */}
-      <div
-        className="flex sm:hidden w-fit flex-col gap-2 px-5 my-20"
-      >
+      <div className="flex md:hidden lg:hidden w-fit flex-col gap-2 px-5 my-20">
         <motion.div
           className="flex justify-center items-center gap-1"
           initial={{ x: -100, opacity: 0 }}

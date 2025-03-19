@@ -1,7 +1,7 @@
-import React, { useEffect, useRef } from 'react';
-import { gsap } from 'gsap';
-import { ScrollTrigger } from 'gsap/ScrollTrigger';
-import { motion } from 'framer-motion';
+import React, { useEffect, useRef } from "react";
+import { gsap } from "gsap";
+import { ScrollTrigger } from "gsap/ScrollTrigger";
+import { motion } from "framer-motion";
 
 const LineAnimation = () => {
   const svgRef1 = useRef(null);
@@ -59,7 +59,7 @@ const LineAnimation = () => {
       onLeave: () => gsap.to(containerRef.current, { opacity: 0 }),
       onEnterBack: () => gsap.to(containerRef.current, { opacity: 1 }),
       onLeaveBack: () => gsap.to(containerRef.current, { opacity: 0 }),
-  });
+    });
 
     // Animation for path 1
     const path1 = svgRef1.current.querySelector("path");
@@ -187,7 +187,6 @@ const LineAnimation = () => {
         },
       }
     );
-
 
     // Animation for path 7
     const path7 = svgRef7.current.querySelector("path");
@@ -461,13 +460,12 @@ const LineAnimation = () => {
         },
       }
     );
-
   }, []);
 
   const pathVariants = {
     initial: {
       pathLength: 0,
-      opacity: 0
+      opacity: 0,
     },
     animate: {
       pathLength: 1,
@@ -486,16 +484,19 @@ const LineAnimation = () => {
 
   return (
     <>
-
       {/* Desktop */}
       <motion.div
         initial={{ opacity: 0 }}
         whileInView={{ opacity: 1 }}
         ref={containerRef}
-        className="hidden sm:flex relative -top-5 w-full h-screen overflow-hidden app"
+        className="hidden md:hidden lg:flex relative -top-5 w-full h-screen overflow-hidden app"
       >
-
-        <svg ref={svgRef1} className="absolute z-[49] top-0 left-0" width="1600" height="1000">
+        <svg
+          ref={svgRef1}
+          className="absolute z-[49] top-0 left-0"
+          width="1600"
+          height="1000"
+        >
           <motion.path
             d="M 200 40 C 203 237 1600 0 1600 800"
             stroke="black"
@@ -504,7 +505,12 @@ const LineAnimation = () => {
           />
         </svg>
 
-        <svg ref={svgRef2} className="absolute z-[49] top-0 -left-10" width="1600" height="1000">
+        <svg
+          ref={svgRef2}
+          className="absolute z-[49] top-0 -left-10"
+          width="1600"
+          height="1000"
+        >
           <motion.path
             d="M 220 40 C 229 299 1600 10 1600 830"
             stroke="#cbe8ea"
@@ -513,7 +519,12 @@ const LineAnimation = () => {
           />
         </svg>
 
-        <svg ref={svgRef3} className="absolute z-[49] top-0 -left-20" width="1600" height="1000">
+        <svg
+          ref={svgRef3}
+          className="absolute z-[49] top-0 -left-20"
+          width="1600"
+          height="1000"
+        >
           <motion.path
             d="M 234 40 C 261 350 1550 34 1658 852"
             stroke="red"
@@ -522,7 +533,12 @@ const LineAnimation = () => {
           />
         </svg>
 
-        <svg ref={svgRef4} className="absolute top-10 -left-20" width="1600" height="1000">
+        <svg
+          ref={svgRef4}
+          className="absolute top-10 -left-20"
+          width="1600"
+          height="1000"
+        >
           <motion.path
             d="M 244 40 C 248 462 1192 115 1365 720"
             stroke="#d4dbe3"
@@ -531,7 +547,12 @@ const LineAnimation = () => {
           />
         </svg>
 
-        <svg ref={svgRef5} className="absolute top-10 -left-20" width="1600" height="1000">
+        <svg
+          ref={svgRef5}
+          className="absolute top-10 -left-20"
+          width="1600"
+          height="1000"
+        >
           <motion.path
             d="M 180 0 C 200 130, 1600 10, 1600 850"
             stroke="#d4dbe3"
@@ -540,7 +561,12 @@ const LineAnimation = () => {
           />
         </svg>
 
-        <svg ref={svgRef6} className="absolute top-10 -left-20" width="1600" height="1000">
+        <svg
+          ref={svgRef6}
+          className="absolute top-10 -left-20"
+          width="1600"
+          height="1000"
+        >
           <motion.path
             d="M 215 -5 C 214 390 1548 42 1712 803"
             stroke="#97aec4"
@@ -549,7 +575,12 @@ const LineAnimation = () => {
           />
         </svg>
 
-        <svg ref={svgRef7} className="absolute top-10 z-[50] -left-20" width="1600" height="1000">
+        <svg
+          ref={svgRef7}
+          className="absolute top-10 z-[50] -left-20"
+          width="1600"
+          height="1000"
+        >
           <motion.path
             d="M 160 -20 C 166 395 1259 98 1600 850"
             stroke="red"
@@ -558,7 +589,12 @@ const LineAnimation = () => {
           />
         </svg>
 
-        <svg ref={svgRef8} className="absolute top-10 -left-20" width="1600" height="1000">
+        <svg
+          ref={svgRef8}
+          className="absolute top-10 -left-20"
+          width="1600"
+          height="1000"
+        >
           <motion.path
             d="M 150 -30 C 163 461 1300 10 1750 1050"
             stroke="yellow"
@@ -567,7 +603,12 @@ const LineAnimation = () => {
           />
         </svg>
 
-        <svg ref={svgRef9} className="absolute z-[50] top-10 -left-20" width="1600" height="1000">
+        <svg
+          ref={svgRef9}
+          className="absolute z-[50] top-10 -left-20"
+          width="1600"
+          height="1000"
+        >
           <motion.path
             d="M 115 -12 C 145 578 1177 143 1750 950"
             stroke="#c37684"
@@ -576,7 +617,12 @@ const LineAnimation = () => {
           />
         </svg>
 
-        <svg ref={svgRef10} className="absolute z-[49] top-10 -left-20" width="1600" height="1000">
+        <svg
+          ref={svgRef10}
+          className="absolute z-[49] top-10 -left-20"
+          width="1600"
+          height="1000"
+        >
           <motion.path
             d="M 99 -20 C 107 494 1293 -41 1750 950"
             stroke="orange"
@@ -585,7 +631,12 @@ const LineAnimation = () => {
           />
         </svg>
 
-        <svg ref={svgRef11} className="absolute top-10 -left-20" width="1600" height="1000">
+        <svg
+          ref={svgRef11}
+          className="absolute top-10 -left-20"
+          width="1600"
+          height="1000"
+        >
           <motion.path
             d="M 125 -20 C 129 419 1400 0 1750 950"
             stroke="yellow"
@@ -594,7 +645,12 @@ const LineAnimation = () => {
           />
         </svg>
 
-        <svg ref={svgRef12} className="absolute z-[48] top-10 -left-20" width="1600" height="1000">
+        <svg
+          ref={svgRef12}
+          className="absolute z-[48] top-10 -left-20"
+          width="1600"
+          height="1000"
+        >
           <motion.path
             d="M 73 0 C 86 612 988 81 1869 1153"
             stroke="#c37684"
@@ -603,7 +659,12 @@ const LineAnimation = () => {
           />
         </svg>
 
-        <svg ref={svgRef13} className="absolute top-10 -left-20" width="1600" height="1000">
+        <svg
+          ref={svgRef13}
+          className="absolute top-10 -left-20"
+          width="1600"
+          height="1000"
+        >
           <motion.path
             d="M 80 0 C 96 542 1300 10 2000 1300"
             stroke="white"
@@ -612,7 +673,12 @@ const LineAnimation = () => {
           />
         </svg>
 
-        <svg ref={svgRef14} className="absolute top-10 -left-20" width="1600" height="1000">
+        <svg
+          ref={svgRef14}
+          className="absolute top-10 -left-20"
+          width="1600"
+          height="1000"
+        >
           <motion.path
             d="M 90 0 C 228 632 1460 50 1878 1359"
             stroke="yellow"
@@ -621,7 +687,12 @@ const LineAnimation = () => {
           />
         </svg>
 
-        <svg ref={svgRef15} className="absolute z-[49] top-10 -left-20" width="1600" height="1000">
+        <svg
+          ref={svgRef15}
+          className="absolute z-[49] top-10 -left-20"
+          width="1600"
+          height="1000"
+        >
           <motion.path
             d="M 80 -68 C 88 547 946 -30 1650 890"
             stroke="orange"
@@ -630,7 +701,12 @@ const LineAnimation = () => {
           />
         </svg>
 
-        <svg ref={svgRef16} className="absolute z-[49] top-10 -left-20" width="1600" height="1000">
+        <svg
+          ref={svgRef16}
+          className="absolute z-[49] top-10 -left-20"
+          width="1600"
+          height="1000"
+        >
           <motion.path
             d="M 78 -50 C 104 636 1032 40 1609 1303"
             stroke="red"
@@ -639,7 +715,12 @@ const LineAnimation = () => {
           />
         </svg>
 
-        <svg ref={svgRef17} className="absolute top-10 -left-20" width="1600" height="1000">
+        <svg
+          ref={svgRef17}
+          className="absolute top-10 -left-20"
+          width="1600"
+          height="1000"
+        >
           <motion.path
             d="M 60 -80 C 91 611 738 56 1276 1250"
             stroke="#bdfcf1"
@@ -648,7 +729,12 @@ const LineAnimation = () => {
           />
         </svg>
 
-        <svg ref={svgRef18} className="absolute top-10 -left-20" width="1600" height="1000">  
+        <svg
+          ref={svgRef18}
+          className="absolute top-10 -left-20"
+          width="1600"
+          height="1000"
+        >
           <motion.path
             d="M 70 40 C 94 479 651 261 990 687"
             stroke="white"
@@ -657,7 +743,12 @@ const LineAnimation = () => {
           />
         </svg>
 
-        <svg ref={svgRef19} className="absolute top-10 -left-20" width="1600" height="1000">
+        <svg
+          ref={svgRef19}
+          className="absolute top-10 -left-20"
+          width="1600"
+          height="1000"
+        >
           <motion.path
             d="M 40 -30 C 43 577 661 214 1045 790"
             stroke="#c37684"
@@ -665,13 +756,342 @@ const LineAnimation = () => {
             fill="transparent"
           />
         </svg>
-
       </motion.div>
 
-      {/* Mobile */}
-      <div className="flex sm:hidden relative w-full h-screen bg-[#DCD9DC] overflow-hidden app">
+      {/* Tablet */}
+      <div className="hidden md:flex lg:hidden relative w-full h-screen bg-[#DCD9DC] overflow-hidden app">
+        <svg
+          ref={svgRef1Mob}
+          className="absolute top-0 left-0"
+          width="1600"
+          height="1000"
+        >
+          <motion.path
+            variants={pathVariants}
+            initial="initial"
+            whileInView="animate"
+            d="M 200 40 C 203 237 1600 0 1600 800"
+            stroke="black"
+            strokeWidth="1.5"
+            fill="transparent"
+          />
+        </svg>
 
-        <svg ref={svgRef1Mob} className="absolute top-0 left-0" width="1600" height="1000">
+        <svg
+          ref={svgRef2Mob}
+          className="absolute top-0 -left-10"
+          width="1600"
+          height="1000"
+        >
+          <motion.path
+            variants={pathVariants}
+            initial="initial"
+            whileInView="animate"
+            d="M 220 40 C 229 299 1600 10 1600 830"
+            stroke="#cbe8ea"
+            strokeWidth="1.5"
+            fill="transparent"
+          />
+        </svg>
+
+        <svg
+          ref={svgRef3Mob}
+          className="absolute top-0 -left-20"
+          width="1600"
+          height="1000"
+        >
+          <motion.path
+            variants={pathVariants}
+            initial="initial"
+            whileInView="animate"
+            d="M 234 40 C 261 350 1550 34 1658 852"
+            stroke="red"
+            strokeWidth="1.5"
+            fill="transparent"
+          />
+        </svg>
+
+        <svg
+          ref={svgRef4Mob}
+          className="absolute top-10 -left-10"
+          width="1600"
+          height="1000"
+        >
+          <motion.path
+            variants={pathVariants}
+            initial="initial"
+            whileInView="animate"
+            d="M 244 40 C 248 462 1192 115 1365 720"
+            stroke="#d4dbe3"
+            strokeWidth="1.5"
+            fill="transparent"
+          />
+        </svg>
+
+        <svg
+          ref={svgRef5Mob}
+          className="absolute top-10 -left-10"
+          width="1600"
+          height="1000"
+        >
+          <motion.path
+            variants={pathVariants}
+            initial="initial"
+            whileInView="animate"
+            d="M 180 0 C 200 130, 1600 10, 1600 850"
+            stroke="#d4dbe3"
+            strokeWidth="1.5"
+            fill="transparent"
+          />
+        </svg>
+
+        <svg
+          ref={svgRef6Mob}
+          className="absolute top-10 -left-10"
+          width="1600"
+          height="1000"
+        >
+          <motion.path
+            variants={pathVariants}
+            initial="initial"
+            whileInView="animate"
+            d="M 215 -5 C 214 390 1548 42 1712 803"
+            stroke="#97aec4"
+            strokeWidth="1.5"
+            fill="transparent"
+          />
+        </svg>
+
+        <svg
+          ref={svgRef7Mob}
+          className="absolute top-10 -left-10"
+          width="1600"
+          height="1000"
+        >
+          <motion.path
+            variants={pathVariants}
+            initial="initial"
+            whileInView="animate"
+            d="M 160 -20 C 166 395 1259 98 1600 850"
+            stroke="red"
+            strokeWidth="1.5"
+            fill="transparent"
+          />
+        </svg>
+
+        <svg
+          ref={svgRef8Mob}
+          className="absolute top-10 -left-10"
+          width="1600"
+          height="1000"
+        >
+          <motion.path
+            variants={pathVariants}
+            initial="initial"
+            whileInView="animate"
+            d="M 150 -30 C 163 461 1300 10 1750 1050"
+            stroke="yellow"
+            strokeWidth="1.5"
+            fill="transparent"
+          />
+        </svg>
+
+        <svg
+          ref={svgRef9Mob}
+          className="absolute top-10 -left-10"
+          width="1600"
+          height="1000"
+        >
+          <motion.path
+            variants={pathVariants}
+            initial="initial"
+            whileInView="animate"
+            d="M 115 -12 C 145 578 1177 143 1750 950"
+            stroke="#c37684"
+            strokeWidth="1.5"
+            fill="transparent"
+          />
+        </svg>
+
+        <svg
+          ref={svgRef10Mob}
+          className="absolute top-10 -left-10"
+          width="1600"
+          height="1000"
+        >
+          <motion.path
+            variants={pathVariants}
+            initial="initial"
+            whileInView="animate"
+            d="M 99 -20 C 107 494 1293 -41 1750 950"
+            stroke="orange"
+            strokeWidth="1.5"
+            fill="transparent"
+          />
+        </svg>
+
+        <svg
+          ref={svgRef11Mob}
+          className="absolute top-10 -left-10"
+          width="1600"
+          height="1000"
+        >
+          <motion.path
+            variants={pathVariants}
+            initial="initial"
+            whileInView="animate"
+            d="M 125 -20 C 129 419 1400 0 1750 950"
+            stroke="yellow"
+            strokeWidth="1.5"
+            fill="transparent"
+          />
+        </svg>
+
+        <svg
+          ref={svgRef12Mob}
+          className="absolute top-10 -left-10"
+          width="1600"
+          height="1000"
+        >
+          <motion.path
+            variants={pathVariants}
+            initial="initial"
+            whileInView="animate"
+            d="M 73 0 C 86 612 988 81 1869 1153"
+            stroke="#c37684"
+            strokeWidth="1.5"
+            fill="transparent"
+          />
+        </svg>
+
+        <svg
+          ref={svgRef13Mob}
+          className="absolute top-10 -left-10"
+          width="1600"
+          height="1000"
+        >
+          <motion.path
+            variants={pathVariants}
+            initial="initial"
+            whileInView="animate"
+            d="M 80 0 C 96 542 1300 10 2000 1300"
+            stroke="white"
+            strokeWidth="1.5"
+            fill="transparent"
+          />
+        </svg>
+
+        <svg
+          ref={svgRef14Mob}
+          className="absolute top-10 -left-10"
+          width="1600"
+          height="1000"
+        >
+          <motion.path
+            variants={pathVariants}
+            initial="initial"
+            whileInView="animate"
+            d="M 90 0 C 228 632 1460 50 1878 1359"
+            stroke="yellow"
+            strokeWidth="1.5"
+            fill="transparent"
+          />
+        </svg>
+
+        <svg
+          ref={svgRef15Mob}
+          className="absolute top-10 -left-10"
+          width="1600"
+          height="1000"
+        >
+          <motion.path
+            variants={pathVariants}
+            initial="initial"
+            whileInView="animate"
+            d="M 80 -68 C 88 547 946 -30 1650 890"
+            stroke="orange"
+            strokeWidth="1.5"
+            fill="transparent"
+          />
+        </svg>
+
+        <svg
+          ref={svgRef16Mob}
+          className="absolute top-10 -left-10"
+          width="1600"
+          height="1000"
+        >
+          <motion.path
+            variants={pathVariants}
+            initial="initial"
+            whileInView="animate"
+            d="M 78 -50 C 104 636 1032 40 1609 1303"
+            stroke="orange"
+            strokeWidth="1.5"
+            fill="transparent"
+          />
+        </svg>
+
+        <svg
+          ref={svgRef17Mob}
+          className="absolute top-10 -left-10"
+          width="1600"
+          height="1000"
+        >
+          <motion.path
+            variants={pathVariants}
+            initial="initial"
+            whileInView="animate"
+            d="M 60 -80 C 91 611 738 56 1276 1250"
+            stroke="#bdecf1"
+            strokeWidth="1.5"
+            fill="transparent"
+          />
+        </svg>
+
+        <svg
+          ref={svgRef18Mob}
+          className="absolute top-10 -left-10"
+          width="1600"
+          height="1000"
+        >
+          <motion.path
+            variants={pathVariants}
+            initial="initial"
+            whileInView="animate"
+            d="M 70 40 C 94 479 651 261 990 687"
+            stroke="white"
+            strokeWidth="1.5"
+            fill="transparent"
+          />
+        </svg>
+
+        <svg
+          ref={svgRef19Mob}
+          className="absolute top-10 -left-10"
+          width="1600"
+          height="1000"
+        >
+          <motion.path
+            variants={pathVariants}
+            initial="initial"
+            whileInView="animate"
+            d="M 40 -30 C 43 577 661 214 1045 790"
+            stroke="#c37684"
+            strokeWidth="1.5"
+            fill="transparent"
+          />
+        </svg>
+      </div>
+
+      {/* Mobile */}
+      <div className="flex md:hidden lg:hidden relative w-full h-screen bg-[#DCD9DC] overflow-hidden app">
+        <svg
+          ref={svgRef1Mob}
+          className="absolute top-0 left-0"
+          width="1600"
+          height="1000"
+        >
           <motion.path
             variants={pathVariants}
             initial="initial"
@@ -683,7 +1103,12 @@ const LineAnimation = () => {
           />
         </svg>
 
-        <svg ref={svgRef2Mob} className="absolute top-0 -left-10" width="1600" height="1000">
+        <svg
+          ref={svgRef2Mob}
+          className="absolute top-0 -left-10"
+          width="1600"
+          height="1000"
+        >
           <motion.path
             variants={pathVariants}
             initial="initial"
@@ -695,7 +1120,12 @@ const LineAnimation = () => {
           />
         </svg>
 
-        <svg ref={svgRef3Mob} className="absolute top-0 -left-20" width="1600" height="1000">
+        <svg
+          ref={svgRef3Mob}
+          className="absolute top-0 -left-20"
+          width="1600"
+          height="1000"
+        >
           <motion.path
             variants={pathVariants}
             initial="initial"
@@ -707,7 +1137,12 @@ const LineAnimation = () => {
           />
         </svg>
 
-        <svg ref={svgRef4Mob} className="absolute top-10 -left-20" width="1600" height="1000">
+        <svg
+          ref={svgRef4Mob}
+          className="absolute top-10 -left-20"
+          width="1600"
+          height="1000"
+        >
           <motion.path
             variants={pathVariants}
             initial="initial"
@@ -719,7 +1154,12 @@ const LineAnimation = () => {
           />
         </svg>
 
-        <svg ref={svgRef5Mob} className="absolute top-10 -left-20" width="1600" height="1000">
+        <svg
+          ref={svgRef5Mob}
+          className="absolute top-10 -left-20"
+          width="1600"
+          height="1000"
+        >
           <motion.path
             variants={pathVariants}
             initial="initial"
@@ -731,7 +1171,12 @@ const LineAnimation = () => {
           />
         </svg>
 
-        <svg ref={svgRef6Mob} className="absolute top-10 -left-20" width="1600" height="1000">
+        <svg
+          ref={svgRef6Mob}
+          className="absolute top-10 -left-20"
+          width="1600"
+          height="1000"
+        >
           <motion.path
             variants={pathVariants}
             initial="initial"
@@ -743,7 +1188,12 @@ const LineAnimation = () => {
           />
         </svg>
 
-        <svg ref={svgRef7Mob} className="absolute top-10 -left-20" width="1600" height="1000">
+        <svg
+          ref={svgRef7Mob}
+          className="absolute top-10 -left-20"
+          width="1600"
+          height="1000"
+        >
           <motion.path
             variants={pathVariants}
             initial="initial"
@@ -755,7 +1205,12 @@ const LineAnimation = () => {
           />
         </svg>
 
-        <svg ref={svgRef8Mob} className="absolute top-10 -left-20" width="1600" height="1000">
+        <svg
+          ref={svgRef8Mob}
+          className="absolute top-10 -left-20"
+          width="1600"
+          height="1000"
+        >
           <motion.path
             variants={pathVariants}
             initial="initial"
@@ -767,7 +1222,12 @@ const LineAnimation = () => {
           />
         </svg>
 
-        <svg ref={svgRef9Mob} className="absolute top-10 -left-20" width="1600" height="1000">
+        <svg
+          ref={svgRef9Mob}
+          className="absolute top-10 -left-20"
+          width="1600"
+          height="1000"
+        >
           <motion.path
             variants={pathVariants}
             initial="initial"
@@ -779,7 +1239,12 @@ const LineAnimation = () => {
           />
         </svg>
 
-        <svg ref={svgRef10Mob} className="absolute top-10 -left-20" width="1600" height="1000">
+        <svg
+          ref={svgRef10Mob}
+          className="absolute top-10 -left-20"
+          width="1600"
+          height="1000"
+        >
           <motion.path
             variants={pathVariants}
             initial="initial"
@@ -791,7 +1256,12 @@ const LineAnimation = () => {
           />
         </svg>
 
-        <svg ref={svgRef11Mob} className="absolute top-10 -left-20" width="1600" height="1000">
+        <svg
+          ref={svgRef11Mob}
+          className="absolute top-10 -left-20"
+          width="1600"
+          height="1000"
+        >
           <motion.path
             variants={pathVariants}
             initial="initial"
@@ -803,7 +1273,12 @@ const LineAnimation = () => {
           />
         </svg>
 
-        <svg ref={svgRef12Mob} className="absolute top-10 -left-20" width="1600" height="1000">
+        <svg
+          ref={svgRef12Mob}
+          className="absolute top-10 -left-20"
+          width="1600"
+          height="1000"
+        >
           <motion.path
             variants={pathVariants}
             initial="initial"
@@ -815,7 +1290,12 @@ const LineAnimation = () => {
           />
         </svg>
 
-        <svg ref={svgRef13Mob} className="absolute top-10 -left-20" width="1600" height="1000">
+        <svg
+          ref={svgRef13Mob}
+          className="absolute top-10 -left-20"
+          width="1600"
+          height="1000"
+        >
           <motion.path
             variants={pathVariants}
             initial="initial"
@@ -827,7 +1307,12 @@ const LineAnimation = () => {
           />
         </svg>
 
-        <svg ref={svgRef14Mob} className="absolute top-10 -left-20" width="1600" height="1000">
+        <svg
+          ref={svgRef14Mob}
+          className="absolute top-10 -left-20"
+          width="1600"
+          height="1000"
+        >
           <motion.path
             variants={pathVariants}
             initial="initial"
@@ -839,7 +1324,12 @@ const LineAnimation = () => {
           />
         </svg>
 
-        <svg ref={svgRef15Mob} className="absolute top-10 -left-20" width="1600" height="1000">
+        <svg
+          ref={svgRef15Mob}
+          className="absolute top-10 -left-20"
+          width="1600"
+          height="1000"
+        >
           <motion.path
             variants={pathVariants}
             initial="initial"
@@ -851,7 +1341,12 @@ const LineAnimation = () => {
           />
         </svg>
 
-        <svg ref={svgRef16Mob} className="absolute top-10 -left-20" width="1600" height="1000">
+        <svg
+          ref={svgRef16Mob}
+          className="absolute top-10 -left-20"
+          width="1600"
+          height="1000"
+        >
           <motion.path
             variants={pathVariants}
             initial="initial"
@@ -863,7 +1358,12 @@ const LineAnimation = () => {
           />
         </svg>
 
-        <svg ref={svgRef17Mob} className="absolute top-10 -left-20" width="1600" height="1000">
+        <svg
+          ref={svgRef17Mob}
+          className="absolute top-10 -left-20"
+          width="1600"
+          height="1000"
+        >
           <motion.path
             variants={pathVariants}
             initial="initial"
@@ -875,7 +1375,12 @@ const LineAnimation = () => {
           />
         </svg>
 
-        <svg ref={svgRef18Mob} className="absolute top-10 -left-20" width="1600" height="1000">
+        <svg
+          ref={svgRef18Mob}
+          className="absolute top-10 -left-20"
+          width="1600"
+          height="1000"
+        >
           <motion.path
             variants={pathVariants}
             initial="initial"
@@ -887,7 +1392,12 @@ const LineAnimation = () => {
           />
         </svg>
 
-        <svg ref={svgRef19Mob} className="absolute top-10 -left-20" width="1600" height="1000">
+        <svg
+          ref={svgRef19Mob}
+          className="absolute top-10 -left-20"
+          width="1600"
+          height="1000"
+        >
           <motion.path
             variants={pathVariants}
             initial="initial"
@@ -898,9 +1408,7 @@ const LineAnimation = () => {
             fill="transparent"
           />
         </svg>
-
       </div>
-
     </>
   );
 };
