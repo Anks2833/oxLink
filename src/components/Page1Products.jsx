@@ -101,7 +101,7 @@ const Page1Products = () => {
       </div>
 
       {/* Tablet */}
-      <div className="hidden md:flex lg:hidden flex-col relative w-full min-h-screen">
+      <div className="hidden md:flex lg:hidden flex-col relative w-full min-h-screen -mt-60">
         <motion.h1
           initial={{ translate: "-100%", opacity: 0 }}
           whileInView={{ translate: "5%", opacity: 1 }}
