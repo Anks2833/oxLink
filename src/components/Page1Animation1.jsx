@@ -9,7 +9,8 @@ const Page1Animation1 = () => {
     const videoRef = useRef(null);
     const videoRef1 = useRef(null);
 
-    const videoSrc = 'https://res.cloudinary.com/dlchhddqg/video/upload/v1732343765/Ox-Link-Assets/Videos/us7yfeswwvw4jlho3lgr.mov';
+    // const videoSrc = 'https://res.cloudinary.com/dlchhddqg/video/upload/v1732343765/Ox-Link-Assets/Videos/us7yfeswwvw4jlho3lgr.mov';
+    const videoSrc = '/videos/video2.mov';
     // const videoSrcMobile = 'https://i.pinimg.com/736x/76/df/94/76df9409e8e1fb52acce33adf907cc8e.jpg';
     useEffect(() => {
 
@@ -96,6 +97,8 @@ const Page1Animation1 = () => {
                     src={videoSrc}
                     autoPlay
                     muted
+                    playsinline
+                    loop
                     className='w-full h-full object-cover object-center'
                 ></video>
             </div>
@@ -107,6 +110,8 @@ const Page1Animation1 = () => {
                     src={videoSrc}
                     autoPlay
                     muted
+                    playsinline
+                    loop
                     className='w-full h-full object-cover object-center'
                 ></video>
             </div>

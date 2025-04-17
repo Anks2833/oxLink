@@ -38,7 +38,8 @@ const App = () => {
             autoPlay
             muted
             onEnded={handleVideoEnd}
-            src="https://res.cloudinary.com/dlchhddqg/video/upload/v1732384430/Ox-Link-Assets/Videos/vbubjyv2mwtr8mbnlk7h.mp4"
+            // src="https://res.cloudinary.com/dlchhddqg/video/upload/v1732384430/Ox-Link-Assets/Videos/vbubjyv2mwtr8mbnlk7h.mp4"
+            src="/videos/preloader.mp4"
             className="preloader-video w-full cursor-none"
           >
           </motion.video>

@@ -3,7 +3,8 @@ import React, { useState, useEffect } from 'react';
 
 function Page1Animation() {
 
-    const videoSrc = 'https://res.cloudinary.com/dlchhddqg/video/upload/v1731923443/Ox-Link-Assets/Videos/jdj7iymramcikn6kb8kb.mp4';
+    // const videoSrc = 'https://res.cloudinary.com/dlchhddqg/video/upload/v1731923443/Ox-Link-Assets/Videos/jdj7iymramcikn6kb8kb.mp4';
+    const videoSrc = '/videos/video1.mp4';
 
     return (
         <>
@@ -13,6 +14,7 @@ function Page1Animation() {
                     src={videoSrc}
                     autoPlay
                     muted
+                    playsinline
                     loop
                     className='w-full h-[100vh] object-cover bg-[#DBD9DC]'
                 ></video>
@@ -24,6 +26,7 @@ function Page1Animation() {
                     src="../../mobile-anim.mp4"
                     autoPlay
                     muted
+                    playsinline
                     loop
                     className='w-[85vw] h-[85vh] object-cover'
                 ></video>
