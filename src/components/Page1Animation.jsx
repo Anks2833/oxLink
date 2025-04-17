@@ -1,39 +1,101 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useRef } from "react";
 // import axios from 'axios';
 
 function Page1Animation() {
+  const videoRefDesktop = useRef(null);
+  const videoRefMobile = useRef(null);
 
-    // const videoSrc = 'https://res.cloudinary.com/dlchhddqg/video/upload/v1731923443/Ox-Link-Assets/Videos/jdj7iymramcikn6kb8kb.mp4';
-    const videoSrc = '/videos/video1.mp4';
+  // const videoSrc = 'https://res.cloudinary.com/dlchhddqg/video/upload/v1731923443/Ox-Link-Assets/Videos/jdj7iymramcikn6kb8kb.mp4';
+  const videoSrc = "/videos/video1.mp4";
 
-    return (
-        <>
-            {/* For desktop */}
-            <div className='hidden sm:flex max-w-[100vw] h-full bg-[#DBD9DC] pt-16 justify-center items-center'>
-                <video
-                    src={videoSrc}
-                    autoPlay
-                    muted
-                    playsinline
-                    loop
-                    className='w-full h-[100vh] object-cover bg-[#DBD9DC]'
-                ></video>
-            </div>
+  // Function to ensure videos play on iOS
+  const forcePlayVideos = () => {
+    if (videoRefDesktop.current) {
+      videoRefDesktop.current
+        .play()
+        .catch((e) => console.log("Desktop autoplay failed:", e));
+    }
+    if (videoRefMobile.current) {
+      videoRefMobile.current
+        .play()
+        .catch((e) => console.log("Mobile autoplay failed:", e));
+    }
+  };
 
-            {/* For mobile */}
-            <div className='flex w-full h-screen bg-[#cdcace] justify-center items-center sm:hidden'>
-                <video
-                    src="../../mobile-anim.mp4"
-                    autoPlay
-                    muted
-                    playsinline
-                    loop
-                    className='w-[85vw] h-[85vh] object-cover'
-                ></video>
-            </div>
+  useEffect(() => {
+    // Add touch/click event listeners for iOS
+    document.addEventListener("touchstart", forcePlayVideos, { once: true });
+    document.addEventListener("click", forcePlayVideos, { once: true });
 
-        </>
-    );
+    // Manual initialization of video attributes for iOS
+    if (videoRefDesktop.current) {
+      videoRefDesktop.current.playsInline = true;
+      videoRefDesktop.current.muted = true;
+      videoRefDesktop.current.setAttribute("webkit-playsinline", "true");
+      videoRefDesktop.current.load();
+
+      // Try to play after a small delay
+      setTimeout(() => {
+        videoRefDesktop.current
+          .play()
+          .catch((e) => console.log("Desktop delayed play failed:", e));
+      }, 100);
+    }
+
+    if (videoRefMobile.current) {
+      videoRefMobile.current.playsInline = true;
+      videoRefMobile.current.muted = true;
+      videoRefMobile.current.setAttribute("webkit-playsinline", "true");
+      videoRefMobile.current.load();
+
+      // Try to play after a small delay
+      setTimeout(() => {
+        videoRefMobile.current
+          .play()
+          .catch((e) => console.log("Mobile delayed play failed:", e));
+      }, 100);
+    }
+
+    // Cleanup
+    return () => {
+      document.removeEventListener("touchstart", forcePlayVideos);
+      document.removeEventListener("click", forcePlayVideos);
+    };
+  }, []);
+
+  return (
+    <>
+      {/* For desktop */}
+      <div className="hidden sm:flex max-w-[100vw] h-full bg-[#DBD9DC] pt-16 justify-center items-center">
+        <video
+          ref={videoRefDesktop}
+          src={videoSrc}
+          autoPlay
+          muted
+          playsInline
+          webkit-playsinline="true"
+          preload="auto"
+          loop
+          className="w-full h-[100vh] object-cover bg-[#DBD9DC]"
+        ></video>
+      </div>
+
+      {/* For mobile */}
+      <div className="flex w-full h-screen bg-[#cdcace] justify-center items-center sm:hidden">
+        <video
+          ref={videoRefMobile}
+          src="../../mobile-anim.mp4"
+          autoPlay
+          muted
+          playsInline
+          webkit-playsinline="true"
+          preload="auto"
+          loop
+          className="w-[85vw] h-[85vh] object-cover"
+        ></video>
+      </div>
+    </>
+  );
 }
 
 export default Page1Animation;
