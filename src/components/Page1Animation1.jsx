@@ -115,14 +115,14 @@ const Page1Animation1 = () => {
             videoRef1.current.play(); // Play video normally
           },
           onLeave: () => {
-            gsap.to(videoRef1.current, { opacity: 0 });
+            gsap.to(videoRef1.current, { opacity: 1 });
           },
           onEnterBack: () => {
             gsap.to(videoRef1.current, { opacity: 1 });
             videoRef1.current.play(); // Play video normally
           },
           onLeaveBack: () => {
-            gsap.to(videoRef1.current, { opacity: 0 });
+            gsap.to(videoRef1.current, { opacity: 1 });
           },
         },
       }
@@ -147,10 +147,7 @@ const Page1Animation1 = () => {
           src={videoSrc}
           autoPlay
           muted
-          playsInline
-          webkit-playsinline="true"
           preload="auto"
-          loop
           className="w-full h-full object-cover object-center"
         ></video>
       </div>
@@ -165,7 +162,6 @@ const Page1Animation1 = () => {
           playsInline
           webkit-playsinline="true"
           preload="auto"
-          loop
           className="w-full h-full object-cover object-center"
         ></video>
       </div>

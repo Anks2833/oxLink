@@ -6,10 +6,13 @@ import "../styles/mission.css";
 
 const Mission = () => {
   const missionContainerRef = useRef(null);
+  const mobileMissionContainerRef = useRef(null);
+  const tabletMissionContainerRef = useRef(null);
 
   useEffect(() => {
     gsap.registerPlugin(ScrollTrigger);
 
+    // Desktop animation
     const circles = document.querySelectorAll(".circle-container-2");
     const missionText = document.querySelectorAll(".mission-text");
     const missionPara1 = document.querySelectorAll(".mission-para-1");
@@ -18,6 +21,7 @@ const Mission = () => {
     const missionPara4 = document.querySelectorAll(".mission-para-4");
     const missionPara5 = document.querySelectorAll(".mission-para-5");
     const missionPara6 = document.querySelectorAll(".mission-para-6");
+
     if (
       circles.length > 0 &&
       missionText.length > 0 &&
@@ -138,64 +142,12 @@ const Mission = () => {
         "<"
       );
 
-      // // The para timeline
-      // tl.fromTo(missionPara1,
-      //     { x: 300, opacity: 0 },
-      //     { x: 0, opacity: 1, duration: 2, ease: 'linear' },
-      //     "<"
-      // );
-      // tl.fromTo(missionPara2,
-      //     { x: 300, opacity: 0 },
-      //     { x: 0, opacity: 1, delay: 0.5, duration: 2, ease: 'linear' },
-      //     "<"
-      // );
-      // tl.fromTo(missionPara3,
-      //     { x: 300, opacity: 0 },
-      //     { x: 0, opacity: 1, delay: 1, duration: 2, ease: 'linear' },
-      //     "<"
-      // );
-      // tl.fromTo(missionPara4,
-      //     { x: 300, opacity: 0 },
-      //     { x: 0, opacity: 1, delay: 1.5, duration: 2, ease: 'linear' },
-      //     "<"
-      // );
-      // tl.fromTo(missionPara5,
-      //     { x: 300, opacity: 0 },
-      //     { x: 0, opacity: 1, delay: 2, duration: 2, ease: 'linear' },
-      //     "<"
-      // );
-      // tl.fromTo(missionPara6,
-      //     { x: 300, opacity: 0 },
-      //     { x: 0, opacity: 1, delay: 2.5, duration: 2, ease: 'linear' },
-      //     "<"
-      // );
-
       tl.fromTo(
         ".mission-para",
         { x: 300, opacity: 0 },
         { x: 0, opacity: 1, delay: 0, duration: 0.1, ease: "linear" },
         "<"
       );
-
-      // // Para timeline on scroll down
-      // tl.to(missionPara6,
-      //     { x: 300, opacity: 0, delay: 2.5, duration: 1, ease: 'linear' }
-      // );
-      // tl.to(missionPara5,
-      //     { x: 300, opacity: 0, delay: 2.5, duration: 1, ease: 'linear' }
-      // );
-      // tl.to(missionPara4,
-      //     { x: 300, opacity: 0, delay: 2.5, duration: 1, ease: 'linear' }
-      // );
-      // tl.to(missionPara3,
-      //     { x: 300, opacity: 0, delay: 2.5, duration: 1, ease: 'linear' }
-      // );
-      // tl.to(missionPara2,
-      //     { x: 300, opacity: 0, delay: 2.5, duration: 1, ease: 'linear' }
-      // );
-      // tl.to(missionPara1,
-      //     { x: 300, opacity: 0, delay: 2.5, duration: 1, ease: 'linear' }
-      // );
 
       tl.to(
         ".mission-para",
@@ -224,26 +176,347 @@ const Mission = () => {
 
       // Circles timeline on scroll down
       tl.to(".circle-19", { x: -500, opacity: 0, duration: 0.1 }, "<");
-
       tl.to(".circle-18", { y: 100, opacity: 0, duration: 0.1 }, "<");
-
       tl.to(".circle-17", { x: 500, opacity: 0, duration: 0.1 }, "<");
-
       tl.to(".circle-16", { x: -500, opacity: 0, duration: 0.1 }, "<");
-
       tl.to(".circle-15", { y: 100, opacity: 0, duration: 0.1 }, "<");
-
       tl.to(".circle-14", { x: 500, opacity: 0, duration: 0.1 }, "<");
-
       tl.to(".circle-13", { x: -500, y: 100, opacity: 0, duration: 0.1 }, "<");
-
       tl.to(".circle-12", { y: -100, opacity: 0, duration: 0.1 }, "<");
-
       tl.to(".circle-11", { x: 500, opacity: 0, duration: 0.1 }, "<");
-
       tl.to(".circle-10", { x: -500, opacity: 0, duration: 0.1 }, "<");
     } else {
-      console.error("No circles or mission text found!");
+      console.error("No circles or mission text found for desktop!");
+    }
+
+    // Mobile animation
+    if (mobileMissionContainerRef.current) {
+      const mobileTl = gsap.timeline({
+        scrollTrigger: {
+          trigger: ".mobile-mission-section",
+          start: "top 80%",
+          end: "bottom 20%",
+          toggleActions: "play none none reverse",
+        },
+      });
+
+      // Set initial states for all mobile circles
+      gsap.set(".mobile-mission-circle", {
+        opacity: 0,
+        x: () => gsap.utils.random(-100, 100),
+        y: () => gsap.utils.random(-100, 100),
+      });
+
+      // Container border animation
+      mobileTl.fromTo(
+        ".mobile-mission-container",
+        {
+          borderLeft: "2px solid transparent",
+          borderRight: "2px solid transparent",
+        },
+        {
+          borderLeft: "2px solid #002A77",
+          borderRight: "2px solid #002A77",
+          duration: 0.8,
+        }
+      );
+
+      // Individual circle animations
+      mobileTl.to(
+        ".mobile-mission-circle-0",
+        {
+          opacity: 1,
+          x: 0,
+          y: 0,
+          top: "60vw",
+          left: 20,
+          duration: 0.7,
+          ease: "power2.out",
+        },
+        "<+0.1"
+      );
+      mobileTl.to(
+        ".mobile-mission-circle-1",
+        {
+          opacity: 1,
+          x: 0,
+          y: 0,
+          top: "45vw",
+          left: 20,
+          duration: 0.7,
+          ease: "power2.out",
+        },
+        "<+0.1"
+      );
+      mobileTl.to(
+        ".mobile-mission-circle-2",
+        {
+          opacity: 1,
+          x: 0,
+          y: 0,
+          top: "30vw",
+          left: 20,
+          duration: 0.7,
+          ease: "power2.out",
+        },
+        "<+0.1"
+      );
+      mobileTl.to(
+        ".mobile-mission-circle-3",
+        {
+          opacity: 1,
+          x: 0,
+          y: 0,
+          top: "50vw",
+          left: "20vw",
+          duration: 0.7,
+          ease: "power2.out",
+        },
+        "<+0.1"
+      );
+      mobileTl.to(
+        ".mobile-mission-circle-4",
+        {
+          opacity: 1,
+          x: 0,
+          y: 0,
+          top: "35vw",
+          left: "20vw",
+          duration: 0.7,
+          ease: "power2.out",
+        },
+        "<+0.1"
+      );
+      mobileTl.to(
+        ".mobile-mission-circle-5",
+        {
+          opacity: 1,
+          x: 0,
+          y: 0,
+          top: "20vw",
+          left: "20vw",
+          duration: 0.7,
+          ease: "power2.out",
+        },
+        "<+0.1"
+      );
+      mobileTl.to(
+        ".mobile-mission-circle-6",
+        {
+          opacity: 1,
+          x: 0,
+          y: 0,
+          top: "40vw",
+          left: "35vw",
+          duration: 0.7,
+          ease: "power2.out",
+        },
+        "<+0.1"
+      );
+      mobileTl.to(
+        ".mobile-mission-circle-7",
+        {
+          opacity: 1,
+          x: 0,
+          y: 0,
+          top: "25vw",
+          left: "35vw",
+          duration: 0.7,
+          ease: "power2.out",
+        },
+        "<+0.1"
+      );
+      mobileTl.to(
+        ".mobile-mission-circle-8",
+        {
+          opacity: 1,
+          x: 0,
+          y: 0,
+          top: "10vw",
+          left: "35vw",
+          duration: 0.7,
+          ease: "power2.out",
+        },
+        "<+0.1"
+      );
+      mobileTl.to(
+        ".mobile-mission-circle-9",
+        {
+          opacity: 1,
+          x: 0,
+          y: 0,
+          top: "5vw",
+          left: "10vw",
+          duration: 0.7,
+          ease: "power2.out",
+        },
+        "<+0.1"
+      );
+    }
+
+    // Tablet animation
+    if (tabletMissionContainerRef.current) {
+      const tabletTl = gsap.timeline({
+        scrollTrigger: {
+          trigger: ".tablet-mission-section",
+          start: "top 80%",
+          end: "bottom 20%",
+          toggleActions: "play none none reverse",
+        },
+      });
+
+      // Set initial states for all tablet circles
+      gsap.set(".tablet-mission-circle", {
+        opacity: 0,
+        x: () => gsap.utils.random(-100, 100),
+        y: () => gsap.utils.random(-100, 100),
+      });
+
+      // Container border animation
+      tabletTl.fromTo(
+        ".tablet-mission-container",
+        {
+          borderLeft: "2px solid transparent",
+          borderRight: "2px solid transparent",
+        },
+        {
+          borderLeft: "2px solid #002A77",
+          borderRight: "2px solid #002A77",
+          duration: 0.8,
+        }
+      );
+
+      // Individual circle animations
+      tabletTl.to(
+        ".tablet-mission-circle-0",
+        {
+          opacity: 1,
+          x: 0,
+          y: 0,
+          top: "240px",
+          left: 20,
+          duration: 0.7,
+          ease: "power2.out",
+        },
+        "<+0.1"
+      );
+      tabletTl.to(
+        ".tablet-mission-circle-1",
+        {
+          opacity: 1,
+          x: 0,
+          y: 0,
+          top: "180px",
+          left: 20,
+          duration: 0.7,
+          ease: "power2.out",
+        },
+        "<+0.1"
+      );
+      tabletTl.to(
+        ".tablet-mission-circle-2",
+        {
+          opacity: 1,
+          x: 0,
+          y: 0,
+          top: "120px",
+          left: 20,
+          duration: 0.7,
+          ease: "power2.out",
+        },
+        "<+0.1"
+      );
+      tabletTl.to(
+        ".tablet-mission-circle-3",
+        {
+          opacity: 1,
+          x: 0,
+          y: 0,
+          top: "200px",
+          left: "80px",
+          duration: 0.7,
+          ease: "power2.out",
+        },
+        "<+0.1"
+      );
+      tabletTl.to(
+        ".tablet-mission-circle-4",
+        {
+          opacity: 1,
+          x: 0,
+          y: 0,
+          top: "140px",
+          left: "80px",
+          duration: 0.7,
+          ease: "power2.out",
+        },
+        "<+0.1"
+      );
+      tabletTl.to(
+        ".tablet-mission-circle-5",
+        {
+          opacity: 1,
+          x: 0,
+          y: 0,
+          top: "80px",
+          left: "80px",
+          duration: 0.7,
+          ease: "power2.out",
+        },
+        "<+0.1"
+      );
+      tabletTl.to(
+        ".tablet-mission-circle-6",
+        {
+          opacity: 1,
+          x: 0,
+          y: 0,
+          top: "160px",
+          left: "140px",
+          duration: 0.7,
+          ease: "power2.out",
+        },
+        "<+0.1"
+      );
+      tabletTl.to(
+        ".tablet-mission-circle-7",
+        {
+          opacity: 1,
+          x: 0,
+          y: 0,
+          top: "100px",
+          left: "140px",
+          duration: 0.7,
+          ease: "power2.out",
+        },
+        "<+0.1"
+      );
+      tabletTl.to(
+        ".tablet-mission-circle-8",
+        {
+          opacity: 1,
+          x: 0,
+          y: 0,
+          top: "40px",
+          left: "140px",
+          duration: 0.7,
+          ease: "power2.out",
+        },
+        "<+0.1"
+      );
+      tabletTl.to(
+        ".tablet-mission-circle-9",
+        {
+          opacity: 1,
+          x: 0,
+          y: 0,
+          top: "20px",
+          left: "40px",
+          duration: 0.7,
+          ease: "power2.out",
+        },
+        "<+0.1"
+      );
     }
   }, []);
 
@@ -297,7 +570,10 @@ const Mission = () => {
       </div>
 
       {/* Mobile */}
-      <div className="flex md:hidden lg:hidden w-full min-h-screen flex-col justify-start items-center gap-6 -mt-[45vw]">
+      <div
+        ref={mobileMissionContainerRef}
+        className="mobile-mission-section flex md:hidden lg:hidden w-full min-h-screen flex-col justify-start items-center gap-6 -mt-[45vw]"
+      >
         <div className="w-full flex justify-center">
           <motion.h1
             initial={{ translateX: "-100%" }}
@@ -310,19 +586,19 @@ const Mission = () => {
           </motion.h1>
         </div>
 
-        <motion.div className="relative w-[50vw] h-[40vh] border-l-2 border-r-2 border-l-[#002A77] border-r-[#002A77] p-4 mr-12">
-          {/* The circles */}
-          <div className="w-10 h-10 absolute top-[60vw] bg-green-600 rounded-full"></div>
-          <div className="w-10 h-10 absolute top-[45vw] bg-green-600 rounded-full"></div>
-          <div className="w-10 h-10 absolute top-[30vw] bg-green-600 rounded-full"></div>
-          <div className="w-10 h-10 absolute top-[50vw] left-[20vw] bg-green-600 rounded-full"></div>
-          <div className="w-10 h-10 absolute top-[35vw] left-[20vw] bg-green-600 rounded-full"></div>
-          <div className="w-10 h-10 absolute top-[20vw] left-[20vw] bg-green-600 rounded-full"></div>
-          <div className="w-10 h-10 absolute top-[40vw] left-[35vw] bg-green-600 rounded-full"></div>
-          <div className="w-10 h-10 absolute top-[25vw] left-[35vw] bg-green-600 rounded-full"></div>
-          <div className="w-10 h-10 absolute top-[10vw] left-[35vw] bg-green-600 rounded-full"></div>
-          <div className="w-10 h-10 absolute top-[5vw] left-[10vw] bg-green-600 rounded-full"></div>
-        </motion.div>
+        <div className="mobile-mission-container relative w-[50vw] h-[40vh] p-4 mr-12">
+          {/* Mobile circles - using GSAP animations */}
+          <div className="w-10 h-10 absolute bg-green-600 rounded-full mobile-mission-circle mobile-mission-circle-0"></div>
+          <div className="w-10 h-10 absolute bg-green-600 rounded-full mobile-mission-circle mobile-mission-circle-1"></div>
+          <div className="w-10 h-10 absolute bg-green-600 rounded-full mobile-mission-circle mobile-mission-circle-2"></div>
+          <div className="w-10 h-10 absolute bg-green-600 rounded-full mobile-mission-circle mobile-mission-circle-3"></div>
+          <div className="w-10 h-10 absolute bg-green-600 rounded-full mobile-mission-circle mobile-mission-circle-4"></div>
+          <div className="w-10 h-10 absolute bg-green-600 rounded-full mobile-mission-circle mobile-mission-circle-5"></div>
+          <div className="w-10 h-10 absolute bg-green-600 rounded-full mobile-mission-circle mobile-mission-circle-6"></div>
+          <div className="w-10 h-10 absolute bg-green-600 rounded-full mobile-mission-circle mobile-mission-circle-7"></div>
+          <div className="w-10 h-10 absolute bg-green-600 rounded-full mobile-mission-circle mobile-mission-circle-8"></div>
+          <div className="w-10 h-10 absolute bg-green-600 rounded-full mobile-mission-circle mobile-mission-circle-9"></div>
+        </div>
 
         <motion.div className="flex flex-col leading-none overflow-hidden">
           <motion.p
@@ -388,7 +664,10 @@ const Mission = () => {
       </div>
 
       {/* Tablet */}
-      <div className="hidden md:flex lg:hidden w-full min-h-screen flex-col justify-start items-center gap-8 -mt-80">
+      <div
+        ref={tabletMissionContainerRef}
+        className="tablet-mission-section hidden md:flex lg:hidden w-full min-h-screen flex-col justify-start items-center gap-8 -mt-80"
+      >
         <div className="self-start ml-12">
           <motion.h1
             initial={{ translateX: "-100%" }}
@@ -402,19 +681,19 @@ const Mission = () => {
         </div>
 
         <div className="flex w-full justify-center items-start gap-8 px-8">
-          <motion.div className="relative w-64 h-96 border-l-2 border-r-2 border-l-[#002A77] border-r-[#002A77] p-4">
-            {/* The circles - adjusted for tablet */}
-            <div className="w-14 h-14 absolute top-[240px] bg-green-600 rounded-full"></div>
-            <div className="w-14 h-14 absolute top-[180px] bg-green-600 rounded-full"></div>
-            <div className="w-14 h-14 absolute top-[120px] bg-green-600 rounded-full"></div>
-            <div className="w-14 h-14 absolute top-[200px] left-[80px] bg-green-600 rounded-full"></div>
-            <div className="w-14 h-14 absolute top-[140px] left-[80px] bg-green-600 rounded-full"></div>
-            <div className="w-14 h-14 absolute top-[80px] left-[80px] bg-green-600 rounded-full"></div>
-            <div className="w-14 h-14 absolute top-[160px] left-[140px] bg-green-600 rounded-full"></div>
-            <div className="w-14 h-14 absolute top-[100px] left-[140px] bg-green-600 rounded-full"></div>
-            <div className="w-14 h-14 absolute top-[40px] left-[140px] bg-green-600 rounded-full"></div>
-            <div className="w-14 h-14 absolute top-[20px] left-[40px] bg-green-600 rounded-full"></div>
-          </motion.div>
+          <div className="tablet-mission-container relative w-64 h-96 p-4">
+            {/* Tablet circles - using GSAP animations */}
+            <div className="w-14 h-14 absolute bg-green-600 rounded-full tablet-mission-circle tablet-mission-circle-0"></div>
+            <div className="w-14 h-14 absolute bg-green-600 rounded-full tablet-mission-circle tablet-mission-circle-1"></div>
+            <div className="w-14 h-14 absolute bg-green-600 rounded-full tablet-mission-circle tablet-mission-circle-2"></div>
+            <div className="w-14 h-14 absolute bg-green-600 rounded-full tablet-mission-circle tablet-mission-circle-3"></div>
+            <div className="w-14 h-14 absolute bg-green-600 rounded-full tablet-mission-circle tablet-mission-circle-4"></div>
+            <div className="w-14 h-14 absolute bg-green-600 rounded-full tablet-mission-circle tablet-mission-circle-5"></div>
+            <div className="w-14 h-14 absolute bg-green-600 rounded-full tablet-mission-circle tablet-mission-circle-6"></div>
+            <div className="w-14 h-14 absolute bg-green-600 rounded-full tablet-mission-circle tablet-mission-circle-7"></div>
+            <div className="w-14 h-14 absolute bg-green-600 rounded-full tablet-mission-circle tablet-mission-circle-8"></div>
+            <div className="w-14 h-14 absolute bg-green-600 rounded-full tablet-mission-circle tablet-mission-circle-9"></div>
+          </div>
 
           <motion.div className="flex flex-col leading-snug overflow-hidden max-w-md">
             <motion.p
