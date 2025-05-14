@@ -20,7 +20,7 @@ const Mission = () => {
     const missionPara3 = document.querySelectorAll(".mission-para-3");
     const missionPara4 = document.querySelectorAll(".mission-para-4");
     const missionPara5 = document.querySelectorAll(".mission-para-5");
-    const missionPara6 = document.querySelectorAll(".mission-para-6");
+    // const missionPara6 = document.querySelectorAll(".mission-para-6");
 
     if (
       circles.length > 0 &&
