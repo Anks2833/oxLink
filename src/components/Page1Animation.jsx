@@ -133,7 +133,7 @@ function Page1Animation() {
           webkit-playsinline="true"
           preload="auto"
           loop
-          className="absolute bottom-52 left-1/2 -translate-x-1/2 w-40 h-20 object-cover bg-[#DBD9DC]"
+          className="absolute bottom-20 left-1/2 -translate-x-1/2 w-40 h-20 object-cover bg-[#DBD9DC]"
         ></video>
       </div>
     </>
