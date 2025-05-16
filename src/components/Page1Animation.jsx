@@ -8,8 +8,8 @@ function Page1Animation() {
   const videoRefMobile1 = useRef(null);
 
   // const videoSrc = 'https://res.cloudinary.com/dlchhddqg/video/upload/v1731923443/Ox-Link-Assets/Videos/jdj7iymramcikn6kb8kb.mp4';
-  const videoSrc = "/videos/mainanimation.mp4";
-  const videoSrc1 = "/videos/textonly.mp4";
+  const videoSrc = "/videos/firstanim.mp4";
+  // const videoSrc1 = "/videos/textonly.mp4";
   const videoDesSrc = "/videos/video1.mp4";
 
   // Function to ensure videos play on iOS
@@ -111,7 +111,7 @@ function Page1Animation() {
       </div>
 
       {/* For mobile */}
-      <div className="flex w-full h-screen justify-center items-center sm:hidden">
+      <div className="flex w-full h-screen justify-center items-center pt-20 sm:hidden">
         <video
           ref={videoRefMobile}
           src={videoSrc}
@@ -121,10 +121,10 @@ function Page1Animation() {
           webkit-playsinline="true"
           preload="auto"
           loop
-          className="w-full h-full rotate-90"
+          className="w-full h-full"
         ></video>
 
-        <video
+        {/* <video
           ref={videoRefMobile1}
           src={videoSrc1}
           autoPlay
@@ -134,7 +134,7 @@ function Page1Animation() {
           preload="auto"
           loop
           className="absolute bottom-32 left-1/2 -translate-x-1/2 w-40 h-20 object-cover bg-[#DBD9DC]"
-        ></video>
+        ></video> */}
       </div>
     </>
   );
